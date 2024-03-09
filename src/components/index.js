@@ -1,0 +1,5 @@
+export { default as Navbar } from './navbar/navbar' 
+export { default as Footer } from './footer/footer' 
+export { default as ButtonUI } from './ui/Button-UI' 
+export { default as ImageUI } from './ui/Image-UI' 
+export { default as SectionUI } from './ui/Section-UI' 

@@ -22,6 +22,7 @@ module.exports = {
       },
       fontFamily: {
         oswald: ['var(--font-oswald)'],
+        rubik: ['var(--font-rubik)'],
         notoSansDisplay: ['var(--font-noto-sans-display)'],
         notoSans: ['var(--font-noto-sans)'],
       },

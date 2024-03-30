@@ -5,6 +5,9 @@
 
 @layer components {
  .section-title {
-    @apply font-oswald font-medium text-xl text-currentBlue md:text-2xl lg:text-3xl xl:text-4xl text-center
+    @apply font-oswald font-medium text-xl text-currentBlue md:text-2xl lg:text-3xl xl:text-4xl 
+ }
+ .section-text {
+    @apply font-notoSans text-xs md:font-notoSansDisplay text-black md:text-base lg:text-lg
  }
 }

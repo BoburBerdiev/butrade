@@ -26,6 +26,9 @@ module.exports = {
         notoSansDisplay: ['var(--font-noto-sans-display)'],
         notoSans: ['var(--font-noto-sans)'],
       },
+      boxShadow: {
+        'categoryCard': '0 2px 10px 0px rgba(0, 0, 0, 0.12)',
+      }
     },
   },
   plugins: [],

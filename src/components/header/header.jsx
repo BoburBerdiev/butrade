@@ -6,12 +6,12 @@ const Header = () => {
   const headerBanner = [
     {
       src: '/image/banner.png',
-      alt: "",
+      alt: "Header image",
       id: 0
     },
     {
       src: '/image/image 1.png',
-      alt: "",
+      alt: "Header image",
       id: 1
     },
   ]

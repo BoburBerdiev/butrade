@@ -1,7 +1,8 @@
+import Link from "next/link"
 
 const SectionTitle = ({title, href, centerTrue, subTitle, subTitle2}) => {
   return (
-    <div className={`flex justify-between ${subTitle && 'flex-col'}  ${centerTrue ? 'flex-col items-center' : ` ${subTitle ? '' : '"items-end"' }` }`}>
+    <div className={`flex justify-between max-md:flex-col max-md:items-center  ${subTitle && 'flex-col'} ${href && 'items-center'} ${centerTrue ? 'flex-col items-center' : ` ${subTitle ? '' : '"items-end"' }` }`}>
       <h2 className='section-title max-md:text-center'>{title}</h2>
       {
         subTitle &&
@@ -12,10 +13,10 @@ const SectionTitle = ({title, href, centerTrue, subTitle, subTitle2}) => {
       }
       {
         href && 
-        <a href={href} className=' font-notoSansDisplay font-semibold max-md:hidden block text-currentBlue'>Посмотреть товары</a>
+        <Link href={href} className=' font-notoSansDisplay font-semibold max-md:hidden text-sm pt-2 lg:text-base block text-currentBlue'>Посмотреть товары</Link>
       }
     </div>
-  )
+  ) 
 }
 
 export default SectionTitle

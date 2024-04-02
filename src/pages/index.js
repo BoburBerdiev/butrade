@@ -73,7 +73,7 @@ export default function Home() {
           </div>
         </div>
         <SectionUI >
-          <SectionTitle title={'Все категории'}/>
+          <SectionTitle title={'Все категории'} />
           <div className="pt-5 md:pt-[30px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 ">
             {
               categoryBtns.map((card) => (
@@ -84,6 +84,11 @@ export default function Home() {
         </SectionUI>
 
       </div>
+      <SectionUI>
+        <div className="pb-5 md:pb-[30px]">
+          <SectionTitle title={'Популярная продукция'} href={'/catalog'}/>
+        </div>
+      </SectionUI>
     </>
   );
 }

@@ -2,6 +2,13 @@ import Layout from "@/layout";
 import "@/styles/globals.css";
 import { Noto_Sans, Noto_Sans_Display, Oswald } from 'next/font/google'
 
+
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
+
+
 const oswald = Oswald( {
   subsets:['cyrillic', 'latin'],
   weight: ['500'],

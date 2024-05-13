@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { ButtonUI, CategoryBtn, FigureAnimation, Header, ImageUI, SectionTitle, SectionUI } from "@/components";
+import { ButtonUI, CategoryBtn, FigureAnimation, Header, ImageUI, ProductCard, ProductSlider, SectionTitle, SectionUI } from "@/components";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -88,6 +88,12 @@ export default function Home() {
         <div className="pb-5 md:pb-[30px]">
           <SectionTitle title={'Популярная продукция'} href={'/catalog'}/>
         </div>
+        <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-5">
+            <ProductCard image={'/image/card-image.png'} title={'Трубы пластиковые'}/>
+            <ProductCard image={'/image/card-image.png'} title={'Трубы из нержавеющей стали разного диаметра'}/>
+
+        </div>
+        <ProductSlider/>
       </SectionUI>
     </>
   );

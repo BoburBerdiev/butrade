@@ -68,13 +68,13 @@ const Navbar = () => {
             <button className='absolute -right-0.5 top-0 h-full px-3 pe-3.5 flex items-center text-white bg-currentBlue text-sm md:text-base md:px-4 md:pe-[18px] lg:text-xl'><CgSearch /></button>
           </div>
           <div className='hidden md:flex items-center gap-5 xl:gap-10 text-currentBlue'>
-            <a href='#' className='flex flex-col items-center '>
+            <Link href={'/basket'} className='flex flex-col items-center '>
               <div className='relative '>
                 <PiShoppingCartSimple className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>      
                 <span className='lg:px-1.5 px-1 py-0.5 rounded-full bg-currentBlue text-white absolute -top-2 -right-1.5 text-[7px] lg:text-[9px]'>0</span>        
               </div>
               <span className=' text-sm '>Корзина</span>
-            </a>
+            </Link>
             <a href='tel:+998901110111' className='flex flex-col items-center '>
               <div className='relative '>
                 <SlPhone className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>      
@@ -86,12 +86,14 @@ const Navbar = () => {
       </div>
       </nav>
       <div className='max-md:hidden py-4 lg:py-5 bg-white font-notoSansDisplay font-semibold text-sm border-b'>
-        <div className="container flex flex-wrap gap-3">
-          {
-            linksList.map(link => (
-              <a key={link.id} href={link.href}>{link.name}</a>
-            ))
-          }
+        <div className="container w-full overflow-x-hidden">
+          <div className={'flex gap-3 overflow-x-scroll w-[2000px]'}>
+             {
+               linksList.map(link => (
+                 <a key={link.id} href={link.href}>{link.name}</a>
+               ))
+             }
+          </div>
         </div>
       </div>
     </>

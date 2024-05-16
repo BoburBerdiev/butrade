@@ -12,7 +12,7 @@ const ProductCard = ({title , image, link, alt}) => {
         <div className="overflow-hidden ">
           <div className="md:pb-4 grid grid-cols-4 gap-2.5 ">
           <ButtonUI clasName={'col-span-1'} leftIcon={<PiShoppingCartSimpleLight className=" text-sm md:text-base lg:text-xl"/>} btnIcon={true}/>
-          <ButtonUI clasName={'col-span-3'} btnCard href={''} text={'Подробнее'}/>
+          <ButtonUI clasName={'col-span-3'} btnCard href={link} text={'Подробнее'}/>
           </div>
         </div>
       </div>

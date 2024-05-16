@@ -1,60 +1,57 @@
+// Import Swiper React components
 import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { GrPrevious } from "react-icons/gr";
-import { GrNext } from "react-icons/gr";
-// Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
 
-import { Navigation, Pagination, EffectFade, Autoplay } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation, EffectFade } from 'swiper/modules';
 import { ImageUI } from '..';
+import {GrNext, GrPrevious} from "react-icons/gr";
 
 
-const SwiperBanner = ({list}) => {
+const SwiperBanner = ({list, banner}) => {
   return (
-    <div className='relative h-[43vh]'>
+      <div className={'w-full h-full '}>
       <Swiper
-        cssMode={true}
-        pagination={{
-          clickable: true,
-          el: ".inner-pagination",
-        }}
-        navigation={{
-          nextEl: ".swipper-button-next-btn",
-          prevEl: ".swipper-button-prev-btn",
-        }}
-        loop={true}
-        effect={"fade"}
-        modules={[Navigation, Pagination, EffectFade, Autoplay]}
-        className="mySwiper w-full h-full"
+          spaceBetween={0}
+          effect={'fade'}
+          loop={true}
+          autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+          }}
+          pagination={{
+              clickable: true,
+          }}
+          navigation={{
+              nextEl: ".my-navigation-next",
+              prevEl: ".my-navigation-prev",
+          }}
+          modules={[Autoplay, EffectFade,  Pagination, Navigation]}
+          className="mySwiper h-full w-full"
       >
-        {
-          list?.map(slide => (
-            <SwiperSlide key={slide.id} className='w-full h-full relative'>
-              <ImageUI src={slide.src} alt={slide.alt} />
-            </SwiperSlide>
-          ))
-        }
-        
-        <div className={'absolute w-full bottom-0 left-0 '}>
-          <div className="relative flex items-center justify-center py-4 mt-5 md:mt-10 gap-x-5 z-30">
-            <div className="inline-flex items-center gap-x-4 inner-pagination room-slider"></div>
+          {
+              list.map(slider => (
+                 <SwiperSlide className={'w-full h-full relative'}>
+                     <ImageUI src={slider?.src} alt={slider?.alt}/>
+                 </SwiperSlide>
+              ))
+          }
+          {
+              banner &&
+          <div className={'absolute top-0 left-0 w-full h-full z-20'}>
+          <div className={'container relative h-full '}>
+              <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-[45%] z-10 left-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-prev ">
+                  <GrPrevious className="text-lg" />
+              </div>
+              <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-[45%] z-10 right-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-next ">
+                  <GrNext className="text-lg" />
+              </div>
           </div>
-        </div>
-      <div className="relative flex items-center justify-center py-4 mt-5 md:mt-10 gap-x-5 z-30">
-          <div className="cursor-pointer text-[#8F8170] p-2  swipper-button-prev-btn ">
-            <GrPrevious className="text-2xl" />
           </div>
-          <div className="inline-flex items-center gap-x-4 inner-pagination "></div>
-
-          <div className="cursor-pointer text-[#8F8170] p-2  swipper-button-next-btn ">
-            <GrNext className="text-2xl" />
-          </div>
-      </div>
+          }
       </Swiper>
-    </div>
+
+      </div>
   )
 }
 

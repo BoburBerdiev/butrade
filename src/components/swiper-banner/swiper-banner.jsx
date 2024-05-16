@@ -27,7 +27,7 @@ const SwiperBanner = ({list}) => {
         }}
         loop={true}
         effect={"fade"}
-        modules={[Navigation, Pagination, EffectFade, Autoplay,]}
+        modules={[Navigation, Pagination, EffectFade, Autoplay]}
         className="mySwiper w-full h-full"
       >
         {

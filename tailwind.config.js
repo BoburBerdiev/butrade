@@ -11,14 +11,14 @@ module.exports = {
       padding: {
         DEFAULT: '1.1rem',
         sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
+        lg: '2rem',
+        '2xl': '3rem',
       },
     },
     extend: {
       colors: {
-        "currentBlue": "#14315D"
+        "currentBlue": "#14315D",
+        'currentGray':'#8A8A8A'
       },
       fontFamily: {
         oswald: ['var(--font-oswald)'],
@@ -28,6 +28,7 @@ module.exports = {
       },
       boxShadow: {
         'categoryCard': '0 2px 10px 0px rgba(0, 0, 0, 0.12)',
+        'infoProductPrice': '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
       }
     },
   },

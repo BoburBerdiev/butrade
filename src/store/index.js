@@ -10,13 +10,12 @@ import {
     REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-
 import langSlice from '@/slice/lang'
-import bookingSlice from '@/slice/booking'
+import basketSlice from '@/slice/basket'
 
 
 const rootReducer =combineReducers({
-    langSlice,bookingSlice
+    langSlice,basketSlice
 })
 
 const persistConfig = {

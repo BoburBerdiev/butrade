@@ -4,6 +4,7 @@ import { Noto_Sans, Noto_Sans_Display, Oswald } from 'next/font/google'
 import { HydrationProvider, Client } from "react-hydration-provider";
 import {Provider} from "react-redux";
 import {QueryClientProvider, QueryClient} from "react-query";
+import "../localization/i18n";
 import {PersistGate} from "redux-persist/integration/react";
 import store, {persistor} from "@/store";
 import 'swiper/css';

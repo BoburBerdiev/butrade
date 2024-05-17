@@ -89,8 +89,8 @@ export default function Home() {
           <SectionTitle title={'Популярная продукция'} href={'/catalog'}/>
         </div>
         <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-5">
-            <ProductCard image={'/image/card-image.png'} title={'Трубы пластиковые'}/>
-            <ProductCard image={'/image/card-image.png'} title={'Трубы из нержавеющей стали разного диаметра'}/>
+            <ProductCard/>
+            <ProductCard />
 
         </div>
         <ProductSlider/>

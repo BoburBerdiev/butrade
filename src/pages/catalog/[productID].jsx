@@ -36,6 +36,7 @@ const product = () => {
               <InfoProductPrice />
             </div>
           </div>
+
           <div>
             <h2 className='font-medium md:text-lg mb-2.5 text-currentBlue'>Короткое описание</h2>
             <p>

@@ -9,7 +9,7 @@ import {PersistGate} from "redux-persist/integration/react";
 import store, {persistor} from "@/store";
 import 'swiper/css';
 import 'swiper/css/pagination';
-
+import 'swiper/css/navigation';
 
 
 const oswald = Oswald( {

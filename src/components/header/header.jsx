@@ -10,7 +10,17 @@ const Header = () => {
       id: 0
     },
     {
-      src: '/image/image 1.png',
+      src: '/image/card-image.png',
+      alt: "Header image",
+      id: 1
+    },
+    {
+      src: '/image/card-image.png',
+      alt: "Header image",
+      id: 1
+    },
+    {
+      src: '/image/card-image.png',
       alt: "Header image",
       id: 1
     },
@@ -18,8 +28,8 @@ const Header = () => {
 
 
   return (
-    <div>
-      <SwiperBanner list={headerBanner}/>
+    <div className={'w-full h-[50vh]'}>
+      <SwiperBanner list={headerBanner} banner/>
     </div>
   )
 }

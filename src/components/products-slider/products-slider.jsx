@@ -86,7 +86,7 @@ const ProductsSlider = ({}) => {
         }}
         loop={true}
         modules={[Navigation, Mousewheel, Keyboard]}
-        className="mySwiper relative pb-14"
+        className="mySwiper relative !pb-14"
       >
         {
           cards.map(card => (

@@ -14,42 +14,42 @@ const ProductsSlider = ({}) => {
       image: "/image/card-image.png",
       link: "/catalog/2",
       alt: "Butrate Image",
-      id: 1
+      id: 12
     },
     {
       title: "Трубы из нержавеющей стали разного диаметра",
       image: "/image/card-image.png",
       link: "/catalog/2",
       alt: "Butrate Image",
-      id: 1
+      id: 11
     },
     {
       title: "Керамогранит Netto Ceramika Markinia Silver High GL R 60*60 см черный",
       image: "/image/card-image.png",
       link: "/catalog/2",
       alt: "Butrate Image",
-      id: 1
+      id: 5
     },
     {
       title: "Керамогранит плитка глянцевая поверхность",
       image: "/image/card-image.png",
       link: "/catalog/2",
       alt: "Butrate Image",
-      id: 1
+      id: 2
     },
     {
       title: "Цемент М400 Евроцемент 50кг.",
       image: "/image/card-image.png",
       link: "/catalog/2",
       alt: "Butrate Image",
-      id: 1
+      id: 3
     },
     {
       title: "Трубы пластиковые",
       image: "/image/card-image.png",
       link: "/catalog/2",
       alt: "Butrate Image",
-      id: 1
+      id: 4
     },
   ]
   return (
@@ -92,7 +92,7 @@ const ProductsSlider = ({}) => {
         {
           cards.map(card => (
             <SwiperSlide className='h-full w-full '>
-              <ProductCard image={card.image} title={card.title} link={card.link} alt={card.alt} />
+              <ProductCard product={card} />
             </SwiperSlide>
           ))
         }

@@ -14,7 +14,7 @@ const InfoProductPrice = () => {
           </div>
           <div className={'space-y-2.5'}>
             <ButtonUI text={'Подробнее'} href={'/about'} clasName={'text-center	flex items-center justify-center w-full'}/>
-          </div>
+       </div>
         </div>
       </div>
   );

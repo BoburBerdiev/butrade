@@ -7,11 +7,11 @@ const Layout = ({children}) => {
       <TopNav/>
       <Navbar/>
       <BottomNav/>
-      <main>
+      <div className={'h-[calc(100vh - 88px)] bg-white'}>
         {
           children
         }
-      </main>
+      </div>
       <Footer/>
     </div>
   )

@@ -1,9 +1,8 @@
-import React from 'react'
 
 const InputUI = ({type , clasName , placeholder, onChange}) => {
   return (
     <>
-      <input type={type} className={clasName} placeholder={placeholder} onChange={onChange} /> 
+      <input type={type} className={`${clasName} focus:outline-none focus:ring focus:ring-currentBlue px-4 py-3 w-full md:px-5 md:py-4 rounded-lg text-currentGray shadow-infoProductPrice`} placeholder={placeholder} onChange={onChange} />
     </>
   )
 }

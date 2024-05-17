@@ -29,7 +29,7 @@ const Header = () => {
 
   return (
     <div className={'w-full h-[50vh]'}>
-      <SwiperBanner list={headerBanner} banner/>
+      <SwiperBanner list={headerBanner}/>
     </div>
   )
 }

@@ -4,12 +4,22 @@ const headerBanner = [
   {
     src: '/image/banner.png',
     alt: "Header image",
-    id: 0
+    id: 1
   },
   {
     src: '/image/image 1.png',
     alt: "Header image",
-    id: 1
+    id: 2
+  },
+  {
+    src: '/image/image 1.png',
+    alt: "Header image",
+    id: 3
+  },
+  {
+    src: '/image/image 1.png',
+    alt: "Header image",
+    id: 4
   },
 ]
 const product = () => {

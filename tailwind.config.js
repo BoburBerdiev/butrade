@@ -18,7 +18,9 @@ module.exports = {
     extend: {
       colors: {
         "currentBlue": "#14315D",
-        'currentGray':'#8A8A8A'
+        'currentGray':'#8A8A8A',
+        "iconblue":"#0F1F39",
+        "linegrey":"#D9D9D9",
       },
       fontFamily: {
         oswald: ['var(--font-oswald)'],

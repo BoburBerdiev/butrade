@@ -1,4 +1,3 @@
-import React, { useRef, useState } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation,  Mousewheel, Keyboard } from 'swiper/modules';
@@ -91,9 +90,11 @@ const ProductsSlider = ({}) => {
       >
         {
           cards.map(card => (
+              <div key={card.id}>
             <SwiperSlide className='h-full w-full '>
               <ProductCard product={card} />
             </SwiperSlide>
+              </div>
           ))
         }
 

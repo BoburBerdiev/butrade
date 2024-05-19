@@ -1,26 +1,11 @@
 import {Breadcrumb, InfoProductPrice, OrderCard, ProductSlider, SectionTitle, SectionUI} from "@/components";
+import {useSelector} from "react-redux";
 
-const Basket = ({}) => {
-    const orderCards = [
-        {
-            image: "/image/card-image.png",
-            title: "Труба стальная бесшовная",
-            saleText : "Цена договорная",
-            id: 1
-        },
-        {
-            image: "/image/card-image.png",
-            title: "Керамогранит Netto Ceramika Markinia Silver High GL R 60*60 см черный",
-            saleText : "Цена договорная",
-            id: 1
-        },
-        {
-            image: "/image/card-image.png",
-            title: "Труба стальная бесшовная",
-            saleText : "Цена договорная",
-            id: 1
-        },
-    ]
+const Basket = () => {
+
+const {basket} =  useSelector(state =>state.basketSlice)
+  console.log(basket)
+
     return (
         <div>
             <SectionUI>
@@ -28,25 +13,35 @@ const Basket = ({}) => {
                 <div className={'pb-4 md:pb-6 lg:pb-[30px]'}>
                    <SectionTitle title={'Корзина'}/>
                 </div>
+              {
+                basket?.length > 0 ?
                 <div className={'grid grid-cols-1 sm:grid-cols-8 gap-5'}>
-                    <div className={'rounded-[9px] sm:col-span-6 p-4 lg:p-[30px] flex flex-col gap-y-5 max-h-[300px] overflow-y-scroll shadow-[0px_4px_14px_0px_rgba(0,_0,_0,_0.12)]'}>
-                           {
-                               orderCards.map(card => (
-                                  <OrderCard image={card.image} title={card.title} saleText={card.saleText}/>
-                               ))
-                           }
+
+
+                        <div
+                            className={'rounded-[9px] sm:col-span-6 p-4 lg:p-[30px] flex flex-col gap-y-5 max-h-[300px] overflow-y-scroll shadow-[0px_4px_14px_0px_rgba(0,_0,_0,_0.12)]'}>
+                          {
+                            basket?.map(card => (
+                                <OrderCard key={card?.id} id={card?.id} image={card?.image} title={card.title_ru}
+                                           saleText={card.saleText} count={card?.count}/>
+                            ))
+                          }
                         </div>
-                    <div className={'sm:col-span-2'}>
-                        <InfoProductPrice/>
-                    </div>
+
+                  <div className={'sm:col-span-2'}>
+                    <InfoProductPrice/>
+                  </div>
                 </div>
+                    :
+                    <div>Siz hali maqsulod olmadingiz</div>
+              }
             </SectionUI>
-            <SectionUI>
-                <div className={'pb-[30px]'}>
-                    <SectionTitle title={'Вам может понравиться'}/>
-                </div>
-                <ProductSlider/>
-            </SectionUI>
+          <SectionUI>
+            <div className={'pb-[30px]'}>
+              <SectionTitle title={'Вам может понравиться'}/>
+            </div>
+            <ProductSlider/>
+          </SectionUI>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { CgSearch } from "react-icons/cg";
 import { SlPhone } from "react-icons/sl";
 import { DropdownUI, ImageUI } from '..'
 import Link from 'next/link';
+import {useSelector} from "react-redux";
 
 const linksList = [
   {
@@ -49,6 +50,10 @@ const linksList = [
 
 ]
 const Navbar = () => {
+    const {allCount , basket} = useSelector(state => state.basketSlice)
+
+  console.log(allCount)
+  console.log(basket)
   return (
     <>
       <nav className=' font-notoSansDisplay py-4 md:py-5 border-b border-[#CECFDB] bg-white'>
@@ -71,7 +76,7 @@ const Navbar = () => {
             <Link href={'/basket'} className='flex flex-col items-center '>
               <div className='relative '>
                 <PiShoppingCartSimple className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>      
-                <span className='lg:px-1.5 px-1 py-0.5 rounded-full bg-currentBlue text-white absolute -top-2 -right-1.5 text-[7px] lg:text-[9px]'>0</span>        
+                <span className='lg:px-1.5 px-1 py-0.5 rounded-full bg-currentBlue text-white absolute -top-2 -right-1.5 text-[7px] lg:text-[9px]'>{allCount}</span>
               </div>
               <span className=' text-sm '>Корзина</span>
             </Link>

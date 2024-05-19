@@ -1,7 +1,13 @@
 import React from 'react';
 import {Counter, ImageUI} from "@/components";
 import { FaRegTrashAlt } from "react-icons/fa";
-const OrderCard = ({image ,title ,saleText,  }) => {
+import {useDispatch} from "react-redux";
+import { deleteProduct} from "@/slice/basket";
+const OrderCard = ({image ,title ,saleText, count  , id}) => {
+  const dispatch = useDispatch()
+  const handleDelete = (id) => {
+    dispatch(deleteProduct(id))
+  }
     return (
         <div className={'flex items-center max-md:flex-col gap-x-3 md:justify-between gap-y-5'}>
             <div className={'flex items-center gap-5 w-full'}>
@@ -16,9 +22,9 @@ const OrderCard = ({image ,title ,saleText,  }) => {
                 <p className={'font-notoSans text-sm md:text-base text-[#CECFDB]'}>
                     {saleText}
                 </p>
-                <Counter/>
-                <button>
-                    <FaRegTrashAlt className={'w-[23px] h-[23px] text-[#CECFDB]'} />
+                <Counter count={count} id={id}/>
+                <button onClick={() => handleDelete()}>
+                    <FaRegTrashAlt className={'w-[23px] h-[23px] text-[#CECFDB] hover:text-red-600'} />
                 </button>
             </div>
         </div>

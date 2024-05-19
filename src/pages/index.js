@@ -88,11 +88,7 @@ export default function Home() {
         <div className="pb-5 md:pb-[30px]">
           <SectionTitle title={'Популярная продукция'} href={'/catalog'}/>
         </div>
-        <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-5">
-            <ProductCard/>
-            <ProductCard />
 
-        </div>
         <ProductSlider/>
       </SectionUI>
     </>

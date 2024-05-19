@@ -4,24 +4,49 @@ const basket = createSlice({
     name: 'basket' ,
     initialState: {
         basket: [],
+        allCount: 0
     },
     reducers: {
-        changleBasket:(state , {payload}) => {
-            // state.basket.find(product)
-            state.basket.push(payload)
-            if(state.basket.find(payload.id)) {
+        changleBasket: (state, { payload }) => {
+            const {id } = payload
+            const findProduct = state.basket?.find((product) => product.id === id);
+            if (findProduct) {
+                findProduct.count += 1;
+                console.log(findProduct);
+            } else {
+                state.basket.push({ ...payload, count: payload.count || 1 });
+            }
+        },
+        countMinusProduct(state , {payload}) {
+            const findProduct = state.basket?.find((product) => product.id === payload);
+            if (findProduct) {
+               findProduct?.count > 0 ?
+                findProduct.count -= 1:
+                   state.basket= state.basket?.filter(product => product.id !== findProduct.id)
 
             }
+            state.allCount = state.basket?.length
 
-            // function product(product , payloudID) {
-            //     return product.id === payloudID;
-            // }
-        }
+        },
+        countPlusProduct(state , {payload}) {
+            const findProduct = state.basket?.find((product) => product.id === payload);
+            if (findProduct) {
+                findProduct.count += 1;
+            }
+            state.allCount = state.basket?.length
+
+        },
+        deleteProduct (state , {payload}) {
+            const findProduct = state?.basket?.find(product  => product.id === payload)
+            state.basket= state.basket?.filter(product => product.id !== findProduct.id)
+            state.allCount = state.basket?.length
+
+        },
     }
 })
 
 
 
-export const {changleBasket} = basket.actions
+export const {changleBasket ,countMinusProduct ,countPlusProduct ,deleteProduct ,allProductCount} = basket.actions
 export default basket.reducer
 

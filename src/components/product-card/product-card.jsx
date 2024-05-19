@@ -5,13 +5,10 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {changleBasket} from "@/slice/basket";
 const ProductCard = ({product}) => {
-  const [countAddProduct ,setCountAddProduct] = useState(null)
   const dispatch = useDispatch()
 
    const handleBasket  =(product) => {
-     setCountAddProduct({...product , count:1})
-     console.log(countAddProduct)
-     dispatch(changleBasket(countAddProduct))
+      dispatch(changleBasket(product))
   }
 
   const {lang} = useSelector(state => state.langSlice)
@@ -24,7 +21,7 @@ const ProductCard = ({product}) => {
       <h2 className=" line-clamp-2 lg:px-2 font-notoSansDisplay font-semibold text-black leading-[-1px] text-sm md:text-[16px] h-10 ">{langSelect(lang , product?.title_ru , product?.title_uz)}</h2>
       <div className="md:grid md:grid-rows-[0fr] z-10 md:group-hover:grid-rows-[1fr] md:absolute top-full duration-200 left-0 right-0 w-full md:bg-white px-2  lg:px-5 md:shadow-lg md:rounded-b-lg">
         <div className="overflow-hidden ">
-          <div className="md:pb-4 grid grid-cols-4 gap-2.5 ">
+          <div className="md:pb-4 grid grid-cols-4 gap-x-1 md:gap-x-2.5 ">
           <ButtonUI clasName={'col-span-1'} leftIcon={<PiShoppingCartSimpleLight className="text-sm md:text-base lg:text-xl"/>} onClick={() => handleBasket(product)} btnIcon={true}/>
           <ButtonUI clasName={'col-span-3'} btnCard href={product?.link} text={'Подробнее'}/>
           </div>

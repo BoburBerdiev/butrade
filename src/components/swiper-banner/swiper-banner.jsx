@@ -22,6 +22,7 @@ const SwiperBanner = ({list}) => {
           modules={[ Pagination, Navigation]}
           className="mySwiper h-full w-full"
       >
+
           {
               list.map(slider => (
                   <div key={slider.id}>

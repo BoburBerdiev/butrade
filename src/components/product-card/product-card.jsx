@@ -13,7 +13,7 @@ const ProductCard = ({product}) => {
       dispatch(changleBasket(product))
   }
   const CountActiveProductBasket = useMemo(() => {
-    const findProduct = basket?.find((item) => item.id ===product?.id);
+    const findProduct = basket?.find((item) => item?.id ===product?.id);
     return findProduct?.count
   } ,[allProductItemCount  ])
 

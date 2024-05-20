@@ -13,7 +13,7 @@ const ProductCard = ({product}) => {
      console.log(countAddProduct)
      dispatch(changleBasket(countAddProduct))
   }
-
+  const [isRow , setIsRow] = useState(true)
   const {lang} = useSelector(state => state.langSlice)
 
   return (

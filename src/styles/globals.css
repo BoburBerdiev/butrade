@@ -11,3 +11,10 @@
     @apply font-notoSans text-xs md:font-notoSansDisplay text-black md:text-base lg:text-lg
  }
 }
+
+.header-slider   .swiper-pagination-bullet {
+    background: #CECFDB !important;
+}
+.header-slider   .swiper-pagination-bullet-active {
+    background: #fff !important;
+}

@@ -2,7 +2,7 @@ import { ButtonUI, ImageUI } from ".."
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import {langSelect} from "@/helper";
 import {useDispatch, useSelector} from "react-redux";
-import {useEffect, useMemo, useState} from "react";
+import { useMemo} from "react";
 import {changleBasket} from "@/slice/basket";
 import {Counter} from "@/components";
 const ProductCard = ({product}) => {
@@ -12,13 +12,10 @@ const ProductCard = ({product}) => {
    const handleBasket  =(product) => {
       dispatch(changleBasket(product))
   }
-
   const CountActiveProductBasket = useMemo(() => {
     const findProduct = basket?.find((item) => item.id ===product?.id);
     return findProduct?.count
   } ,[allProductItemCount  ])
-
-
 
   return (
     <div className="w-full px-2 py-3 lg:px-2.5 lg:py-4 bg-white rounded-lg h-full shadow-md z-[5] hover:rounded-b-none flex flex-col gap-3 lg:gap-4 relative group duration-200 hover:shadow-lg">

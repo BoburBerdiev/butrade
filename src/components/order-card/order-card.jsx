@@ -23,7 +23,7 @@ const OrderCard = ({image ,title ,saleText, count  , id}) => {
                     {saleText}
                 </p>
                 <Counter count={count} id={id}/>
-                <button onClick={() => handleDelete()}>
+                <button onClick={() => handleDelete(id)}>
                     <FaRegTrashAlt className={'w-[23px] h-[23px] text-[#CECFDB] hover:text-red-600'} />
                 </button>
             </div>

@@ -40,7 +40,7 @@ const {basket} =  useSelector(state =>state.basketSlice)
             <div className={'pb-[30px]'}>
               <SectionTitle title={'Вам может понравиться'}/>
             </div>
-            <ProductSlider/>
+            {/*<ProductSlider/>*/}
           </SectionUI>
         </div>
     );

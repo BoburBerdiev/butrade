@@ -50,10 +50,8 @@ const linksList = [
 
 ]
 const Navbar = () => {
-    const {allCount , basket} = useSelector(state => state.basketSlice)
+    const {allCount} = useSelector(state => state.basketSlice)
 
-  console.log(allCount)
-  console.log(basket)
   return (
     <>
       <nav className=' font-notoSansDisplay py-4 md:py-5 border-b border-[#CECFDB] bg-white'>

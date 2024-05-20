@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import {  Pagination, Navigation } from 'swiper/modules';
 import { ImageUI } from '..';
 import {GrNext, GrPrevious} from "react-icons/gr";
-
+import "./swiper-banner.css"
 
 const SwiperBanner = ({list}) => {
   return (
@@ -13,6 +13,7 @@ const SwiperBanner = ({list}) => {
           loop={true}
           pagination={{
               clickable: true,
+              el: ".my-pagination",
           }}
           navigation={{
               clickable: true,
@@ -33,6 +34,7 @@ const SwiperBanner = ({list}) => {
           }
 
       </Swiper>
+
           <div className={'absolute top-0 left-0 w-full h-full z-20'}>
               <div className={'container relative h-full '}>
                   <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-[45%] z-10 left-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-prev ">
@@ -44,6 +46,11 @@ const SwiperBanner = ({list}) => {
               </div>
           </div>
 
+          <div className="flex items-center justify-center header-slider absolute w-full bottom-[30px] left-0 z-50">
+              <div className="flex gap-x-2">
+                  <div className="inline-flex items-center gap-x-4 my-pagination pagintaion-slider"></div>
+              </div>
+          </div>
       </div>
   )
 }

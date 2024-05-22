@@ -1,7 +1,55 @@
 import {ProductCard, SectionTitle, SectionUI} from "@/components";
-import Product from "@/pages/catalog/[slug]";
+import {useEffect ,useState} from "react";
+import apiService from "@/service/axois";
+import {useQuery} from "react-query";
 
 const index = () => {
+
+
+  const [page, setPage] = useState(1)
+  const [query , setQuery ] = useState("Izolyatsiya materiallari")
+  const [productInfinity, setProductInfinity] = useState([])
+  const [hasMore, setHasMore] = useState(false)
+  const {
+    data: productFiltered,
+    refetch: productFilteredRefetch,
+    isSuccess: productFilteredSuccess,
+  } = useQuery(
+      "filter",
+      () =>
+          apiService.getData(
+              `products-catalog?${query}&page=${page}&page_size=8`
+          ),
+      {
+        enabled: false,
+      }
+  );
+  useEffect(() => {
+    if (query !== null && page === 1) {
+      productFilteredRefetch()
+    }
+  }, [ page]);
+
+  useEffect(() => {
+    if (productFilteredSuccess) {
+      if (page === 1) {
+        setProductInfinity([...productFiltered?.results])
+
+        if (productFiltered?.results.length > 0) {
+          setHasMore(true)
+        }
+      } else {
+        setProductInfinity([...productInfinity, ...productFiltered?.results])
+      }
+      if (!productFiltered?.next) {
+        setHasMore(false)
+      } else {
+        setPage(prop => prop + 1)
+        setHasMore(true)
+      }
+    }
+  }, [productFiltered])
+
   const cards = [
     {
       title_uz: "Трубы пластиковые",
@@ -291,7 +339,7 @@ const index = () => {
         {/*md:grid-cols-5 */}
         <div className="w-full grid grid-cols-1 gap-5">
           {
-            cards.map(card => (
+            productFiltered?.map(card => (
                 <div key={card.id} className={'relative z-[5]'}>
                     <ProductCard product={card} />
                 </div>
@@ -301,21 +349,6 @@ const index = () => {
       </SectionUI>
   );
 };
-//
-// export async function getServerSideProps({params}) {
-//   const { slug } = params;
-//   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${slug}`);
-//   const product = await res.json();
-//
-//   if (!product) {
-//     return {
-//       notFound: true,
-//     };
-//   }
-//   return {
-//     props: { product },
-//   };
-// }
-//
+
 export default index;
 

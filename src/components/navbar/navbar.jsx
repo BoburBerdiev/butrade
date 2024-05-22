@@ -6,52 +6,21 @@ import { DropdownUI, ImageUI } from '..'
 import Link from 'next/link';
 import {useSelector} from "react-redux";
 import {SearchPanel} from "@/components";
+import {langSelect} from "@/helper";
 
-const linksList = [
+const listLang = [
   {
-    name: "Металлопрокат",
-    id: 0,
-    href: '/'
+    title: 'Русский',
+    id: 0
   },
   {
-    name: "Трубы",
-    id: 1,
-    href: '/'
+    title: "O'zbek",
+    id: 1
   },
-  {
-    name: "Отделочные материалы",
-    id: 2,
-    href: '/'
-  },
-  {
-    name: "Кладочные материалы",
-    id: 3,
-    href: '/'
-  },
-  {
-    name: "Сухие строительные смеси",
-    id: 4,
-    href: '/'
-  },
-  {
-    name: "Сыпучие материалы",
-    id: 5,
-    href: '/'
-  },
-  {
-    name: "Изолирующие материалы",
-    id: 6,
-    href: '/'
-  },
-  {
-    name: "Прочие",
-    id: 7,
-    href: '/'
-  },
-
 ]
-const Navbar = () => {
+const Navbar = ({links}) => {
     const {allCount} = useSelector(state => state.basketSlice)
+  const {lang} = useSelector(state => state.langSlice)
 
   return (
     <>
@@ -62,10 +31,10 @@ const Navbar = () => {
             <a href="tel:+998901110111" className='block md:hidden'>
               <SlPhone className=' text-currentBlue w-5 h-5'/>
             </a>
-            <a href="/" className='w-[102px] relative block h-5 md:w-[120px] md:h-7 xl:w-[162px] xl:h-[51px]'>
+            <Link href="/" className='w-[102px] relative block h-5 md:w-[120px] md:h-7 xl:w-[162px] xl:h-[51px]'>
               <ImageUI src={'/image/logo.png'} alt={'Butrate Logo'} objectFitContain/>
-            </a>
-            <p className='text-currentBlue md:hidden'>Ру</p>
+            </Link>
+              <DropdownUI list={listLang}/>
           </div>
           <div className={'md:mx-5 lg:mx-10 xl:mx-12 w-full '}>
             <SearchPanel/>
@@ -90,10 +59,10 @@ const Navbar = () => {
       </nav>
       <div className='max-md:hidden py-4 lg:py-5 bg-white font-notoSansDisplay font-semibold text-sm border-b'>
         <div className="container w-full overflow-x-hidden">
-          <div className={'flex gap-3 overflow-x-scroll w-[2000px]'}>
+          <div className={'flex gap-3 overflow-x-scroll min-w-full w-full'}>
              {
-               linksList.map(link => (
-                 <a key={link.id} href={link.href}>{link.name}</a>
+               links?.map(link => (
+                 <Link key={link.id} className={'shrink-0 px-1'} href={`/catalog?name=${link?.slug}`}>{langSelect(lang , link?.title_ru , link?.title_uz )}</Link>
                ))
              }
           </div>

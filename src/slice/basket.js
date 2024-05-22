@@ -12,7 +12,7 @@ const basket = createSlice({
 
         changleBasket: (state, { payload }) => {
             const {id} = payload
-            const findProduct = state.basket?.find((product) => product.id === id);
+            const findProduct = state.basket?.find((product) => product?.id === id);
             if (findProduct) {
                 findProduct.count += 1;
             } else {
@@ -26,11 +26,11 @@ const basket = createSlice({
             state.allProductItemCount = count
         },
         countMinusProduct(state , {payload}) {
-            const findProduct = state.basket?.find((product) => product.id === payload);
+            const findProduct = state.basket?.find((product) => product?.id === payload);
             if (findProduct) {
                findProduct?.count > 0 ?
                 findProduct.count -= 1:
-                   state.basket= state.basket?.filter(product => product.id !== findProduct.id)
+                   state.basket= state.basket?.filter(product => product?.id !== findProduct.id)
 
             }
             state.allCount = state.basket?.length
@@ -42,7 +42,7 @@ const basket = createSlice({
 
         },
         countPlusProduct(state , {payload}) {
-            const findProduct = state.basket?.find((product) => product.id === payload);
+            const findProduct = state.basket?.find((product) => product?.id === payload);
             if (findProduct) {
                 findProduct.count += 1;
             }
@@ -55,7 +55,7 @@ const basket = createSlice({
 
         },
         deleteProduct (state , {payload}) {
-            const findProduct = state?.basket?.find(product  => product.id === payload)
+            const findProduct = state?.basket?.find(product  => product?.id === payload)
             state.basket= state.basket?.filter(product => product.id !== findProduct?.id)
             state.allCount = state.basket?.length
 

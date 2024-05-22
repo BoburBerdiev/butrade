@@ -6,7 +6,7 @@ const ButtonUI = ({text, clasName, onClick, href, leftIcon, rightIcon , type, ta
       {
         href ?
 
-        <Link href={href} onClick={onClick} target={target} className={`${clasName && clasName} ${btnIcon ? `bg-currentBlue w-full text-white flex items-center justify-center p-[7px] ${btnHref ? 'rounded-full' : "rounded-lg" }` : `${btnFill ? `text-white bg-currentBlue py-2.5 w-full rounded-[30px]` : `border  inline-flex hover:bg-currentBlue text-currentBlue duration-200 hover:text-white items-center gap-1.5 border-currentBlue ${btnCard ? " rounded-lg justify-center py-1.5 w-full md:py-2 " : " rounded-[30px] py-2.5 px-5 md:py-3 md:px-6" } `}` }   `}>
+        <Link href={href} onClick={onClick} target={target} className={`${clasName && clasName} ${btnIcon ? `bg-currentBlue w-full text-white flex items-center justify-center p-[8px] ${btnHref ? 'rounded-full' : "rounded-lg" }` : `${btnFill ? `text-white bg-currentBlue py-2.5 w-full rounded-[30px]` : `border  inline-flex hover:bg-currentBlue text-currentBlue duration-200 hover:text-white items-center gap-1.5 border-currentBlue ${btnCard ? " rounded-lg justify-center py-1.5 w-full md:py-2 " : " rounded-[30px] py-2.5 px-5 md:py-3 md:px-6" } `}` }   `}>
           <span>
             {leftIcon && leftIcon}
           </span>
@@ -26,7 +26,7 @@ const ButtonUI = ({text, clasName, onClick, href, leftIcon, rightIcon , type, ta
         :
 
 
-       <button type={type} onClick={onClick} className={`${clasName && clasName}  ${btnIcon ? `bg-currentBlue w-full text-white flex items-center justify-center p-[7px] ${btnHref ? 'rounded-full' : "rounded-lg" }` : `${btnFill ? `text-white bg-currentBlue py-2.5 w-full rounded-[30px]` : `border  flex hover:bg-currentBlue text-currentBlue duration-200 hover:text-white items-center gap-1.5 border-currentBlue ${btnCard ? " rounded-lg justify-center py-1.5 w-full md:py-2 " : " rounded-[30px] py-2.5 px-5 md:py-3 md:px-6" } `}` }   `}  >
+       <button type={type} onClick={onClick} className={`${clasName && clasName}  ${btnIcon ? `bg-currentBlue w-full text-white flex items-center justify-center p-[8px] ${btnHref ? 'rounded-full' : "rounded-lg" }` : `${btnFill ? `text-white bg-currentBlue py-2.5 w-full rounded-[30px]` : `border  flex hover:bg-currentBlue text-currentBlue duration-200 hover:text-white items-center gap-1.5 border-currentBlue ${btnCard ? " rounded-lg justify-center py-1.5 w-full md:py-2 " : " rounded-[30px] py-2.5 px-5 md:py-3 md:px-6" } `}` }   `}  >
           <span>
             {leftIcon && leftIcon}
           </span>

@@ -1,4 +1,4 @@
-import {Breadcrumb, InfoProductPrice, OrderCard, ProductSlider, SectionTitle, SectionUI} from "@/components";
+import {Breadcrumb, InfoProductPrice, OrderCard , SectionTitle, SectionUI} from "@/components";
 import {useSelector} from "react-redux";
 
 const Basket = () => {

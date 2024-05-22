@@ -5,7 +5,6 @@ import { ImageUI } from '..';
 import {GrNext, GrPrevious} from "react-icons/gr";
 
 const SwiperBanner = ({list}) => {
-    console.log(list[0].image)
   return (
       <div className={'w-full h-full relative'}>
       <Swiper

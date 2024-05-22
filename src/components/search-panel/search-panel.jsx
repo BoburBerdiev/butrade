@@ -38,9 +38,12 @@ const SearchPanel = () => {
     const closeSearchPanel = () => {
         setSearchPanel(false)
     }
+    const scrollHidden = () => {
+        searchPanel ? document.body.classList.add('overflow-hidden') : document.body.classList.remove('overflow-hidden')
+    }
     useEffect(() => {
-        searchPanel && document.body.classList.add('overflow-hidden')
-    }, [])
+        scrollHidden()
+    }, [searchPanel])
     return (
         <>
             <div className='w-full border border-currentBlue rounded-[50px] overflow-hidden relative'>

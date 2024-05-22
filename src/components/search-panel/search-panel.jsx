@@ -50,7 +50,7 @@ const SearchPanel = () => {
                 <input type="text" placeholder='Поиск товаров ' className='w-full px-5 py-2 lg:px-[30px] lg:py-3 text-xs md:text-sm outline-none lg:text-base text-[#757575] font-notoSansDisplay block' onClick={inputClick}/>
                 <button className='absolute -right-0.5 top-0 h-full px-3 pe-3.5 flex items-center text-white bg-currentBlue text-sm md:text-base md:px-4 md:pe-[18px] lg:text-xl'><CgSearch /></button>
             </div>
-            <div className={`fixed  left-0 right-0 w-full duration-200 overflow-hidden h-screen z-[90] ${searchPanel ? "top-[102px] md:top-[125px] lg:top-[131px] " : " -top-full"}   bg-currentBlue/80`}>
+            <div className={`fixed  left-0 right-0 w-full duration-200 overflow-hidden h-screen z-[90] ${searchPanel ? "top-[102px] md:top-[125px] lg:top-[131px] " : " -top-[150%]"}   bg-currentBlue/80`}>
                 <div className={'absolute top-5 right-5 z-50 cursor-pointer'} onClick={closeSearchPanel}>
                     <IoIosClose className={'text-white text-4xl'}/>
                 </div>

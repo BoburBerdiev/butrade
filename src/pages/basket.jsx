@@ -4,8 +4,6 @@ import {useSelector} from "react-redux";
 const Basket = () => {
 
 const {basket} =  useSelector(state =>state.basketSlice)
-  console.log(basket)
-
     return (
         <div>
             <SectionUI>
@@ -23,7 +21,7 @@ const {basket} =  useSelector(state =>state.basketSlice)
                           {
                             basket?.map(card => (
                                 <OrderCard key={card?.id} id={card?.id} image={card?.image} title={card?.title_ru}
-                                           saleText={card?.saleText} count={card?.count}/>
+                                           saleText={card?.saleText} count={card?.count} />
                             ))
                           }
                         </div>

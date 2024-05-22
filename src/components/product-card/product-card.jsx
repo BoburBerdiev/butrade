@@ -8,7 +8,7 @@ import {Counter, InfoProductUI} from "@/components";
 const ProductCard = ({product}) => {
   const dispatch = useDispatch()
   // const [isRow , setIsRow] = useState(true)
-  const {isRow} = useSelector(state => state.cardPosition)
+  const {isRow} = useSelector(state =>  state.cardPosition)
   const {basket ,allProductItemCount} = useSelector(state => state.basketSlice)
   const {lang } = useSelector(state => state.langSlice)
    const handleBasket  =(product) => {
@@ -18,7 +18,6 @@ const ProductCard = ({product}) => {
     const findProduct = basket?.find((item) => item?.id ===product?.id);
     return findProduct?.count
   } ,[allProductItemCount  ])
-    console.log(isRow)
   return (
     <div className={`${isRow ? 'grid grid-cols-7 md:grid-cols-11 gap-x-3 justify-end p-2 md:p-3 lg:p-4 gap-y-3' :'flex-col px-2 py-3 lg:px-2.5 lg:py-4 gap-3 lg:gap-4 hover:rounded-b-none    '} w-full  bg-white rounded-lg h-full shadow-md z-[5]  flex   relative group duration-200 hover:shadow-lg`}>
       <div className={`${isRow ? 'w-full  col-span-3 md:col-span-4 aspect-[3/4] md:aspect-[16/8] h-full' : 'w-full aspect-square'}  relative rounded-lg overflow-hidden`}>

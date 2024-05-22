@@ -31,10 +31,12 @@ const Navbar = ({links}) => {
             <a href="tel:+998901110111" className='block md:hidden'>
               <SlPhone className=' text-currentBlue w-5 h-5'/>
             </a>
-            <Link href="/" className='w-[102px] relative block h-5 md:w-[120px] md:h-7 xl:w-[162px] xl:h-[51px]'>
-              <ImageUI src={'/image/logo.png'} alt={'Butrate Logo'} objectFitContain/>
+            <Link href="/" className='w-[102px] relative block h-12 md:w-[120px] md:h-16 '>
+              <ImageUI src={'/image/beaminguniverse-logo.png'} alt={'Butrate Logo'} objectFitContain/>
             </Link>
+            <div className={'md:hidden'}>
               <DropdownUI list={listLang}/>
+            </div>
           </div>
           <div className={'md:mx-5 lg:mx-10 xl:mx-12 w-full '}>
             <SearchPanel/>

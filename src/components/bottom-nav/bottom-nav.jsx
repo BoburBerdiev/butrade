@@ -4,6 +4,7 @@ import { LuShoppingCart } from "react-icons/lu";
 import { Rubik } from "next/font/google";
 import { useState } from "react";
 import Link from "next/link";
+import {useSelector} from "react-redux";
 
 const rubik = Rubik( {
   subsets:['cyrillic', 'latin'],
@@ -12,6 +13,7 @@ const rubik = Rubik( {
 })
 const BottomNav = () => {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
+  const {allCount} = useSelector(state => state.basketSlice)
 
   const openMenu = () => {
     setIsOpenMenu(prevstate => !prevstate)
@@ -29,10 +31,10 @@ const BottomNav = () => {
           <IoGridOutline className="w-5 h-5 "/>
           <span>Каталог</span>
         </Link>
-        <Link href="/contact" className='flex flex-col items-center gap-1 text-[11px] font-notoSansDisplay cursor-pointer'>
+        <Link href="/basket" className='flex flex-col items-center gap-1 text-[11px] font-notoSansDisplay cursor-pointer'>
           <div className="relative">
             <LuShoppingCart className="w-5 h-5 "/>
-            <span className=' rounded-full bg-white text-currentBlue absolute -top-1 -right-1.5 text-[8px] font-bold px-1 font-rubik'>0</span>        
+            <span className=' rounded-full bg-white text-currentBlue absolute -top-1 -right-1.5 text-[8px] font-bold px-1 font-rubik'>{allCount}</span>
           </div>
           <span>Корзина</span>
         </Link>

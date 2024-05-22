@@ -60,6 +60,7 @@ const index = () => {
       image: "/image/not-found.png",
       link: "/catalog/2",
       alt: "Butrate Image",
+      saleText: '1 sht',
       id: 12,
       infoProduct: [
         {

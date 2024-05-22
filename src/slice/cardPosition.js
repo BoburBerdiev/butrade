@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const cardPosition = createSlice({
     name: 'cardPosition' ,
     initialState: {
-        isRow: true,
+        isRow: false,
     },
     reducers: {
         changleIsRow: (state,{payload} ) =>{

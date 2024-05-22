@@ -53,11 +53,14 @@ const index = () => {
   ]
   return (
       <SectionUI>
-        <SectionTitle title={'Металлопрокат'}/>'
+        <SectionTitle title={'Металлопрокат'}/>
+        <div>
+
+        </div>
         <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-5">
           {
             cards.map(card => (
-                <div key={card.id}>
+                <div key={card.id} className={'relative z-[5]'}>
                     <ProductCard product={card} />
                 </div>
             ))

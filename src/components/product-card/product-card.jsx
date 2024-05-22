@@ -21,7 +21,7 @@ const ProductCard = ({product}) => {
 
 
   return (
-    <div className="w-full px-2 py-3 lg:px-2.5 lg:py-4 bg-white rounded-lg h-full shadow-md z-[5] hover:rounded-b-none flex flex-col gap-3 lg:gap-4 relative group duration-200 hover:shadow-lg">
+    <div className="w-full px-2 py-3 lg:px-2.5 lg:py-4 bg-white rounded-lg h-full shadow-md z-[0] hover:rounded-b-none flex flex-col gap-3 lg:gap-4 relative group duration-200 hover:shadow-lg">
       <div className="w-full aspect-square relative rounded-lg overflow-hidden">
         <ImageUI src={product?.image} alt={product?.alt}/>
       </div>

@@ -5,6 +5,7 @@ import { SlPhone } from "react-icons/sl";
 import { DropdownUI, ImageUI } from '..'
 import Link from 'next/link';
 import {useSelector} from "react-redux";
+import {SearchPanel} from "@/components";
 
 const linksList = [
   {
@@ -54,7 +55,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className=' font-notoSansDisplay py-4 md:py-5 border-b border-[#CECFDB] bg-white'>
+      <nav className=' font-notoSansDisplay py-4 md:py-5 border-b border-[#CECFDB] bg-white relative z-[1000]'>
       <div className="container">
         <div className='flex items-center flex-wrap gap-y-4 md:flex-nowrap justify-between'>
           <div className='max-md:w-full flex items-center justify-between'>
@@ -66,9 +67,8 @@ const Navbar = () => {
             </a>
             <p className='text-currentBlue md:hidden'>Ру</p>
           </div>
-          <div className='w-full border border-currentBlue rounded-[50px] overflow-hidden relative md:mx-5 lg:mx-10 xl:mx-12'>
-            <input type="text" placeholder='Поиск товаров ' className='w-full px-5 py-2 lg:px-[30px] lg:py-3 text-xs md:text-sm outline-none lg:text-base text-[#757575] font-notoSansDisplay block' />
-            <button className='absolute -right-0.5 top-0 h-full px-3 pe-3.5 flex items-center text-white bg-currentBlue text-sm md:text-base md:px-4 md:pe-[18px] lg:text-xl'><CgSearch /></button>
+          <div className={'md:mx-5 lg:mx-10 xl:mx-12 w-full '}>
+            <SearchPanel/>
           </div>
           <div className='hidden md:flex items-center gap-5 xl:gap-10 text-currentBlue'>
             <Link href={'/basket'} className='flex flex-col items-center '>

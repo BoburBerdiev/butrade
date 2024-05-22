@@ -1,9 +1,11 @@
-import {ProductCard, SectionTitle, SectionUI} from "@/components";
+import {CardPositionBtn, ProductCard, SectionTitle, SectionUI} from "@/components";
 import {useEffect ,useState} from "react";
 import apiService from "@/service/axois";
 import {useQuery} from "react-query";
-
+import {useSelector} from "react-redux";
 const index = () => {
+
+  const {isRow} = useSelector(state => state.cardPosition)
 
 
   const [page, setPage] = useState(1)
@@ -49,6 +51,7 @@ const index = () => {
       }
     }
   }, [productFiltered])
+
 
   const cards = [
     {
@@ -333,15 +336,32 @@ const index = () => {
       ]
     },
   ]
+  console.log(isRow)
   return (
       <SectionUI>
-        <SectionTitle title={'Металлопрокат'}/>
+        <div className={'pb-[30px]'}>
+           <SectionTitle title={'Металлопрокат'}/>
+        </div>
         {/*md:grid-cols-5 */}
-        <div className="w-full grid grid-cols-1 gap-5">
+        <div className={'flex items-center pb-5 justify-between'}>
+          <div></div>
+          <div>
+            <CardPositionBtn/>
+          </div>
+
+        </div>
+        <div className={`w-full grid ${isRow ? "grid-cols-1 gap-5" : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5'}`}>
           {
             productFiltered?.map(card => (
                 <div key={card.id} className={'relative z-[5]'}>
                     <ProductCard product={card} />
+                </div>
+            ))
+          }
+          {
+            cards?.map(card => (
+                <div key={card.id} className={'relative z-[5]'}>
+                  <ProductCard product={card} />
                 </div>
             ))
           }

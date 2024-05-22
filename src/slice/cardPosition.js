@@ -7,7 +7,7 @@ const cardPosition = createSlice({
     },
     reducers: {
         changleIsRow: (state,{payload} ) =>{
-            state.lang = payload
+            state.isRow = payload
         }
     }
 })

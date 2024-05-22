@@ -26,6 +26,8 @@ const ProductCard = ({product}) => {
       </div>
         <div className={`${isRow ? '  col-span-4 space-y-3 md:col-span-4' : ''}`}>
             <h2 className=" line-clamp-2 lg:px-2 font-notoSansDisplay font-semibold text-black leading-[-1px] text-sm md:text-[16px] h-10 ">{langSelect(lang , product?.title_ru , product?.title_uz)}</h2>
+            {
+                isRow &&
             <div className={'grid grid-cols-1 gap-y-1'}>
                 {
                    product.infoProduct?.map(info => (
@@ -35,10 +37,12 @@ const ProductCard = ({product}) => {
                    ))
                 }
             </div>
+
+            }
         </div>
-      <div className={` ${isRow ? 'w-full col-span-7 md:col-span-3' : 'md:grid md:grid-rows-[0fr] z-10 md:group-hover:grid-rows-[1fr] md:absolute top-full duration-200 left-0 right-0 w-full md:bg-white px-2  lg:px-5 md:shadow-lg md:rounded-b-lg'} `}>
+      <div className={` ${isRow ? 'w-full col-span-7 md:col-span-3' : 'md:grid md:grid-rows-[0fr] md:§!z-[999] md:group-hover:grid-rows-[1fr] md:absolute top-full duration-200 left-0 right-0 w-full md:bg-white px-2  lg:px-5 md:shadow-lg md:rounded-b-lg'} `}>
         <div className="overflow-hidden ">
-          <div className={`md:pb-4 grid ${isRow ? 'grid-cols-7 md:grid-cols-4 gap-x-3' : 'grid-cols-4 gap-x-1 md:gap-x-2.5'}  items-center  `}>
+          <div className={`md:pb-4 grid ${isRow ? 'grid-cols-7 md:grid-cols-4 gap-x-3' : `grid-cols-4 gap-x-1 md:gap-x-2.5 ${CountActiveProductBasket && '!gap-x-5' }`}  items-center  `}>
             <div className={` ${isRow ? ` flex flex-col items-center col-span-3 md:col-span-1 ${CountActiveProductBasket ? 'md:!col-span-2' :'col-span-1'} ` : `${CountActiveProductBasket ? 'col-span-2' :'col-span-1'} `}`}>
                 {
                 CountActiveProductBasket > 0  ?
@@ -48,7 +52,7 @@ const ProductCard = ({product}) => {
                 }
             </div>
 
-          <ButtonUI clasName={ `${isRow && `col-span-4 md:col-span-3 ${CountActiveProductBasket > 0 ? ' md:col-span-2' :'col-span-3'}` }     `} btnCard href={product?.link} text={'Подробнее'}/>
+          <ButtonUI clasName={ `${isRow && `col-span-4 md:col-span-3 ${CountActiveProductBasket > 0 ? ' md:!col-span-2' :'col-span-3'}` }  ${CountActiveProductBasket > 0 ? ' md:col-span-2' :'col-span-3'}    `} btnCard href={product?.link} text={'Подробнее'}/>
           </div>
         </div>
       </div>

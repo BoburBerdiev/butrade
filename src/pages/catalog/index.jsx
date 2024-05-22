@@ -53,13 +53,11 @@ const index = () => {
   ]
   return (
       <SectionUI>
-        <SectionTitle title={'Металлопрокат'}/>
-        {/*grid-cols-2 md:grid-cols-5*/}
-
-        <div className="w-full grid grid-cols-1  gap-5">
+        <SectionTitle title={'Металлопрокат'}/>'
+        <div className="w-full grid grid-cols-2 md:grid-cols-5 gap-5">
           {
             cards.map(card => (
-                <div key={card.id}>
+                <div key={card.id} className={'relative z-[5]'}>
                     <ProductCard product={card} />
                 </div>
             ))

@@ -19,7 +19,7 @@ const ProductCard = ({product}) => {
   } ,[allProductItemCount  ])
 
   return (
-    <div className={`${isRow ? 'flex-row  w-full' :'flex-col px-2 py-3 lg:px-2.5 lg:py-4 gap-3 lg:gap-4 '} w-full bg-white rounded-lg h-full shadow-md z-[5] hover:rounded-b-none flex   relative group duration-200 hover:shadow-lg`}>
+    <div className={`${isRow ? 'flex-row  w-full' :'flex-col px-2 py-3 lg:px-2.5 lg:py-4 gap-3 lg:gap-4 '} w-full z-[0]  bg-white rounded-lg h-full shadow-md z-[5] hover:rounded-b-none flex   relative group duration-200 hover:shadow-lg`}>
       <div className={`${isRow ? ' w-[30%] aspect-video' : 'w-full aspect-square'}  relative rounded-lg overflow-hidden`}>
         <ImageUI src={product?.image} alt={product?.alt}/>
       </div>

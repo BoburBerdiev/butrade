@@ -1,4 +1,5 @@
 import {ProductCard, SectionTitle, SectionUI} from "@/components";
+import Product from "@/pages/catalog/[slug]";
 
 const index = () => {
   const cards = [
@@ -67,4 +68,20 @@ const index = () => {
   );
 };
 
+export async function getServerSideProps({params}) {
+  const { slug } = params;
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${slug}`);
+  const product = await res.json();
+
+  if (!product) {
+    return {
+      notFound: true,
+    };
+  }
+  return {
+    props: { product },
+  };
+}
+
 export default index;
+

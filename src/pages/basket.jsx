@@ -1,9 +1,9 @@
-import {Breadcrumb, InfoProductPrice, OrderCard , SectionTitle, SectionUI} from "@/components";
+import {Breadcrumb,  InfoProductsPrice, OrderCard, SectionTitle, SectionUI} from "@/components";
 import {useSelector} from "react-redux";
 
 const Basket = () => {
 
-const {basket} =  useSelector(state =>state.basketSlice)
+const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
     return (
         <div>
             <SectionUI>
@@ -27,7 +27,7 @@ const {basket} =  useSelector(state =>state.basketSlice)
                         </div>
 
                   <div className={'sm:col-span-2'}>
-                    <InfoProductPrice/>
+                    <InfoProductsPrice allProductItemCount={allProductItemCount}/>
                   </div>
                 </div>
                     :

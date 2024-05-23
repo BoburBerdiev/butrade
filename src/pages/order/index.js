@@ -1,9 +1,14 @@
-import {ButtonUI, InfoProductPrice, InfoProductUI, SectionTitle, SectionUI, SwiperBanner} from "@/components";
+import {
+  ButtonUI,
+  InfoProductsPrice,
+  SectionTitle,
+  SectionUI,
+} from "@/components";
 import InputUI from "@/components/ui/Input-UI";
 import {useSelector} from "react-redux";
 
 const Index = () => {
-  const {basket} =  useSelector(state =>state.basketSlice)
+  const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
 
   return (
       <SectionUI className={'min-h-[80vh]'}>
@@ -29,7 +34,7 @@ const Index = () => {
           </div>
 
           <div className=" col-span-1 ">
-            <InfoProductPrice basket={basket} />
+            <InfoProductsPrice basket={basket} allProductItemCount={allProductItemCount} />
           </div>
         </div>
       </SectionUI>

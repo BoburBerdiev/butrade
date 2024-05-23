@@ -4,8 +4,6 @@ import {langSelect} from "@/helper";
 
 const Product = ({product}) => {
   const {lang} = useSelector(state => state.langSlice)
-
-  console.log(product)
   return (
       <>
         <SectionUI>
@@ -27,7 +25,7 @@ const Product = ({product}) => {
               </div>
             </div>
             <div className=" col-span-1 md:col-span-3 order-2 ">
-              <InfoProductPrice  />
+              <InfoProductPrice product={product}  />
             </div>
           </div>
 

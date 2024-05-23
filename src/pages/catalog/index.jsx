@@ -355,14 +355,14 @@ const index = () => {
           {
             productFiltered?.map(card => (
                 <div key={card.id} className={'relative z-[5]'}>
-                    <ProductCard product={card} />
+                    <ProductCard isCatalog={true} product={card} />
                 </div>
             ))
           }
           {
             cards?.map(card => (
                 <div key={card.id} className={'relative z-[5]'}>
-                  <ProductCard product={card} />
+                  <ProductCard isCatalog={true} product={card} />
                 </div>
             ))
           }

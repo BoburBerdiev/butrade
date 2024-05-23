@@ -6,14 +6,16 @@ import axios from "axios";
 import {formatPhoneNumber} from "@/helper";
 import {useSelector} from "react-redux";
 import {langSelect} from "@/helper";
+import {useTranslation} from "react-i18next";
 
 const Contact = ({contact}) => {
   const {lang} = useSelector(state => state.langSlice)
+  const {t} = useTranslation()
   return (
       <SectionUI>
         <div className="w-full flex flex-col justify-center items-center gap-[30px]">
           <div className="flex flex-col items-center gap-4 md:gap-[30px]">
-            <SectionTitle title={'Свяжитесь с нами'} centerTrue={true} />
+            <SectionTitle title={t('contact.title')} centerTrue={true} />
             <div className="flex flex-col gap-3 md:gap-[25px] items-center text-sm sm:text-base md:text-lg">
               <div className="font-notoSans flex flex-col sm:flex-row items-center gap-1.5 md:gap-[30px]">
                 <LuMail className={'w-6 h-[18px] shrink-0 text-currentBlue'}/>

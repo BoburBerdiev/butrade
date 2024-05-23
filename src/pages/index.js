@@ -99,8 +99,8 @@ export default function Home({banners  , advantage_title, partners , advantages 
         </SectionUI>
 
       </div>
-      <SectionUI>
-        <div className="pb-5 md:pb-[30px]">
+      <SectionUI className={'relative z-20'}>
+        <div className="pb-5 md:pb-[30px] ">
           <SectionTitle title={t('index.popularProducts.title')} href={'/catalog'}/>
         </div>
 

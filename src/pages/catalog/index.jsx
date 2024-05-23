@@ -1,8 +1,9 @@
-import {CardPositionBtn, ProductCard, SectionTitle, SectionUI} from "@/components";
+import {CardPositionBtn, ProductCard, ProductSlider, SectionTitle, SectionUI} from "@/components";
 import {useEffect ,useState} from "react";
 import apiService from "@/service/axois";
 import {useQuery} from "react-query";
 import {useSelector} from "react-redux";
+import {useTranslation} from "react-i18next";
 const index = () => {
 
   const {isRow} = useSelector(state => state.cardPosition)
@@ -12,6 +13,7 @@ const index = () => {
   const [query , setQuery ] = useState("Izolyatsiya materiallari")
   const [productInfinity, setProductInfinity] = useState([])
   const [hasMore, setHasMore] = useState(false)
+  const {t} = useTranslation()
   const {
     data: productFiltered,
     refetch: productFilteredRefetch,
@@ -339,6 +341,7 @@ const index = () => {
   ]
   console.log(isRow)
   return (
+      <>
       <SectionUI>
         <div className={'pb-[30px]'}>
            <SectionTitle title={'Металлопрокат'}/>
@@ -368,6 +371,14 @@ const index = () => {
           }
         </div>
       </SectionUI>
+        <SectionUI  paddingStyle={'py-10 md:py-[50px]  z-20'}>
+          <div className="pb-5 md:pb-[30px]">
+            <SectionTitle title={t('catalog.viewedProducts')} />
+          </div>
+
+          <ProductSlider/>
+        </SectionUI>
+      </>
   );
 };
 

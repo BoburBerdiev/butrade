@@ -2,12 +2,12 @@ import { ButtonUI, ImageUI } from ".."
 import { PiShoppingCartSimpleLight } from "react-icons/pi";
 import {langSelect} from "@/helper";
 import {useDispatch, useSelector} from "react-redux";
-import {useMemo, useState} from "react";
+import {useMemo} from "react";
 import {changleBasket} from "@/slice/basket";
 import {Counter, InfoProductUI} from "@/components";
-const ProductCard = ({product , isCatalog = false}) => {
 import {useTranslation} from "react-i18next";
-const ProductCard = ({product}) => {
+
+const ProductCard = ({product , isCatalog = false}) => {
   const dispatch = useDispatch()
   const {isRow} = useSelector(state =>  state.cardPosition)
   const {basket ,allProductItemCount} = useSelector(state => state.basketSlice)

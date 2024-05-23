@@ -12,7 +12,7 @@ const Product = ({product}) => {
           </div>
           <div className={'grid grid-cols-1 md:grid-cols-11 gap-10 pb-5'}>
             <div className={'col-span-1 md:col-span-4 aspect-[3/2] order-1'}>
-              <SwiperBanner list={product?.images}/>
+              <SwiperBanner productSlider list={product?.images}/>
             </div>
             <div className={'col-span-1 md:col-span-4 order-3 md:order-2'}>
               <h2 className='font-medium md:text-lg mb-2.5 text-currentBlue'>Короткое описание</h2>

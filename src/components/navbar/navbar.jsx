@@ -7,6 +7,7 @@ import Link from 'next/link';
 import {useSelector} from "react-redux";
 import {SearchPanel} from "@/components";
 import {langSelect} from "@/helper";
+import {useTranslation} from "react-i18next";
 
 const listLang = [
   {
@@ -21,6 +22,7 @@ const listLang = [
 const Navbar = ({links}) => {
     const {allCount} = useSelector(state => state.basketSlice)
   const {lang} = useSelector(state => state.langSlice)
+  const {t} = useTranslation()
 
   return (
     <>
@@ -47,13 +49,13 @@ const Navbar = ({links}) => {
                 <PiShoppingCartSimple className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>      
                 <span className='lg:px-1.5 px-1 py-0.5 rounded-full bg-currentBlue text-white absolute -top-2 -right-1.5 text-[7px] lg:text-[9px]'>{allCount}</span>
               </div>
-              <span className=' text-sm '>Корзина</span>
+              <span className=' text-sm '>{t('navbar.basket')}</span>
             </Link>
             <a href='tel:+998901110111' className='flex flex-col items-center '>
               <div className='relative '>
                 <SlPhone className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>      
               </div>
-              <span className=' text-sm '>Звонок</span>
+              <span className=' text-sm '>{t('navbar.callPhone')}</span>
             </a>
           </div>
         </div>

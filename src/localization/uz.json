@@ -3,11 +3,8 @@
     "navbar": {
       "home": "Asosiy",
       "about": "Biz haqimizda",
-      "rooms": "Honalar",
-      "gallery": "Suratlar",
-      "contact": "Aloqa",
-      "news": "Yangiliklar",
-      "searching": "Xona qidiring"
+      "callPhone": "Aloqa",
+      "searching": "Mahsulotlarni qidirish"
     },
     "lang": {
       "ru": "rus",

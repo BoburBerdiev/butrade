@@ -27,8 +27,8 @@ const Index = () => {
               <InputUI placeholder={'Адрес'} />
             </div>
             <div className={'col-span-2 flex items-center gap-x-7'}>
-              <ButtonUI text={'Отправить запрос'} href={'/about'} />
-              <ButtonUI text={'Назад'} href={'/about'} />
+              <ButtonUI btnFill text={'Отправить запрос'} href={'/about'} />
+              <ButtonUI text={'Назад'} href={'/basket'} />
 
             </div>
           </div>

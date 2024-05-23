@@ -1,35 +1,38 @@
 import Link from 'next/link'
 import { LuMapPin } from "react-icons/lu";
 import { DropdownUI } from '..'
+import {useTranslation} from "react-i18next";
 
-const links = [
-  {
-    name: 'Главная',
-    link: '/',
-    id: 0
-  },
-  {
-    name: 'О компании',
-    link: '/about',
-    id: 1
-  },
-  {
-    name: 'Контакты',
-    link: '/contact',
-    id: 2
-  },
-]
-const listLang = [
-  {
-    title: 'Русский',
-    id: 0
-  },
-  {
-    title: "O'zbek",
-    id: 1
-  },
-]
 const TopNav = () => {
+  const {t} = useTranslation()
+
+  const links = [
+    {
+      name: t('navbar.home'),
+      link: '/',
+      id: 0
+    },
+    {
+      name: t('navbar.about'),
+      link: '/about',
+      id: 1
+    },
+    {
+      name: t('navbar.contact'),
+      link: '/contact',
+      id: 2
+    },
+  ]
+  const listLang = [
+    {
+      title: 'Русский',
+      id: 0
+    },
+    {
+      title: "O'zbek",
+      id: 1
+    },
+  ]
   return (
     <div className=' py-2.5 bg-currentBlue text-white font-notoSansDisplay max-md:hidden'>
       <div className="container flex items-center justify-between">

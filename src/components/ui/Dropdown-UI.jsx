@@ -16,7 +16,7 @@ const DropdownUI = ({list  ,  onClick}) => {
 
  
   return (
-    <div className="relative font-notoSansDisplay text-sm">
+    <div className="relative font-notoSansDisplay text-sm z-[2000]">
 
             <button onClick={openDropdown} className=" text-white flex items-center gap-1.5">
               <CiGlobe className="text-lg max-md:hidden"/>

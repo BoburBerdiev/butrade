@@ -1,13 +1,12 @@
 {
   "translation": {
     "navbar": {
-      "home" : "Главная",
-      "about": "О нас",
-      "rooms":"Номера",
-      "gallery":"Фотогалерея",
+      "home": "Главная",
+      "about": "О компании",
       "contact": "Контакты",
-      "news": "Новости",
-      "searching": "Ищите комнату"
+      "basket"  : "Корзина",
+      "callPhone": "Звонок",
+      "searching": "Поиск товаров"
     },
     "lang": {
       "ru": "русский",
@@ -31,25 +30,8 @@
       "contactYou": "Мы свяжемся с вами"
     },
     "footer": {
-      "menu": {
-        "title": "Навигация",
-        "href1": "Об отеле",
-        "href2": "Номера",
-        "href3": "Фотогалерея",
-        "href4": "Новости",
-        "href5": "Контакты"
-      },
-      
-      "address": {
-        "title": "Адрес"
-      },
-      "manager": {
-        "title": "Следите за нашими новостями"
-      },
-      "miniFooter": {
-        "allrights": "The Tower Hotel. Все права защищены.",
-        "siteCreated": "Сайт создан:"
-      }
+      "allrights": "Все права защищены.",
+      "siteCreated": "Сайт создан:"
     },
     "links": {
       "viewReviews": "Посмотреть отзывы"
@@ -73,21 +55,11 @@
       }
     },
     "index": {
-      "headerBooking": {
-       "checkIn": "Заезд",
-       "entryDay": "Прибытие",
-       "departure": "Выезд",
-       "departureDay": "Отъезд",
-       "numberOfGuests" : "Число гостей",
-       "room": "Номер ",
-       "adults": "взрослых ",
-       "children": "детей",
-       "roomNumber": "номеров",
-       "forChildren": "детей (0-11 лет)",
-       "typeOfNumber": "Тип номера",
-       "choose": "Выбрать"
+      "allCategory": "Все категории ",
+      "popularProducts": {
+        "title": "Популярная продукция",
+        "href": "Посмотреть товары"
       },
-      "room": "Номер ",
       "section2": {
         "title": "Типы номеров"
       },

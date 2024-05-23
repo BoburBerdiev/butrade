@@ -5,12 +5,15 @@ import {useDispatch, useSelector} from "react-redux";
 import {useMemo, useState} from "react";
 import {changleBasket} from "@/slice/basket";
 import {Counter, InfoProductUI} from "@/components";
+import {useTranslation} from "react-i18next";
 const ProductCard = ({product}) => {
   const dispatch = useDispatch()
   // const [isRow , setIsRow] = useState(true)
   const {isRow} = useSelector(state =>  state.cardPosition)
   const {basket ,allProductItemCount} = useSelector(state => state.basketSlice)
   const {lang } = useSelector(state => state.langSlice)
+
+  const {t} = useTranslation()
    const handleBasket  =(product) => {
       dispatch(changleBasket(product))
   }
@@ -51,7 +54,7 @@ const ProductCard = ({product}) => {
                 }
             </div>
 
-          <ButtonUI clasName={ `${isRow && `col-span-4 md:col-span-3 ${CountActiveProductBasket > 0 ? ' md:!col-span-2' :'col-span-3'}` }  ${CountActiveProductBasket > 0 ? ' md:col-span-2' :'col-span-3'}    `} btnCard href={product?.link} text={'Подробнее'}/>
+          <ButtonUI clasName={ `${isRow && `col-span-4 md:col-span-3 ${CountActiveProductBasket > 0 ? ' md:!col-span-2' :'col-span-3'}` }  ${CountActiveProductBasket > 0 ? ' md:col-span-2' :'col-span-3'}    `} btnCard href={product?.link} text={t('btn.more')}/>
           </div>
         </div>
       </div>

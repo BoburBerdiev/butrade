@@ -2,9 +2,12 @@ import Link from 'next/link'
 import { LuMapPin } from "react-icons/lu";
 import { DropdownUI } from '..'
 import {useTranslation} from "react-i18next";
+import {langSelect} from "@/helper";
+import {useSelector} from "react-redux";
 
-const TopNav = () => {
+const TopNav = ({contact}) => {
   const {t} = useTranslation()
+  const {lang} = useSelector(state => state.langSlice)
 
   const links = [
     {
@@ -35,6 +38,7 @@ const TopNav = () => {
       id: 1
     },
   ]
+
   return (
     <div className=' py-2.5 bg-currentBlue text-white font-notoSansDisplay max-md:hidden'>
       <div className="container flex items-center justify-between">
@@ -50,7 +54,7 @@ const TopNav = () => {
         <div className='flex items-center gap-10'>
           <div className='flex items-center gap-1.5'>
             <LuMapPin className='text-lg' />
-            <p className='text-sm'>Ташкент, ул. Айбек, 38А</p>
+            <p className='text-sm w-[30%] overflow-hidden self-end'>{langSelect(lang , contact?.address_ru , contact?.address_uz)}</p>
           </div>
           <DropdownUI list={listLang}/>
         </div>

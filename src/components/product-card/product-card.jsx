@@ -7,7 +7,7 @@ import {changleBasket} from "@/slice/basket";
 import {Counter, InfoProductUI} from "@/components";
 import {useTranslation} from "react-i18next";
 
-const ProductCard = ({product , isCatalog = false}) => {
+const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
   const dispatch = useDispatch()
   const {isRow} = useSelector(state =>  state.cardPosition)
   const {basket ,allProductItemCount} = useSelector(state => state.basketSlice)
@@ -51,7 +51,7 @@ const ProductCard = ({product , isCatalog = false}) => {
                 }
             </div>
 
-          <ButtonUI clasName={ `${isRow && isCatalog && `col-span-4 md:col-span-3 ${CountActiveProductBasket > 0 ? ' md:!col-span-2' :'col-span-3'}` }  ${CountActiveProductBasket > 0 ? ' md:col-span-2' :'col-span-3'} ` } btnCard href={`catalog/${product?.slug}`} text={t('btn.more')}/>
+          <ButtonUI clasName={ `${isRow && isCatalog && `col-span-4 md:col-span-3 ${CountActiveProductBasket > 0 ? ' md:!col-span-2' :'col-span-3'}` }  ${CountActiveProductBasket > 0 ? ' md:col-span-2' :'col-span-3'} ` } btnCard href={ `${isCardInner ? `${product?.slug}` : `catalog/${product?.slug}` } `} text={t('btn.more')}/>
           </div>
         </div>
       </div>

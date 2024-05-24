@@ -1,66 +1,9 @@
-// Import Swiper React components
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
 import {ProductCard} from '..';
 import {GrNext, GrPrevious} from "react-icons/gr";
 
-const ProductsSlider = ({className}) => {
-  const cards = [
-    {
-      title_ru: "Трубы пластиковые",
-      title_uz: "Plastik quvurlar",
-      title_en: "Plastic pipes",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 12
-    },
-    {
-      title_ru: "Трубы пластиковые  edwfef ",
-      title_uz: "Plastik quvurlar",
-      title_en: "Plastic pipes",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 11
-    },
-    {
-      title_ru: "Трубы пластиковые",
-      title_uz: "Plastik quvurlar",
-      title_en: "Plastic pipes",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 10
-    },
-    {
-      title_ru: "Трубы пластиковые",
-      title_uz: "Plastik quvurlar",
-      title_en: "Plastic pipes",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 9
-    },
-    {
-      title_ru: "Трубы пластиковые",
-      title_uz: "Plastik quvurlar",
-      title_en: "Plastic pipes",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 8
-    },
-    {
-      title_ru: "Трубы пластиковые",
-      title_uz: "Plastik quvurlar",
-      title_en: "Plastic pipes",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 7
-    },
-  ]
+const ProductsSlider = ({className , cards , isCardInner}) => {
   return (
       <>
         <Swiper
@@ -100,12 +43,10 @@ const ProductsSlider = ({className}) => {
             className={`mySwiper relative !pb-14 ${className}`}
         >
           {
-            cards.map(card => (
-                <div key={card.id}>
-                  <SwiperSlide className='h-full w-full relative z-20 '>
-                    <ProductCard product={card}/>
+            cards?.map(card => (
+                  <SwiperSlide key={card?.id} className='h-full w-full relative z-20 '>
+                    <ProductCard product={card} isCardInner={isCardInner}/>
                   </SwiperSlide>
-                </div>
             ))
           }
 

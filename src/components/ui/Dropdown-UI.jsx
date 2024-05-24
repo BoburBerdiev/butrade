@@ -10,14 +10,12 @@ const DropdownUI = ({list  ,  onClick}) => {
     const dispatch = useDispatch()
   const {lang} = useSelector(state => state.langSlice)
     const {t} = useTranslation()
-    console.log(lang)
   const openDropdown  = () => {
     setDropdown(!dropdown)
   }
   const setLang = (item) => {
     dispatch(changleLang(item.value))
     i18next.changeLanguage(item.value)
-      console.log(item)
     setDropdown(!dropdown)
   }
 

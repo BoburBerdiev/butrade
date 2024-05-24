@@ -1,4 +1,12 @@
-import {InfoProductPrice, InfoProductUI, SectionTitle, SectionUI, SwiperBanner} from "@/components";
+import {
+  Breadcrumb,
+  InfoProductPrice,
+  InfoProductUI,
+  ProductSlider,
+  SectionTitle,
+  SectionUI,
+  SwiperBanner
+} from "@/components";
 import {useSelector} from "react-redux";
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
@@ -9,6 +17,7 @@ const Product = ({product}) => {
   return (
       <>
         <SectionUI>
+          <Breadcrumb catalog={product?.category} productInner={langSelect(lang , product?.title_ru , product?.title_uz)}/>
           <div className="pb-5 md:pb-[30px]">
             <SectionTitle title={langSelect(lang , product?.title_ru , product?.title_uz)}/>
           </div>
@@ -36,6 +45,12 @@ const Product = ({product}) => {
             <p>
               {langSelect(lang , product?.text_ru , product?.text_uz)}
             </p>
+          </div>
+        </SectionUI>
+        <SectionUI>
+          <div className={'space-y-6 md:space-y-[30px]'}>
+          <SectionTitle title={t('catalogInner.releatedProducts')}/>
+          <ProductSlider isCardInner={true}  cards={product?.related_products}/>
           </div>
         </SectionUI>
       </>

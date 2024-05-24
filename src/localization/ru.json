@@ -47,7 +47,8 @@
     "catalogInner": {
       "littleInfo": "Короткое описание",
       "aboutProduct": "Информация о товаре",
-      "countProduct": "Количество:"
+      "countProduct": "Количество:",
+      "releatedProducts": "Вам может понравиться"
     },
     "contact": {
       "title": "Свяжитесь с нами"

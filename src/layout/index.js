@@ -10,15 +10,22 @@ const Layout = ({children}) => {
         enabled:false
       }
   );
+    const { data: contact,refetch:refetchContact } = useQuery("contact", () =>
+            apiService.getData("/about/contact/"),
+        {
+            enabled:false
+        }
+    );
 
   useEffect(() => {
     refetchCatalog()
+    refetchContact()
   }, []);
   return (
     <div className='relative '>
-      <TopNav/>
+      <TopNav contact={contact}/>
       <Navbar links={catalog}/>
-      <BottomNav/>
+      <BottomNav catagorys={catalog}/>
       <div className={'h-[calc(100vh - 88px)] bg-white'}>
         {
           children

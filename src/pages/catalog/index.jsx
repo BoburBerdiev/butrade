@@ -60,7 +60,7 @@ const index = () => {
   return (
       <>
       <SectionUI>
-        <Breadcrumb catalog={'gg'}/>
+        <Breadcrumb catalog={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         <div className={'pb-[30px]'}>
            <SectionTitle title={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         </div>

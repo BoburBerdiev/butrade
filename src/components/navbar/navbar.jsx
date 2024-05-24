@@ -4,10 +4,12 @@ import { CgSearch } from "react-icons/cg";
 import { SlPhone } from "react-icons/sl";
 import { DropdownUI, ImageUI } from '..'
 import Link from 'next/link';
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {SearchPanel} from "@/components";
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
+import {changleCatalogQuery, changleQuery} from "@/slice/queryParams";
+import {useRouter} from "next/router";
 
 const listLang = [
   {
@@ -23,10 +25,18 @@ const Navbar = ({links}) => {
     const {allCount} = useSelector(state => state.basketSlice)
   const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
+  const  dispatch = useDispatch()
+  const router = useRouter()
+
+  const selectCatalog = (link) => {
+    dispatch(changleCatalogQuery(link))
+    dispatch(changleQuery(link?.title_ru));
+    router.push('/catalog')
+  }
 
   return (
     <>
-      <nav className=' font-notoSansDisplay py-4 md:py-5 border-b border-[#CECFDB] bg-white relative z-[1000]'>
+      <nav className=' font-notoSansDisplay navbar py-4 md:py-5 border-b border-[#CECFDB] bg-white relative z-[1000]'>
       <div className="container">
         <div className='flex items-center flex-wrap gap-y-4 md:flex-nowrap justify-between'>
           <div className='max-md:w-full flex items-center justify-between'>
@@ -62,11 +72,12 @@ const Navbar = ({links}) => {
       </div>
       </nav>
       <div className='max-md:hidden py-4 lg:py-5 bg-white font-notoSansDisplay font-semibold text-sm border-b'>
-        <div className="container w-full overflow-x-hidden">
+        <div className="container w-full overflow-x-hidden navbar-list">
           <div className={'flex gap-3 overflow-x-scroll min-w-full w-full'}>
              {
                links?.map(link => (
-                 <Link key={link.id} className={'shrink-0 px-1'} href={`/catalog?name=${link?.slug}`}>{langSelect(lang , link?.title_ru , link?.title_uz )}</Link>
+
+                 <div key={link.id} className={'shrink-0 px-1'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
                ))
              }
           </div>

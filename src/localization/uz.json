@@ -47,7 +47,8 @@
     "catalogInner": {
       "littleInfo": "Qisqa ma'lumot",
       "aboutProduct": "Mahsulot haqida",
-      "countProduct": "Soni:"
+      "countProduct": "Soni:",
+      "releatedProducts": "Sizga yoqishi mumkin"
     },
     "contact": {
       "title": "Biz bilan bog'laning"

@@ -25,11 +25,13 @@ const TopNav = () => {
   ]
   const listLang = [
     {
-      title: 'Русский',
+      title: t('lang.ru'),
+      value: 'ru',
       id: 0
     },
     {
-      title: "O'zbek",
+      title: t('lang.uz'),
+      value: 'uz',
       id: 1
     },
   ]

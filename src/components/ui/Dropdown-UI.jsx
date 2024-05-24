@@ -1,15 +1,23 @@
 import { useState} from "react"
 import { CiGlobe } from "react-icons/ci";
+import {useDispatch, useSelector} from "react-redux";
+import {changleLang} from "@/slice/lang";
+import i18next from "i18next";
+import {useTranslation} from "react-i18next";
 
 const DropdownUI = ({list  ,  onClick}) => {
   const  [dropdown , setDropdown] = useState(false)
-  const [langValue, setLangValue] = useState('Русский')
-
+    const dispatch = useDispatch()
+  const {lang} = useSelector(state => state.langSlice)
+    const {t} = useTranslation()
+    console.log(lang)
   const openDropdown  = () => {
     setDropdown(!dropdown)
   }
   const setLang = (item) => {
-    setLangValue(item)
+    dispatch(changleLang(item.value))
+    i18next.changeLanguage(item.value)
+      console.log(item)
     setDropdown(!dropdown)
   }
 
@@ -21,7 +29,9 @@ const DropdownUI = ({list  ,  onClick}) => {
             <button onClick={openDropdown} className=" text-white flex items-center gap-1.5">
               <CiGlobe className="text-lg max-md:hidden"/>
               <span className={'text-sm'}>
-                {langValue}
+                {
+                    lang === "ru" && t('lang.ru') || lang === 'uz' && t('lang.uz')
+                }
               </span>
 
             </button>
@@ -31,7 +41,7 @@ const DropdownUI = ({list  ,  onClick}) => {
               <div className=" px-3 py-1 flex flex-col gap-2">
                 {
                   list?.map(item => (
-                    <div className="text-[13px] " key={item.id} onClick={() => setLang(item.title)}>
+                    <div className="text-[13px] " key={item.id} onClick={() => setLang(item)}>
                       {
                         item.title
                       }

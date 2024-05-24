@@ -4,7 +4,7 @@ import {Navigation} from 'swiper/modules';
 import {ProductCard} from '..';
 import {GrNext, GrPrevious} from "react-icons/gr";
 
-const ProductsSlider = ({}) => {
+const ProductsSlider = ({className}) => {
   const cards = [
     {
       title_ru: "Трубы пластиковые",
@@ -97,12 +97,12 @@ const ProductsSlider = ({}) => {
             }}
             loop={true}
             modules={[Navigation]}
-            className="mySwiper relative !pb-14"
+            className={`mySwiper relative !pb-14 ${className}`}
         >
           {
             cards.map(card => (
                 <div key={card.id}>
-                  <SwiperSlide className='h-full w-full '>
+                  <SwiperSlide className='h-full w-full relative z-20 '>
                     <ProductCard product={card}/>
                   </SwiperSlide>
                 </div>

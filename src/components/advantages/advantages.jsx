@@ -5,7 +5,7 @@ import {useSelector} from "react-redux";
 const Advantages = ({title , subTitle ,advantagesList}) => {
   const {lang} = useSelector(state => state.langSlice)
   return (
-      <div className="flex flex-col md:flex-row items-center gap-5 md:gap-12 lg:gap-20 ">
+      <div className="flex flex-col md:flex-row items-center gap-5 md:gap-12 lg:gap-20 relative z-20">
         <div className="flex flex-col gap-2 md:gap-5 md:w-1/2">
           <h2 className="font-oswald text-center md:text-start font-medium text-2xl md:text-3xl lg:text-4xl text-currentBlue">{title}</h2>
           <p className="font-notoSans text-sm sm:text-base text-center md:text-start">{subTitle}</p>

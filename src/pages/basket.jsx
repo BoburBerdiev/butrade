@@ -1,19 +1,21 @@
-import {Breadcrumb,  InfoProductsPrice, OrderCard, SectionTitle, SectionUI} from "@/components";
+import {Breadcrumb, ImageUI, InfoProductsPrice, OrderCard, SectionTitle, SectionUI} from "@/components";
 import {useSelector} from "react-redux";
+import {useTranslation} from "react-i18next";
 
 const Basket = () => {
 
 const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
+    const {t} = useTranslation()
     return (
         <div>
             <SectionUI>
                 <Breadcrumb pageName={'Корзина'}/>
                 <div className={'pb-4 md:pb-6 lg:pb-[30px]'}>
-                   <SectionTitle title={'Корзина'}/>
+                   <SectionTitle title={t('basket.title')}/>
                 </div>
               {
                 basket?.length > 0 ?
-                <div className={'grid grid-cols-1 sm:grid-cols-8 gap-5'}>
+                     <div className={'grid grid-cols-1 sm:grid-cols-8 gap-5'}>
 
 
                         <div
@@ -31,15 +33,24 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
                   </div>
                 </div>
                     :
-                    <div>Siz hali maqsulod olmadingiz</div>
+                    <div className={'flex flex-col items-center justify-center '}>
+                        <div className={'relative w-[300px] aspect-square '}>
+                            <ImageUI src={'/image/empty_cart.png'} objectFitContain={true}/>
+                        </div>
+
+                    </div>
               }
             </SectionUI>
-          <SectionUI>
-            <div className={'pb-[30px]'}>
-              <SectionTitle title={'Вам может понравиться'}/>
-            </div>
-            {/*<ProductSlider/>*/}
-          </SectionUI>
+            {
+                basket?.length > 0 &&
+                    <SectionUI>
+                        <div className={'pb-[30px]'}>
+                            <SectionTitle title={'Вам может понравиться'}/>
+                        </div>
+                        {/*<ProductSlider/>*/}
+                    </SectionUI>
+
+            }
         </div>
     );
 };

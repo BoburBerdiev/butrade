@@ -3,14 +3,19 @@ import {useEffect ,useState} from "react";
 import apiService from "@/service/axois";
 import {useQuery} from "react-query";
 import {useSelector} from "react-redux";
+import {AiOutlineLoading3Quarters} from "react-icons/ai";
+import InfiniteScroll from "react-infinite-scroll-component";
+import {langSelect} from "@/helper";
+
+
 import {useTranslation} from "react-i18next";
 const index = () => {
-
+  const {lang} = useSelector(state => state.langSlice)
   const {isRow} = useSelector(state => state.cardPosition)
 
 
   const [page, setPage] = useState(1)
-  const [query , setQuery ] = useState("Izolyatsiya materiallari")
+  const {query ,catalogQuery} = useSelector(state => state.queryParams)
   const [productInfinity, setProductInfinity] = useState([])
   const [hasMore, setHasMore] = useState(false)
   const {t} = useTranslation()
@@ -22,7 +27,7 @@ const index = () => {
       "filter",
       () =>
           apiService.getData(
-              `products-catalog?${query}&page=${page}&page_size=8`
+              `products-filter?${query}&page=${page}&page_size=5`
           ),
       {
         enabled: false,
@@ -32,13 +37,11 @@ const index = () => {
     if (query !== null && page === 1) {
       productFilteredRefetch()
     }
-  }, [ page]);
-
+  }, [query, page]);
   useEffect(() => {
     if (productFilteredSuccess) {
       if (page === 1) {
         setProductInfinity([...productFiltered?.results])
-
         if (productFiltered?.results.length > 0) {
           setHasMore(true)
         }
@@ -54,323 +57,33 @@ const index = () => {
     }
   }, [productFiltered])
 
-
-  const cards = [
-    {
-      title_uz: "Трубы пластиковые",
-      title_ru: "Трубы пластиковые",
-      image: "/image/not-found.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      saleText: '1 sht',
-      id: 12,
-      infoProduct: [
-        {
-          title: 'Диаметр',
-          text: '240 мм',
-          id: 1
-        },
-        {
-          title: 'Металл',
-          text: 'сталь',
-          id: 2
-        },
-        {
-          title: 'Толщина',
-          text: '8 мм',
-          id: 3
-        },
-        {
-          title: 'Вид',
-          text: 'бесшовные',
-          id: 4
-        },
-        
-      ]
-    },
-    {
-      title_uz: "Трубы из нержавеющей стали разного диаметра",
-      title_ru: "Трубы из нержавеющей стали разного диаметра",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 11,
-      infoProduct: [
-        {
-          title: 'Диаметр',
-          text: '240 мм',
-          id: 1
-        },
-        {
-          title: 'Металл',
-          text: 'сталь',
-          id: 2
-        },
-        {
-          title: 'Толщина',
-          text: '8 мм',
-          id: 3
-        },
-        {
-          title: 'Вид',
-          text: 'бесшовные',
-          id: 4
-        },
-        {
-          title: 'Свойства I',
-          text: 'конструкционный',
-          id: 5
-        },
-        {
-          title: 'Свойства II',
-          text: 'рессорно-пружинный',
-          id: 6
-        },
-        {
-          title: 'Сечение',
-          text: 'круглые',
-          id: 7
-        },
-        {
-          title: 'Вид покрытия',
-          text: 'без покрытия',
-          id: 8
-        },
-      ]
-    },
-    {
-      title_uz: "Керамогранит Netto Ceramika Markinia Silver High GL R 60*60 см черный",
-      title_ru: "Керамогранит Netto Ceramika Markinia Silver High GL R 60*60 см черный",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 5,
-      infoProduct: [
-        {
-          title: 'Диаметр',
-          text: '240 мм',
-          id: 1
-        },
-        {
-          title: 'Металл',
-          text: 'сталь',
-          id: 2
-        },
-        {
-          title: 'Толщина',
-          text: '8 мм',
-          id: 3
-        },
-        {
-          title: 'Вид',
-          text: 'бесшовные',
-          id: 4
-        },
-        {
-          title: 'Свойства I',
-          text: 'конструкционный',
-          id: 5
-        },
-        {
-          title: 'Свойства II',
-          text: 'рессорно-пружинный',
-          id: 6
-        },
-        {
-          title: 'Сечение',
-          text: 'круглые',
-          id: 7
-        },
-        {
-          title: 'Вид покрытия',
-          text: 'без покрытия',
-          id: 8
-        },
-      ]
-    },
-    {
-      title_uz: "Керамогранит плитка глянцевая поверхность",
-      title_ru: "Керамогранит плитка глянцевая поверхность",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 2,
-      infoProduct: [
-        {
-          title: 'Диаметр',
-          text: '240 мм',
-          id: 1
-        },
-        {
-          title: 'Металл',
-          text: 'сталь',
-          id: 2
-        },
-        {
-          title: 'Толщина',
-          text: '8 мм',
-          id: 3
-        },
-        {
-          title: 'Вид',
-          text: 'бесшовные',
-          id: 4
-        },
-        {
-          title: 'Свойства I',
-          text: 'конструкционный',
-          id: 5
-        },
-        {
-          title: 'Свойства II',
-          text: 'рессорно-пружинный',
-          id: 6
-        },
-        {
-          title: 'Сечение',
-          text: 'круглые',
-          id: 7
-        },
-        {
-          title: 'Вид покрытия',
-          text: 'без покрытия',
-          id: 8
-        },
-      ]
-    },
-    {
-      title_uz: "Цемент М400 Евроцемент 50кг.",
-      title_ru: "Цемент М400 Евроцемент 50кг.",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 3,
-      infoProduct: [
-        {
-          title: 'Диаметр',
-          text: '240 мм',
-          id: 1
-        },
-        {
-          title: 'Металл',
-          text: 'сталь',
-          id: 2
-        },
-        {
-          title: 'Толщина',
-          text: '8 мм',
-          id: 3
-        },
-        {
-          title: 'Вид',
-          text: 'бесшовные',
-          id: 4
-        },
-        {
-          title: 'Свойства I',
-          text: 'конструкционный',
-          id: 5
-        },
-        {
-          title: 'Свойства II',
-          text: 'рессорно-пружинный',
-          id: 6
-        },
-        {
-          title: 'Сечение',
-          text: 'круглые',
-          id: 7
-        },
-        {
-          title: 'Вид покрытия',
-          text: 'без покрытия',
-          id: 8
-        },
-      ]
-    },
-    {
-      title_uz: "Трубы пластиковые",
-      title_ru: "Трубы пластиковые",
-      image: "/image/card-image.png",
-      link: "/catalog/2",
-      alt: "Butrate Image",
-      id: 4,
-      infoProduct: [
-        {
-          title: 'Диаметр',
-          text: '240 мм',
-          id: 1
-        },
-        {
-          title: 'Металл',
-          text: 'сталь',
-          id: 2
-        },
-        {
-          title: 'Толщина',
-          text: '8 мм',
-          id: 3
-        },
-        {
-          title: 'Вид',
-          text: 'бесшовные',
-          id: 4
-        },
-        {
-          title: 'Свойства I',
-          text: 'конструкционный',
-          id: 5
-        },
-        {
-          title: 'Свойства II',
-          text: 'рессорно-пружинный',
-          id: 6
-        },
-        {
-          title: 'Сечение',
-          text: 'круглые',
-          id: 7
-        },
-        {
-          title: 'Вид покрытия',
-          text: 'без покрытия',
-          id: 8
-        },
-      ]
-    },
-  ]
-  console.log(isRow)
   return (
       <>
       <SectionUI>
         <Breadcrumb catalog={'gg'}/>
         <div className={'pb-[30px]'}>
-           <SectionTitle title={'Металлопрокат'}/>
+           <SectionTitle title={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         </div>
-        {/*md:grid-cols-5 */}
         <div className={'flex items-center pb-5 justify-between'}>
           <div></div>
           <div>
             <CardPositionBtn/>
           </div>
+        </div>
+          <InfiniteScroll
+              next={productFilteredRefetch}
+              hasMore={hasMore}
+              loader={<div className={'flex  justify-center items-center mt-5 mb-3 w-full col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-5 '}> <AiOutlineLoading3Quarters
+                  className={'animate-spin text-currentBlue '}/> </div>}
+              className={`w-full grid ${isRow ? "grid-cols-1 gap-5" : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10'} relative z-10 !overflow-visible`}
+              dataLength={productFiltered?.count || []}>
+          {
+            productInfinity?.map(card => (
+                    <ProductCard key={card.id} isCatalog={true} product={card} />
+            ))
+          }
+          </InfiniteScroll>
 
-        </div>
-        <div className={`w-full grid ${isRow ? "grid-cols-1 gap-5" : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5'}`}>
-          {
-            productFiltered?.map(card => (
-                <div key={card.id} className={'relative z-[5]'}>
-                    <ProductCard isCatalog={true} product={card} />
-                </div>
-            ))
-          }
-          {
-            cards?.map(card => (
-                <div key={card.id} className={'relative z-[5]'}>
-                  <ProductCard isCatalog={true} product={card} />
-                </div>
-            ))
-          }
-        </div>
       </SectionUI>
         <SectionUI  paddingStyle={'py-10 md:py-[50px]  z-20'}>
           <div className="pb-5 md:pb-[30px]">

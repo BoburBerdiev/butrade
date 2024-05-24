@@ -16,51 +16,9 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 
 
-export default function Home({banners  , advantage_title, partners , advantages ,about}) {
+export default function Home({banners  , advantage_title, partners , advantages ,about , catalog}) {
 
   const {lang} = useSelector(state => state.langSlice)
-  const categoryBtns = [
-    {
-      text: "Металлопрокат",
-      img: "/image/category1.png",
-      id: 0,
-    },
-    {
-      text: "Трубы",
-      img: "/image/category2.png",
-      id: 1
-    },
-    {
-      text: "Кладочные материалы",
-      img: "/image/category3.png",
-      id: 2
-    },
-    {
-      text: "Отделочные материалы",
-      img: "/image/category4.png",
-      id: 3
-    },
-    {
-      text: "Строительные смеси",
-      img: "/image/category5.png",
-      id: 4
-    },
-    {
-      text: "Сыпучие материалы",
-      img: "/image/category6.png",
-      id: 5
-    },
-    {
-      text: "Изолирующие материалы",
-      img: "/image/category7.png",
-      id: 6
-    },
-    {
-      text: "Прочие",
-      img: "/image/category8.png",
-      id: 7
-    },
-  ]
   const {t} = useTranslation()
   return (
     <>
@@ -91,8 +49,8 @@ export default function Home({banners  , advantage_title, partners , advantages 
           <SectionTitle title={t('index.allCategory')} />
           <div className="pt-5 md:pt-[30px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 ">
             {
-              categoryBtns.map((card) => (
-                <CategoryBtn title={card.text} image={card.img} key={card.id}/>
+              catalog?.map((card) => (
+                <CategoryBtn  card={card}  key={card.id}/>
               ))
             }
           </div>
@@ -138,12 +96,13 @@ export async function getServerSideProps({req, res}) {
       "public, s-maxage=10, stale-while-revalidate=59"
   );
   // Fetch data from external API
-  const [banners ,advantage_title ,advantages ,partners ,about  ] = await Promise.all([
+  const [banners ,advantage_title ,advantages ,partners ,about, catalog  ] = await Promise.all([
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/banner/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/advantage-title/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/advantages/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/partners/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/index-about-section/`),
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories/`),
 
   ]);
   return {
@@ -153,6 +112,7 @@ export async function getServerSideProps({req, res}) {
       partners: partners?.data,
       advantages: advantages?.data,
       about: about?.data,
+      catalog: catalog?.data,
     },
   };
 }

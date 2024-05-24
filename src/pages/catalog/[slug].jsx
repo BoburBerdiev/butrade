@@ -21,7 +21,7 @@ const Product = ({product}) => {
               <div className={'space-y-2'}>
                 {
                   product?.characteristic?.map(item => (
-                <InfoProductUI title={langSelect(lang , item?.key_ru , item?.key_uz)} text={langSelect(lang , item?.value_ru , item?.value_uz)}/>
+                <InfoProductUI key={item?.id} title={langSelect(lang , item?.key_ru , item?.key_uz)} text={langSelect(lang , item?.value_ru , item?.value_uz)}/>
                   ))
                 }
               </div>

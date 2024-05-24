@@ -13,10 +13,11 @@ import storage from 'redux-persist/lib/storage'
 import langSlice from '@/slice/lang'
 import basketSlice from '@/slice/basket'
 import cardPosition from "@/slice/cardPosition";
+import queryParams  from "@/slice/queryParams";
 
 
 const rootReducer =combineReducers({
-    langSlice,basketSlice, cardPosition
+    langSlice,basketSlice, cardPosition , queryParams
 })
 
 const persistConfig = {

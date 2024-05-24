@@ -1,5 +1,5 @@
 import React from 'react'
-import {Advantages, FigureAnimation , PartnorsSlider, SectionTitle, SectionUI} from "@/components";
+import {Advantages, Breadcrumb, FigureAnimation, PartnorsSlider, SectionTitle, SectionUI} from "@/components";
 import {useSelector} from "react-redux";
 import axios from "axios";
 import {langSelect} from "@/helper";
@@ -10,6 +10,7 @@ const About = ({advantage_title , advantages , about ,partners}) => {
   return (
 <>
   <SectionUI>
+    <Breadcrumb/>
     <div className="container relative z-10">
       <div className="flex flex-col gap-2 md:gap-5 items-center">
         <SectionTitle centerTrue={true} title={langSelect(lang , about?.title_ru , about?.title_uz)}   subTitle={langSelect(lang , about?.text_ru , about?.text_uz)}

@@ -1,4 +1,4 @@
-import {CardPositionBtn, ProductCard, ProductSlider, SectionTitle, SectionUI} from "@/components";
+import {Breadcrumb, CardPositionBtn, ProductCard, ProductSlider, SectionTitle, SectionUI} from "@/components";
 import {useEffect ,useState} from "react";
 import apiService from "@/service/axois";
 import {useQuery} from "react-query";
@@ -343,6 +343,7 @@ const index = () => {
   return (
       <>
       <SectionUI>
+        <Breadcrumb catalog={'gg'}/>
         <div className={'pb-[30px]'}>
            <SectionTitle title={'Металлопрокат'}/>
         </div>

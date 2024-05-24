@@ -1,5 +1,5 @@
 import {
-  ButtonUI,
+  ButtonUI, FormModal,
   InfoProductsPrice,
   SectionTitle,
   SectionUI,
@@ -7,11 +7,17 @@ import {
 import InputUI from "@/components/ui/Input-UI";
 import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
+import {useState} from "react";
 
 const Index = () => {
   const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
   const {t} = useTranslation()
+  const [isOpenModal, setIsOpenModal] = useState(false)
+  const openModal = () => {
+    setIsOpenModal(true)
+  }
   return (
+      <>
       <SectionUI className={'min-h-[80vh]'}>
         <div className="pb-5 md:pb-[30px]">
           <SectionTitle title={t('order.title')}/>
@@ -28,9 +34,8 @@ const Index = () => {
               <InputUI placeholder={t('order.inputAddress')} />
             </div>
             <div className={'col-span-2 flex items-center gap-x-7'}>
-              <ButtonUI btnFill text={t('btn.sendRequest')} href={'/about'} />
+              <ButtonUI btnFill text={t('btn.sendRequest')} type={'button'} onClick={openModal}/>
               <ButtonUI text={t('btn.back')} href={'/basket'} />
-
             </div>
           </div>
 
@@ -39,6 +44,8 @@ const Index = () => {
           </div>
         </div>
       </SectionUI>
+      <FormModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>
+      </>
   );
 };
 

@@ -1,7 +1,6 @@
 
 import { FaChevronRight } from "react-icons/fa6";
 import Link from "next/link";
-import {useParams, usePathname} from "next/navigation";
 import {useTranslation} from "react-i18next";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";

@@ -8,7 +8,7 @@ const InfoProductPrice = ({basket, allProductItemCount}) => {
             <div className={'flex flex-col gap-2.5 overflow-y-scroll max-h-[120px]'}>
               {
                   basket && basket?.map(card => (
-                      <OrderCard orderCard key={card?.id} id={card?.id} image={card?.image} title={card?.title_ru}
+                      <OrderCard orderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={card?.title_ru}
                                  saleText={card?.count} count={card?.count}/>
                   ))
               }

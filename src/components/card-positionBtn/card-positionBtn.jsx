@@ -9,12 +9,10 @@ const CardPositionBtn = () => {
     const {isRow} = useSelector(state => state.cardPosition)
 
     const setToRow = () => {
-        console.log(1)
         dispatch(changleIsRow(true))
     }
 
     const  setToCol = () => {
-        console.log(2)
         dispatch(changleIsRow(false))
     }
 

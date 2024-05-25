@@ -29,7 +29,9 @@
       "symbolpiece": "dona"
     },
     "basket": {
-      "title": "Savatcha"
+      "title": "Savatcha",
+      "noProducts": "Savatingizda hech narsa yo‘q"
+
     },
     "order": {
       "title": "Narx so'rovi",

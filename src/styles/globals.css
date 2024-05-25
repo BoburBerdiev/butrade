@@ -20,7 +20,9 @@
     background: #fff !important;
 }
 
-
+.min-h-screeny{
+    min-height: calc(100vh - 88px) !important;
+}
 /*all scroll bars style*/
 
 /* Firefox (uncomment to work in Firefox, although other properties will not work!)  */

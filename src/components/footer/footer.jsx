@@ -5,7 +5,7 @@ import {useTranslation} from "react-i18next";
 const Footer = () => {
     const {t} = useTranslation()
   return (
-    <div className=' py-[18px] bg-currentBlue text-white lg:pb-4'>
+    <div className=' py-[18px] bg-currentBlue text-white lg:pb-4 max-md:mb-[63px] '>
       <div className='container flex max-md:flex-col items-center justify-between gap-y-2.5'>
       <div className='flex items-center gap-1'>
         <p className='text-xs font-notoSans text-[#CECFDB]'> {t('footer.siteCreated')}</p>

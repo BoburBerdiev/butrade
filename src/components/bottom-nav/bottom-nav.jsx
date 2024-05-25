@@ -14,7 +14,6 @@ const BottomNav = ({catagorys}) => {
   const [isOpenCatalog, setIsOpenCatalog] = useState(false)
   const {allCount} = useSelector(state => state.basketSlice)
   const {catalogQuery} = useSelector(state => state.queryParams)
-  console.log(catalogQuery)
   const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
   const dispatch = useDispatch()
@@ -58,6 +57,10 @@ const BottomNav = ({catagorys}) => {
   useEffect(() => {
     setIsOpenMenu(false)
   }, [router])
+
+
+
+
   return (
     <>
     <div className={`bg-currentBlue md:hidden  text-white  z-50 fixed bottom-0 left-0 w-full   `}>

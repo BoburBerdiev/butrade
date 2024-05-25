@@ -1,5 +1,5 @@
 import {
-  ButtonUI,
+  ButtonUI, FormModal,
   InfoProductsPrice,
   SectionTitle,
   SectionUI,
@@ -14,6 +14,7 @@ import {useMutation} from "react-query";
 import {useEffect} from "react";
 import {clearOrder} from "@/slice/basket";
 
+import {useState} from "react";
 
 const Index = () => {
   const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
@@ -26,6 +27,10 @@ const Index = () => {
       formState: { errors },
     } = useForm()
   const {t} = useTranslation()
+  const [isOpenModal, setIsOpenModal] = useState(false)
+  const openModal = () => {
+    setIsOpenModal(true)
+  }
   const {
     mutate: userPost,
     data: userPostData,
@@ -63,6 +68,7 @@ const Index = () => {
 
 
   return (
+      <>
       <SectionUI className={'min-h-[80vh]'}>
         <div className="pb-5 md:pb-[30px]">
           <SectionTitle title={t('order.title')}/>
@@ -89,6 +95,8 @@ const Index = () => {
           </div>
         </div>
       </SectionUI>
+      <FormModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>
+      </>
   );
 };
 

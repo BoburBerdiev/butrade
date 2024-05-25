@@ -1,4 +1,4 @@
-import {SectionTitle, SectionUI} from "@/components";
+import {Breadcrumb, SectionTitle, SectionUI} from "@/components";
 import {LuMail, LuMapPin, LuPhone} from "react-icons/lu";
 import {ImTelegram} from "react-icons/im";
 import {FaFacebook, FaInstagram} from "react-icons/fa";
@@ -13,6 +13,7 @@ const Contact = ({contact}) => {
   const {t} = useTranslation()
   return (
       <SectionUI>
+        <Breadcrumb/>
         <div className="w-full flex flex-col justify-center items-center gap-[30px]">
           <div className="flex flex-col items-center gap-4 md:gap-[30px]">
             <SectionTitle title={t('contact.title')} centerTrue={true} />

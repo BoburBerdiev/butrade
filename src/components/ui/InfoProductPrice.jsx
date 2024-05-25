@@ -9,13 +9,6 @@ const InfoProductPrice = ({product}) => {
   const {basket, allProductItemCount} = useSelector(state => state.basketSlice)
   const dispatch = useDispatch()
   const {lang} = useSelector(state => state.langSlice)
-  // id(pin):1
-  // title_uz(pin):"Sement blok"
-  // title_ru(pin):"Цементный блок"
-  // text_uz(pin):"Yuqori sifatli sement bloklari, mustahkam va bardoshli. Qurilish uchun ideal."
-  // text_ru(pin):"Высококачественные цементные блоки, прочные и долговечные. Идеально подходят для строительства."
-  // is_available(pin):true
-  //  index_image :{id: 9 , image :''}
 
   const selectProduct = (product) => {
     let sendProduct = null
@@ -54,7 +47,7 @@ const InfoProductPrice = ({product}) => {
                   </>
                   :
                   <>
-                    <h6 className={'text-xl md:text-2xl text-currentBlue font-oswald'}>
+                    <h6 className={'text-xl md:text-2xl text-currentBlue font-oswald text-center'}>
                       {langSelect(lang , product?.title_ru , product?.title_uz)}
                     </h6>
                     <ButtonUI onClick={() => selectProduct(product)} text={'покупать'}

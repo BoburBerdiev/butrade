@@ -90,7 +90,7 @@ const index = () => {
             <SectionTitle title={t('catalog.viewedProducts')} />
           </div>
 
-          <ProductSlider/>
+          {/*<ProductSlider/>*/}
         </SectionUI>
       </>
   );

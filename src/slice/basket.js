@@ -65,12 +65,17 @@ const basket = createSlice({
             })
             state.allProductItemCount = count
         },
+        clearOrder: (state) => {
+            state.basket= []
+            state.allCount= 0
+            state.allProductItemCount=0
+        }
 
     }
 })
 
 
 
-export const {changleBasket ,countMinusProduct ,countPlusProduct ,changleAllProductItemCount ,deleteProduct } = basket.actions
+export const {changleBasket ,countMinusProduct ,countPlusProduct  ,deleteProduct , clearOrder } = basket.actions
 export default basket.reducer
 

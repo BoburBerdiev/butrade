@@ -16,6 +16,9 @@ module.exports = {
       },
     },
     extend: {
+      minHeight: {
+        'calc-100vh-88px': 'calc(100vh-88px)',
+      },
       colors: {
         "currentBlue": "#14315D",
         'currentGray':'#8A8A8A',

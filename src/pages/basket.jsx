@@ -8,7 +8,7 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
     const {t} = useTranslation()
     return (
         <div>
-            <SectionUI>
+            <SectionUI className={''}>
                 <Breadcrumb pageName={'Корзина'}/>
                 <div className={'pb-4 md:pb-6 lg:pb-[30px]'}>
                    <SectionTitle title={t('basket.title')}/>
@@ -34,9 +34,10 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
                 </div>
                     :
                     <div className={'flex flex-col items-center justify-center '}>
-                        <div className={'relative w-[300px] aspect-square '}>
+                        <div className={'relative w-[200px] aspect-square '}>
                             <ImageUI src={'/image/empty_cart.png'} objectFitContain={true}/>
                         </div>
+                        <h3 className={'text-currentBlue font-notoSans font-semibold pt-5 text-xl md:text-2xl text-center'}>{t('basket.noProducts')}</h3>
 
                     </div>
               }

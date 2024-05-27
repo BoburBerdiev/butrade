@@ -4,6 +4,7 @@ import { DropdownUI } from '..'
 import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
 import {useSelector} from "react-redux";
+import {useEffect, useState} from "react";
 
 const TopNav = ({contact}) => {
   const {t} = useTranslation()
@@ -38,7 +39,6 @@ const TopNav = ({contact}) => {
       id: 1
     },
   ]
-
   return (
     <div className=' py-2.5 bg-currentBlue text-white font-notoSansDisplay max-md:hidden'>
       <div className="container flex items-center justify-between">
@@ -54,7 +54,7 @@ const TopNav = ({contact}) => {
         <div className='flex items-center gap-10'>
           <div className='flex items-center gap-1.5'>
             <LuMapPin className='text-lg' />
-            <p className='text-sm w-[30%] overflow-hidden self-end'>{langSelect(lang , contact?.address_ru , contact?.address_uz)}</p>
+            <p className='text-sm '>{langSelect(lang , contact?.address_ru , contact?.address_uz)?.split(',')?.slice(-4)}</p>
           </div>
           <DropdownUI list={listLang}/>
         </div>

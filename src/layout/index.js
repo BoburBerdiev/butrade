@@ -26,7 +26,7 @@ const Layout = ({children}) => {
       <TopNav contact={contact}/>
       <Navbar links={catalog}/>
       <BottomNav catagorys={catalog}/>
-      <div className={'h-[calc(100vh - 88px)] bg-white'}>
+      <div className={'min-h-screeny bg-white'}>
         {
           children
         }

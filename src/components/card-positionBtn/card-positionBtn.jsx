@@ -11,11 +11,9 @@ const CardPositionBtn = () => {
     const setToRow = () => {
         dispatch(changleIsRow(true))
     }
-
     const  setToCol = () => {
         dispatch(changleIsRow(false))
     }
-
     return (
         <div className={'flex items-center gap-3.5'}>
             <button onClick={setToCol}>

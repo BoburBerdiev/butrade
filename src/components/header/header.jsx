@@ -4,9 +4,9 @@ import { SwiperBanner } from '..'
 const Header = ({banner}) => {
 
   return (
-    <div className={'w-full h-[50vh]'}>
+    <header className={'w-full h-[60vh]'}>
       <SwiperBanner list={banner}/>
-    </div>
+    </header>
   )
 }
 

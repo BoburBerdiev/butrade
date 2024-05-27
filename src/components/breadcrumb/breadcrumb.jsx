@@ -11,7 +11,7 @@ import {langSelect} from "@/helper";
 const Breadcrumb = ({catalog, productInner}) => {
     const router = useRouter()
     const {lang} = useSelector(state => state.langSlice)
-    const {query ,catalogQuery} = useSelector(state => state.queryParams)
+    const {catalogQuery} = useSelector(state => state.queryParams)
     const {t} = useTranslation()
     const {asPath} = useRouter()
     const dispatch = useDispatch()
@@ -46,7 +46,6 @@ const Breadcrumb = ({catalog, productInner}) => {
                     <div onClick={() => (selectCatalog())} className={'text-currentGray cursor-pointer'}>{langSelect(lang, catalogQuery?.title_ru, catalogQuery?.title_uz)}</div>
                         :
                     <p  className={productInner ? 'text-currentGray' : 'text-currentBlue'}>{catalog ? langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz) : page}</p>
-
                 }
 
                 {
@@ -55,9 +54,6 @@ const Breadcrumb = ({catalog, productInner}) => {
                     <FaChevronRight className={'w-3 h-3'}/>
                     <p className={'text-currentBlue cursor-pointer'}>{  productInner && productInner}</p>
                     </>
-
-
-
                 }
             </div>
         </div>

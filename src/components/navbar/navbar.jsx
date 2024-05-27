@@ -1,6 +1,5 @@
 import React from 'react'
 import { PiShoppingCartSimple } from "react-icons/pi";
-import { CgSearch } from "react-icons/cg";
 import { SlPhone } from "react-icons/sl";
 import { DropdownUI, ImageUI } from '..'
 import Link from 'next/link';
@@ -76,7 +75,6 @@ const Navbar = ({links}) => {
           <div className={'flex gap-3 overflow-x-scroll min-w-full w-full'}>
              {
                links?.map(link => (
-
                  <div key={link.id} className={'shrink-0 px-1'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
                ))
              }

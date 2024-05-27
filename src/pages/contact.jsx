@@ -62,7 +62,7 @@ const Contact = ({contact}) => {
 export default Contact;
 
 
-export async function getServerSideProps({req, res}) {
+export async function getServerSideProps({ res}) {
   res.setHeader(
       "Cache-Control",
       "public, s-maxage=10, stale-while-revalidate=59"

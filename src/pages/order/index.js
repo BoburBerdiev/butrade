@@ -20,17 +20,14 @@ const Index = () => {
   const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
   const dispatch = useDispatch()
   const router = useRouter();
-
     const {
       register,
       handleSubmit , reset,
-      formState: { errors },
+
     } = useForm()
   const {t} = useTranslation()
   const [isOpenModal, setIsOpenModal] = useState(false)
-  const openModal = () => {
-    setIsOpenModal(true)
-  }
+
   const {
     mutate: userPost,
     data: userPostData,

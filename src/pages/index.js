@@ -16,7 +16,7 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 
 
-export default function Home({banners  , advantage_title, partners , advantages ,about , catalog}) {
+export default function Home({banners  , advantage_title, partners , advantages ,about , catalog ,mostOrderProduct}) {
 
   const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
@@ -79,6 +79,15 @@ export default function Home({banners  , advantage_title, partners , advantages 
           </div>
         </div>
       </div>
+      {
+          mostOrderProduct.length > 0 &&
+          <SectionUI  paddingStyle={'py-10 md:py-[50px]  z-20'}>
+            <div className="pb-5 md:pb-[30px]">
+              <SectionTitle title={t('catalog.viewedProducts')} />
+            </div>
+            <ProductSlider cards={mostOrderProduct}/>
+          </SectionUI>
+      }
       <SectionUI paddingStyle={'py-10 md:py-[50px] lg:pb-[100px] z-20'}>
         <div className="pb-5 md:pb-[30px]">
           <SectionTitle title={langSelect(lang , partners?.title_ru  , partners?.title_uz)} />
@@ -90,19 +99,20 @@ export default function Home({banners  , advantage_title, partners , advantages 
 }
 
 
-export async function getServerSideProps({req, res}) {
+export async function getServerSideProps({ res}) {
   res.setHeader(
       "Cache-Control",
       "public, s-maxage=10, stale-while-revalidate=59"
   );
   // Fetch data from external API
-  const [banners ,advantage_title ,advantages ,partners ,about, catalog  ] = await Promise.all([
+  const [banners ,advantage_title ,advantages ,partners ,about, catalog, mostOrderProduct  ] = await Promise.all([
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/banner/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/advantage-title/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/advantages/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/partners/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/index-about-section/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories/`),
+    axios.get(`${process.env.NEXT_PUBLIC_API_URL}/all-orders-list`)
 
   ]);
   return {
@@ -113,6 +123,7 @@ export async function getServerSideProps({req, res}) {
       advantages: advantages?.data,
       about: about?.data,
       catalog: catalog?.data,
+      mostOrderProduct: mostOrderProduct?.data
     },
   };
 }

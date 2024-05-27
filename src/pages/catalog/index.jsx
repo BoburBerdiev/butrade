@@ -6,14 +6,11 @@ import {useSelector} from "react-redux";
 import {AiOutlineLoading3Quarters} from "react-icons/ai";
 import InfiniteScroll from "react-infinite-scroll-component";
 import {langSelect} from "@/helper";
-
-
 import {useTranslation} from "react-i18next";
 const index = () => {
   const {lang} = useSelector(state => state.langSlice)
   const {isRow} = useSelector(state => state.cardPosition)
-
-
+  const {lastProductList} = useSelector(state => state.lastProductSlice)
   const [page, setPage] = useState(1)
   const {query ,catalogQuery} = useSelector(state => state.queryParams)
   const [productInfinity, setProductInfinity] = useState([])
@@ -75,7 +72,7 @@ const index = () => {
               hasMore={hasMore}
               loader={<div className={'flex  justify-center items-center mt-5 mb-3 w-full col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-5 '}> <AiOutlineLoading3Quarters
                   className={'animate-spin text-currentBlue '}/> </div>}
-              className={`w-full grid ${isRow ? "grid-cols-1 gap-5" : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-10'} relative z-10 !overflow-visible`}
+              className={`w-full grid ${isRow ? "grid-cols-1 gap-5" : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-6 lg:gap-10'} relative z-10 !overflow-visible`}
               dataLength={productFiltered?.count || []}>
           {
             productInfinity?.map(card => (
@@ -85,13 +82,16 @@ const index = () => {
           </InfiniteScroll>
 
       </SectionUI>
+
+        {
+          lastProductList.length > 0 &&
         <SectionUI  paddingStyle={'py-10 md:py-[50px]  z-20'}>
           <div className="pb-5 md:pb-[30px]">
             <SectionTitle title={t('catalog.viewedProducts')} />
           </div>
-
-          {/*<ProductSlider/>*/}
+          <ProductSlider cards={lastProductList}/>
         </SectionUI>
+        }
       </>
   );
 };

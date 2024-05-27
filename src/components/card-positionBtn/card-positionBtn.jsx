@@ -18,12 +18,12 @@ const CardPositionBtn = () => {
 
     return (
         <div className={'flex items-center gap-3.5'}>
-            <div onClick={setToCol}>
-                <RxGrid className={`w-[26px] h-[26px] cursor-pointer ${isRow ? "text-[#8A8A8A]  " : "text-currentBlue"} `}/>
-            </div>
-            <div onClick={setToRow}>
-                <PiListLight className={`w-[26px] h-[26px] cursor-pointer ${isRow ? " text-currentBlue " : " text-[#8A8A8A]"} `}/>
-            </div>
+            <button onClick={setToCol}>
+                <RxGrid className={`text-xl md:text-2xl ${isRow ? "text-currentGray  " : "text-currentBlue"} `}/>
+            </button>
+            <button onClick={setToRow}>
+                <PiListLight className={`text-xl md:text-2xl ${isRow ? " text-currentBlue " : " text-currentGray"} `}/>
+            </button>
         </div>
     );
 };

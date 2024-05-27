@@ -43,22 +43,22 @@ const PartnorsSlider = ({partnors}) => {
         }}
         loop={true}
         modules={[Navigation]}
-        className="mySwiper relative !pb-14"
+        className="mySwiper relative "
       >
         {
           partnors?.map(partnor => (
               <div key={partnor.id}>
-            <SwiperSlide className='h-full w-full aspect-[3/1] relative '>
-             <ImageUI src={partnor?.image} objectFitContain={true}  alt={partnor?.id}/>
+            <SwiperSlide className=' w-full aspect-[2/1] md:aspect-[16/5]  relative '>
+              <ImageUI src={partnor?.image} objectFitContain={true}  alt={partnor?.id}/>
             </SwiperSlide>
               </div>
           ))
         }
 
-          <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-[35%] z-10 left-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-prev ">
+          <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-1/2 -translate-y-1/2 z-10 left-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-prev ">
             <GrPrevious className="text-lg" />
           </div>
-          <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-[35%] z-10 right-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-next ">
+          <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-1/2 -translate-y-1/2 z-10 right-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-next ">
             <GrNext className="text-lg" />
           </div>
 

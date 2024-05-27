@@ -6,6 +6,8 @@ import {useMemo} from "react";
 import {changleBasket} from "@/slice/basket";
 import {Counter, InfoProductUI} from "@/components";
 import {useTranslation} from "react-i18next";
+import {useRouter} from "next/router";
+import  {changleLastProductList} from "@/slice/lastProduct";
 
 const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
   const dispatch = useDispatch()
@@ -13,13 +15,20 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
   const {basket ,allProductItemCount} = useSelector(state => state.basketSlice)
   const {lang } = useSelector(state => state.langSlice)
   const {t} = useTranslation()
+  const router = useRouter()
    const handleBasket  =(product) => {
       dispatch(changleBasket(product))
   }
+
+  const addLastSeeProduct = () => {
+    dispatch(changleLastProductList(product))
+    router.push(isCardInner ? `${product?.slug}` : `catalog/${product?.slug}`);
+  }
+
   const CountActiveProductBasket = useMemo(() => {
     const findProduct = basket?.find((item) => item?.id ===product?.id);
     return findProduct?.count
-  } ,[allProductItemCount  ])
+  } ,[allProductItemCount])
   return (
     <div className={`${isRow && isCatalog ? 'grid grid-cols-7 md:grid-cols-11 gap-x-3 justify-end p-2 md:p-3 lg:p-4 gap-y-3' :'flex-col px-2 py-3 lg:px-2.5 lg:py-4 gap-3 lg:gap-4 hover:rounded-b-none '} w-full  bg-white rounded-lg h-full shadow-md -z-[1]  flex   relative group duration-200 hover:shadow-lg`}>
       <div className={`${isRow && isCatalog ? 'w-full  col-span-3 md:col-span-4 aspect-[3/4] md:aspect-[16/8] h-full' : 'w-full aspect-square'}  relative rounded-lg overflow-hidden`}>
@@ -50,8 +59,7 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
                     <ButtonUI clasName={'col-span-1'} leftIcon={<PiShoppingCartSimpleLight className="text-sm md:text-base lg:text-xl"/>} onClick={() => handleBasket(product)} btnIcon={true}/>
                 }
             </div>
-
-          <ButtonUI clasName={ `${isRow && isCatalog && `col-span-4 md:col-span-3 ${CountActiveProductBasket > 0 ? ' md:!col-span-2' :'col-span-3'}` }  ${CountActiveProductBasket > 0 ? ' md:col-span-2' :'col-span-3'} ` } btnCard href={ `${isCardInner ? `${product?.slug}` : `catalog/${product?.slug}` } `} text={t('btn.more')}/>
+          <ButtonUI onClick={() => addLastSeeProduct(product)} clasName={ `${isRow && isCatalog && `col-span-4 md:col-span-3 ${CountActiveProductBasket > 0 ? ' md:!col-span-2' :'col-span-3'}` }  ${CountActiveProductBasket > 0 ? ' md:col-span-2' :'col-span-3'} ` } btnCard text={t('btn.more')}/>
           </div>
         </div>
       </div>

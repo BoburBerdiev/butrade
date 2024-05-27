@@ -15,13 +15,13 @@ const Advantages = ({title , subTitle ,advantagesList}) => {
           {
             advantagesList?.map(item => (
                 <div key={item?.id}
-                    className="flex  bg-white gap-5 lg:gap-6 items-center justify-between shadow-md p-[10px_15px] xl:p-[25px_20px] rounded-lg">
+                    className="flex  bg-white gap-5 lg:gap-6 items-center shadow-md p-[10px_15px] xl:p-[25px_20px] rounded-lg">
                   <div className="relative w-10 h-10 shrink-0  ">
                     <ImageUI src={item?.image} alt={langSelect(lang , item?.title_ru , item?.title_uz)}/>
                   </div>
                   <div className="flex flex-col gap-1 text-start">
-                    <h3 className="text-iconblue text-base md:text-lg font-notoSansDisplay font-semibold"> {langSelect(lang , item?.title_ru , item?.title_uz)}</h3>
-                    <p className="font-notoSans text-sm md:text-base line-clamp-3">{langSelect(lang , item?.sub_title_ru , item?.sub_title_uz)} </p>
+                    <h3 className="text-currentBlue text-base md:text-lg font-notoSansDisplay font-semibold"> {langSelect(lang , item?.title_ru , item?.title_uz)}</h3>
+                    <p className="font-notoSans text-base ">{langSelect(lang , item?.sub_title_ru , item?.sub_title_uz)} </p>
                   </div>
                 </div>
             ))

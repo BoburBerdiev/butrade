@@ -14,6 +14,9 @@ import {useTranslation} from "react-i18next";
 const Product = ({product}) => {
   const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
+
+
+
   return (
       <>
         <SectionUI>

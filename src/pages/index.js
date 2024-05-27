@@ -47,10 +47,10 @@ export default function Home({banners  , advantage_title, partners , advantages 
         </div>
         <SectionUI >
           <SectionTitle title={t('index.allCategory')} />
-          <div className="pt-5 md:pt-[30px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 ">
+          <div className="pt-5 md:pt-[30px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 ">
             {
               catalog?.map((card) => (
-                <CategoryBtn  card={card}  key={card.id}/>
+                <CategoryBtn card={card}  key={card.id}/>
               ))
             }
           </div>

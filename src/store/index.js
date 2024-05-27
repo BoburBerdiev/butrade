@@ -14,10 +14,11 @@ import langSlice from '@/slice/lang'
 import basketSlice from '@/slice/basket'
 import cardPosition from "@/slice/cardPosition";
 import queryParams  from "@/slice/queryParams";
+import lastProductSlice  from "@/slice/lastProduct";
 
 
 const rootReducer =combineReducers({
-    langSlice,basketSlice, cardPosition , queryParams
+    langSlice,basketSlice, cardPosition , queryParams,lastProductSlice
 })
 
 const persistConfig = {

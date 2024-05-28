@@ -75,7 +75,7 @@ const Navbar = ({links}) => {
           <div className={'flex gap-3 overflow-x-scroll min-w-full w-full'}>
              {
                links?.map(link => (
-                 <div key={link.id} className={'shrink-0 px-1'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
+                 <div key={link.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
                ))
              }
           </div>

@@ -1,4 +1,12 @@
-import {Breadcrumb, CardPositionBtn, ProductCard, ProductSlider, SectionTitle, SectionUI} from "@/components";
+import {
+  Breadcrumb,
+  CardPositionBtn,
+  CatalogDropdown,
+  ProductCard,
+  ProductSlider,
+  SectionTitle,
+  SectionUI
+} from "@/components";
 import {useEffect ,useState} from "react";
 import apiService from "@/service/axois";
 import {useQuery} from "react-query";
@@ -62,7 +70,9 @@ const index = () => {
            <SectionTitle title={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         </div>
         <div className={'flex items-center pb-5 justify-between'}>
-          <div></div>
+          <div className={'relative'}>
+            <CatalogDropdown/>
+          </div>
           <div>
             <CardPositionBtn/>
           </div>

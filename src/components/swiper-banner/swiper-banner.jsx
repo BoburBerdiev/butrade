@@ -1,12 +1,11 @@
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {  Pagination, Navigation } from 'swiper/modules';
 import { ImageUI } from '..';
 import {GrNext, GrPrevious} from "react-icons/gr";
 
-const SwiperBanner = ({list, productSlider}) => {
+const SwiperBanner = ({list, productSlider , styleSlider}) => {
   return (
-      <div className={'w-full h-full relative'}>
+      <div className={`w-full relative ${styleSlider}`}>
       <Swiper
           spaceBetween={0}
           loop={true}

@@ -15,10 +15,10 @@ const SearchPanel = () => {
     } = useForm()
     const [searchProduct, setSearchProduct] = useState(null)
     const {
-        data: productFiltered,
-        refetch: productFilteredRefetch,
+        data: searchProductFiltered,
+        refetch: searchProductFilteredRefetch,
     } = useQuery(
-        "filter",
+        "search",
         () =>
             apiService.getData(
                 `/product-search?search=${searchProduct}`
@@ -28,13 +28,14 @@ const SearchPanel = () => {
         }
     );
     useEffect(() => {
-        productFilteredRefetch()
+        searchProductFilteredRefetch()
     } , [searchProduct])
 
     const onSubmit = ({search}) => {
         if(search.length > 2) {
             setSearchProduct(search)
         }
+
         setSearchPanel(true)
     }
     const closeSearchPanel = () => {
@@ -53,18 +54,18 @@ const SearchPanel = () => {
                 <button type={'submit'} className='absolute -right-0.5 top-0 h-full px-3 pe-3.5 flex items-center text-white bg-currentBlue text-sm md:text-base md:px-4 md:pe-[18px] lg:text-xl'><CgSearch /></button>
             </form>
             {
-                productFiltered &&
+                searchProductFiltered &&
                 <div
                     className={`fixed  left-0 right-0 w-full duration-200 overflow-hidden h-screen z-[90] ${searchPanel ? "top-[102px] md:top-[125px] lg:top-[131px] " : " -top-[150%]"}   bg-currentBlue/80`}>
                     <div className={'absolute top-5 right-5 z-50 cursor-pointer'} onClick={closeSearchPanel}>
                         <IoIosClose className={'text-white text-4xl'}/>
                     </div>
                     {
-                        productFiltered?.count > 0 ?
+                        searchProductFiltered?.count > 0 ?
                             <div
                                 className={'grid grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 py-2 md:py-8 lg:py-14 container'}>
                                 {
-                                    productFiltered?.results?.map(card => (
+                                    searchProductFiltered?.results?.map(card => (
                                         <ProductCard key={card.id} product={card}/>
                                     ))
                                 }

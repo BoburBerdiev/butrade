@@ -3,12 +3,11 @@ import {
   ButtonUI,
   CategoryBtn,
   FigureAnimation,
-  Header,
   ImageUI,
   PartnorsSlider,
   ProductSlider,
   SectionTitle,
-  SectionUI
+  SectionUI, SwiperBanner
 } from "@/components";
 import axios from "axios";
 import {useSelector} from "react-redux";
@@ -16,90 +15,103 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 
 
-export default function Home({banners  , advantage_title, partners , advantages ,about , catalog ,mostOrderProduct}) {
-
+export default function Home({banners , advantage_title, partners , advantages ,about , catalog ,mostOrderProduct}) {
   const {lang} = useSelector(state => state.langSlice)
+  const { lastProductList} = useSelector(state => state.lastProductSlice)
   const {t} = useTranslation()
   return (
-    <>
-      <Header banner={banners}/>
-      <div className="relative w-full overflow-x-hidden">
-        <SectionUI className={'overflow-x-hidden'} paddingStyle={'pt-[30px] pb-6 md:pt-16 md:pb-10 lg:pt-[100px] lg:pb-[50px]'}>
-        <div className="grid md:grid-cols-8">
-          <div className="md:col-span-5 flex flex-col gap-5 md:gap-[30px]">
+      <>
+        <header>
+          <SwiperBanner list={banners} styleSlider={'w-full h-[60vh] '}/>
+        </header>
+        <div className="relative w-full overflow-x-hidden">
+          <SectionUI className={'overflow-x-hidden'}
+                     paddingStyle={'pt-[30px] pb-6 md:pt-16 md:pb-10 lg:pt-[100px] lg:pb-[50px]'}>
+            <div className="grid md:grid-cols-8">
+              <div className="md:col-span-5 flex flex-col gap-5 md:gap-[30px]">
 
-            <SectionTitle title={langSelect(lang , about?.title_ru , about?.title_uz)}   subTitle={langSelect(lang , about?.text_ru , about?.text_uz)}
-            />
-            <ButtonUI text={t('btn.more')} href={'/about'} clasName={'self-center	md:self-start'}/>
-          </div>
-        </div>
-        <div className="absolute top-10 right-4 z-10 w-[250px] xl:w-[350px] aspect-square xl:top-0 max-md:hidden ">
-          <ImageUI src={about?.image} alt={langSelect(lang , about?.title_ru , about?.title_uz)} objectFitContain={true}/>
-        </div>
-        </SectionUI>
-        <div className="w-[400px] h-[400px] xl:w-[600px] xl:h-[600px] xl:top-[-100px] xl:right-[-140px] max-lg:hidden absolute top-[-50px] right-[-50px] z-[5] flex items-center justify-center">
-          <div className="w-full h-full">
-            <FigureAnimation variableID={1} duration={15} radioCircleLg={200} radioCircleXl={300}/>
-          </div>
-          <div className="w-[300px] h-[300px] xl:w-[420px] xl:h-[420px] absolute z-0">
-            <FigureAnimation variableID={2} duration={12} radioCircleLg={150} radioCircleXl={210}/>
-          </div>
-        </div>
-        <SectionUI >
-          <SectionTitle title={t('index.allCategory')} />
-          <div className="pt-5 md:pt-[30px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 ">
-            {
-              catalog?.map((card) => (
-                <CategoryBtn card={card}  key={card.id}/>
-              ))
-            }
-          </div>
-        </SectionUI>
-
-      </div>
-      <SectionUI className={'relative z-20'}>
-        <div className="pb-5 md:pb-[30px] ">
-          <SectionTitle title={t('index.popularProducts.title')} href={'/catalog'}/>
-        </div>
-
-        <ProductSlider/>
-      </SectionUI>
-      <div className={'relative z-10'}>
-      <SectionUI className={'relative z-10'}>
-        <div className={'relative z-10'}>
-        <Advantages  title={langSelect(lang , advantage_title?.title_ru , advantage_title?.title_uz)} subTitle={langSelect(lang , advantage_title?.title_ru , advantage_title?.title_uz)} advantagesList={advantages} />
-        </div>
-      </SectionUI>
-        <div className="w-[400px] h-[400px] xl:w-[600px] xl:h-[600px] max-lg:hidden absolute top-[-60px] left-[-20px] z-[5] flex items-center justify-center">
-          <div className="w-full h-full">
-            <FigureAnimation variableID={1} duration={15} radioCircleLg={200} radioCircleXl={300}/>
-          </div>
-          <div className="w-[300px] h-[300px] xl:w-[420px] xl:h-[420px] absolute z-0">
-            <FigureAnimation variableID={2} duration={12} radioCircleLg={150} radioCircleXl={210}/>
-          </div>
-        </div>
-      </div>
-      {
-          mostOrderProduct.length > 0 &&
-          <SectionUI  paddingStyle={'py-10 md:py-[50px]  z-20'}>
-            <div className="pb-5 md:pb-[30px]">
-              <SectionTitle title={t('catalog.viewedProducts')} />
+                <SectionTitle title={langSelect(lang, about?.title_ru, about?.title_uz)}
+                              subTitle={langSelect(lang, about?.text_ru, about?.text_uz)}
+                />
+                <ButtonUI text={t('btn.more')} href={'/about'} clasName={'self-center	md:self-start'}/>
+              </div>
             </div>
-            <ProductSlider cards={mostOrderProduct}/>
+            <div className="absolute top-10 right-4 z-10 w-[250px] xl:w-[350px] aspect-square xl:top-0 max-md:hidden ">
+              <ImageUI src={about?.image} alt={langSelect(lang, about?.title_ru, about?.title_uz)}
+                       objectFitContain={true}/>
+            </div>
           </SectionUI>
-      }
-      <SectionUI paddingStyle={'py-10 md:py-[50px] lg:pb-[100px] z-20'}>
-        <div className="pb-5 md:pb-[30px]">
-          <SectionTitle title={langSelect(lang , partners?.title_ru  , partners?.title_uz)} />
+          <div
+              className="w-[400px] h-[400px] xl:w-[600px] xl:h-[600px] xl:top-[-100px] xl:right-[-140px] max-lg:hidden absolute top-[-50px] right-[-50px] z-[5] flex items-center justify-center">
+            <div className="w-full h-full">
+              <FigureAnimation variableID={1} duration={15} radioCircleLg={200} radioCircleXl={300}/>
+            </div>
+            <div className="w-[300px] h-[300px] xl:w-[420px] xl:h-[420px] absolute z-0">
+              <FigureAnimation variableID={2} duration={12} radioCircleLg={150} radioCircleXl={210}/>
+            </div>
+          </div>
+          <SectionUI>
+            <SectionTitle title={t('index.allCategory')}/>
+            <div className="pt-5 md:pt-[30px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 ">
+              {
+                catalog?.map((card) => (
+                    <CategoryBtn card={card} key={card.id}/>
+                ))
+              }
+            </div>
+          </SectionUI>
+
         </div>
-        <PartnorsSlider partnors={partners.partner_images} />
-      </SectionUI>
-    </>
+        {
+            mostOrderProduct?.length > 0 &&
+            <SectionUI paddingStyle={'py-10 md:py-[50px]  z-20'}>
+              <div className="pb-5 md:pb-[30px]">
+                <SectionTitle title={t('index.popularProducts.title')}/>
+              </div>
+              <ProductSlider cards={mostOrderProduct}/>
+            </SectionUI>
+        }
+
+        <div className={'relative z-10'}>
+          <SectionUI className={'relative z-10'}>
+            <div className={'relative z-10'}>
+              <Advantages title={langSelect(lang, advantage_title?.title_ru, advantage_title?.title_uz)}
+                          subTitle={langSelect(lang, advantage_title?.title_ru, advantage_title?.title_uz)}
+                          advantagesList={advantages}/>
+            </div>
+          </SectionUI>
+          <div
+              className="w-[400px] h-[400px] xl:w-[600px] xl:h-[600px] max-lg:hidden absolute top-[-60px] left-[-20px] z-[5] flex items-center justify-center">
+            <div className="w-full h-full">
+              <FigureAnimation variableID={1} duration={15} radioCircleLg={200} radioCircleXl={300}/>
+            </div>
+            <div className="w-[300px] h-[300px] xl:w-[420px] xl:h-[420px] absolute z-0">
+              <FigureAnimation variableID={2} duration={12} radioCircleLg={150} radioCircleXl={210}/>
+            </div>
+          </div>
+        </div>
+        {
+          lastProductList?.length > 0 &&
+            <SectionUI className={'relative z-20'}>
+              <div className="pb-5 md:pb-[30px] ">
+                <SectionTitle title={t('catalog.viewedProducts ')}/>
+              </div>
+              <ProductSlider cards={lastProductList}/>
+            </SectionUI>
+        }
+
+        <SectionUI paddingStyle={'py-10 md:py-[50px] lg:pb-[100px] z-20'}>
+          <div className="pb-5 md:pb-[30px]">
+            <SectionTitle title={langSelect(lang, partners?.title_ru, partners?.title_uz)}/>
+          </div>
+          <PartnorsSlider partnors={partners.partner_images}/>
+        </SectionUI>
+      </>
   );
 }
 
 
-export async function getServerSideProps({ res}) {
+export async function getServerSideProps({res}) {
   res.setHeader(
       "Cache-Control",
       "public, s-maxage=10, stale-while-revalidate=59"

@@ -35,6 +35,7 @@ const SearchPanel = () => {
         if(search.length > 2) {
             setSearchProduct(search)
         }
+
         setSearchPanel(true)
     }
     const closeSearchPanel = () => {

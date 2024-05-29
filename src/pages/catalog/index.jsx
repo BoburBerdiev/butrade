@@ -20,6 +20,7 @@ const index = () => {
   const {isRow} = useSelector(state => state.cardPosition)
   const {lastProductList} = useSelector(state => state.lastProductSlice)
   const [page, setPage] = useState(1)
+  const {queryByOrder} = useSelector(state => state.catalogFilter)
   const {query ,catalogQuery} = useSelector(state => state.queryParams)
   const [productInfinity, setProductInfinity] = useState([])
   const [hasMore, setHasMore] = useState(false)
@@ -32,17 +33,19 @@ const index = () => {
       "filter",
       () =>
           apiService.getData(
-              `products-filter?${query}&page=${page}&page_size=5`
+              `products-filter?${query}&page=${page}&${queryByOrder}&page_size=5`
           ),
       {
         enabled: false,
       }
   );
+
+  console.log(queryByOrder)
   useEffect(() => {
     if (query !== null && page === 1) {
       productFilteredRefetch()
     }
-  }, [query, page]);
+  }, [query, page ,queryByOrder]);
   useEffect(() => {
     if (productFilteredSuccess) {
       if (page === 1) {

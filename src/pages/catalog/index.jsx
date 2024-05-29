@@ -1,4 +1,12 @@
-import {Breadcrumb, CardPositionBtn, ProductCard, ProductSlider, SectionTitle, SectionUI} from "@/components";
+import {
+  Breadcrumb,
+  CardPositionBtn,
+  CatalogDropdown,
+  ProductCard,
+  ProductSlider,
+  SectionTitle,
+  SectionUI
+} from "@/components";
 import {useEffect ,useState} from "react";
 import apiService from "@/service/axois";
 import {useQuery} from "react-query";
@@ -12,6 +20,7 @@ const index = () => {
   const {isRow} = useSelector(state => state.cardPosition)
   const {lastProductList} = useSelector(state => state.lastProductSlice)
   const [page, setPage] = useState(1)
+  const {queryByOrder} = useSelector(state => state.catalogFilter)
   const {query ,catalogQuery} = useSelector(state => state.queryParams)
   const [productInfinity, setProductInfinity] = useState([])
   const [hasMore, setHasMore] = useState(false)
@@ -24,17 +33,19 @@ const index = () => {
       "filter",
       () =>
           apiService.getData(
-              `products-filter?${query}&page=${page}&page_size=5`
+              `products-filter?${query}&page=${page}&${queryByOrder}&page_size=5`
           ),
       {
         enabled: false,
       }
   );
+
+  console.log(queryByOrder)
   useEffect(() => {
     if (query !== null && page === 1) {
       productFilteredRefetch()
     }
-  }, [query, page]);
+  }, [query, page ,queryByOrder]);
   useEffect(() => {
     if (productFilteredSuccess) {
       if (page === 1) {
@@ -62,7 +73,9 @@ const index = () => {
            <SectionTitle title={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         </div>
         <div className={'flex items-center pb-5 justify-between'}>
-          <div></div>
+          <div className={'relative'}>
+            <CatalogDropdown/>
+          </div>
           <div>
             <CardPositionBtn/>
           </div>

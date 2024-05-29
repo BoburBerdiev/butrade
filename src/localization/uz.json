@@ -44,7 +44,10 @@
       "siteCreated": "Sayt yaratildi:"
     },
     "catalog": {
-      "viewedProducts": "Yaqinda ko'rilganlar"
+      "viewedProducts": "Yaqinda ko'rilganlar",
+      "filterDropdownAll" : "Yangi qo'shilganlar",
+      "filterDropdownAZ": " A-Z gacha",
+      "filterDropdownZA": "Z-A gacha  "
     },
     "catalogInner": {
       "littleInfo": "Qisqa ma'lumot",

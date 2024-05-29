@@ -43,7 +43,11 @@
       "siteCreated": "Сайт создан:"
     },
     "catalog": {
-      "viewedProducts": "Недавно просмотренные"
+      "viewedProducts": "Недавно просмотренные",
+      "filterDropdownAll" : "Новые дополнения",
+      "filterDropdownAZ": "По A-Z",
+      "filterDropdownZA": "По Z-A"
+
     },
     "catalogInner": {
       "littleInfo": "Короткое описание",

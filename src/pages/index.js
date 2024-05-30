@@ -22,7 +22,7 @@ export default function Home({banners , advantage_title, partners , advantages ,
   return (
       <>
         <header>
-          <SwiperBanner list={banners} styleSlider={'w-full h-[60vh] '}/>
+          <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '}/>
         </header>
         <div className="relative w-full overflow-x-hidden">
           <SectionUI className={'overflow-x-hidden'}

@@ -1,14 +1,14 @@
-import {ImageUI} from "@/components";
+import {ImageUI, SectionTitle} from "@/components";
 import {langSelect} from "@/helper";
 import {useSelector} from "react-redux";
 
 const Advantages = ({title , subTitle ,advantagesList}) => {
+  console.log(subTitle)
   const {lang} = useSelector(state => state.langSlice)
   return (
       <div className="flex flex-col md:flex-row items-center gap-5 md:gap-12 lg:gap-20 relative z-20">
         <div className="flex flex-col gap-2 md:gap-5 md:w-1/2">
-          <h2 className="font-oswald text-center md:text-start font-medium text-2xl md:text-3xl lg:text-4xl text-currentBlue">{title}</h2>
-          <p className="font-notoSans text-sm sm:text-base text-center md:text-start">{subTitle}</p>
+          <SectionTitle  title={title} subTitle={subTitle}  />
         </div>
         <div
             className="grid grid-cols-1 sm:grid-cols-2 gap-x-0 md:gap-x-[30px] gap-y-[10px] sm:gap-[10px] md:gap-y-[25px] ">

@@ -37,7 +37,7 @@ const Breadcrumb = ({catalog, productInner}) => {
     }
     return (
         <div className={'w-full '}>
-            <div className={'flex flex-wrap items-center text-xs md:text-sm lg:text-base gap-2 font-notoSansDisplay pb-5 md:pb-[30px]'}>
+            <div className={'flex flex-wrap items-center text-sm lg:text-base gap-2 font-notoSansDisplay pb-5 md:pb-[30px]'}>
                 <Link href={'/'} className={'text-currentGray'}>{t('navbar.home')}</Link>
                 <FaChevronRight className={'w-3 h-3'}/>
 

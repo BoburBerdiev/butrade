@@ -6,7 +6,7 @@ import i18next from "i18next";
 import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
 
-const DropdownUI = ({list  ,  onClick}) => {
+const DropdownUI = ({list }) => {
   const  [dropdown , setDropdown] = useState(false)
     const dispatch = useDispatch()
   const {lang} = useSelector(state => state.langSlice)

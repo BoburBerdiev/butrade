@@ -20,13 +20,8 @@
       "more":"Подробнее",
       "addToBasket":"Добавить в корзину",
       "sendRequest": "Отправить запрос",
-      "back": "Назад"
-    },
-    "orderInfo": {
-      "total": "Итого:",
-      "product": "товара",
-      "order": "Заказать",
-      "symbolpiece": "шт"
+      "back": "Назад",
+      "addToOrder": "Оформить заказ"
     },
     "basket": {
       "title": "Корзина",
@@ -36,7 +31,11 @@
       "title": "Запрос стоимости",
       "inputName": "Ваше имя",
       "inputPhone": "Номер телефона",
-      "inputAddress": "Адрес"
+      "inputAddress": "Адрес",
+      "count": "шт",
+      "quantity": "Количество:",
+      "total": "Итого:",
+      "products": "товара"
     },
     "footer": {
       "allrights": "Все права защищены.",

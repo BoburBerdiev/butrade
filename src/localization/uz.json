@@ -20,24 +20,22 @@
       "more": "Batafsil",
       "addToBasket": "Savatchaga qo'shish",
       "sendRequest": "So'rov yuborish",
-      "back": "Orqaga"
-    },
-    "orderInfo": {
-      "total": "Jami:",
-      "product": "mahsulot",
-      "order": "Buyurtma qilish",
-      "symbolpiece": "dona"
+      "back": "Orqaga",
+      "addToOrder": "Mahsulotni aniqlash"
     },
     "basket": {
       "title": "Savatcha",
       "noProducts": "Savatingizda hech narsa yo‘q"
-
     },
     "order": {
       "title": "Narx so'rovi",
       "inputName": "Ismingiz",
       "inputPhone": "Telefon raqami",
-      "inputAddress": "Manzil"
+      "inputAddress": "Manzil",
+      "count": "dona",
+      "quantity": "Miqdori:",
+      "total": "Jami:",
+      "products": "ta mahsulot"
     },
     "footer": {
       "allrights": "Barcha huquqlar himoyalangan.",

@@ -1,45 +1,52 @@
 import React from 'react';
 import {Counter, ImageUI} from "@/components";
-import { FaRegTrashAlt } from "react-icons/fa";
+import { IoMdTrash } from "react-icons/io";
 import {useDispatch} from "react-redux";
 import { deleteProduct} from "@/slice/basket";
-const OrderCard = ({image ,title ,saleText, count  , id, orderCard}) => {
+import {useTranslation} from "react-i18next";
+const OrderCard = ({image ,title , count  , id, orderCard}) => {
   const dispatch = useDispatch()
   const handleDelete = (id) => {
     dispatch(deleteProduct(id))
   }
+  const {t} = useTranslation()
     return (
-        <div className={'flex items-center max-md:flex-col gap-x-3 md:justify-between gap-y-5'}>
-            <div className={`flex items-center gap-5 w-full`}>
-                <div className={`relative ${orderCard ? 'w-10 h-10 md:h-14 md:w-14x lg:w-[60px] lg:h-[60px]' : 'w-16 h-16 lg:w-24 lg:h-24'} rounded-lg overflow-hidden shrink-0`}>
+        <div className={'w-full flex items-center justify-between pe-2'}>
+            <div className={`flex items-center gap-2 ${orderCard ? "w-[70%]" : " md:gap-5 w-[60%]"} `}>
+                <div className={`relative ${orderCard ? 'w-10 h-10 md:h-12 md:w-12 lg:w-[60px] lg:h-[60px] ' : 'w-12 h-12 lg:w-24 lg:h-24'} rounded lg:rounded-lg overflow-hidden shrink-0`}>
                     <ImageUI src={image} alt={'Basket image'} />
                 </div>
-                <p className={`font-notoSans ${orderCard ? 'text-xs md:text-[13px] line-clamp-3 max-w-[180px]' : 'text-sm md:text-base max-w-[240px]'}`}>
+                <p className={`font-notoSans w-fit ${orderCard ? "text-xs lg:text-[13px]" : "text-sm  lg:text-base"} lg:line-clamp-3  leading-4 line-clamp-2`}>
                     {title}
                 </p>
             </div>
-            <div className={`flex items-center gap-5 md:justify-between ${orderCard ? 'w-fit shrink-0' : 'w-full '}`}>
-                <p className={'font-notoSans text-sm md:text-base text-[#CECFDB]'}>
-                    {saleText}
+            <div className={`flex items-center justify-end  w-[38%] md:w-[25%]`}>
+                {
+                    orderCard ?
+                <p className={'font-notoSans text-xs lg:text-sm  text-[#CECFDB]'}>
+                    <span>
+                    {count}
+                    </span>
                     {
                         orderCard &&
-                        <span>шт.</span>
+                        <span> {t('order.count')}</span>
                     }
                 </p>
-                <div className={'flex items-center gap-5 md:justify-between'}>
-                    {
-                        orderCard ? <></> :
-                        <Counter count={count} id={id}/>
-                    }
-                    {
-                        orderCard ? <></> :
-                            <button onClick={() => handleDelete(id)}>
-                                 <FaRegTrashAlt className={' w-[23px] h-[23px] text-[#CECFDB] hover:text-red-600'} />
-                            </button>
-                    }
+                        :
 
+                        <div className={'flex items-center w-full justify-between'}>
+                            {
+                                    <Counter count={count} id={id}/>
+                            }
+                            {
+                                    <button className={''} onClick={() => handleDelete(id)}>
+                                        <IoMdTrash className={'text-2xl   md:text-3xl text-red-700 '} />
+                                    </button>
+                            }
+                        </div>
 
-                </div>
+                }
+
             </div>
         </div>
     );

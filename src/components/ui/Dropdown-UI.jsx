@@ -1,4 +1,4 @@
-import { useState} from "react"
+import {useEffect, useState} from "react"
 import { CiGlobe } from "react-icons/ci";
 import {useDispatch, useSelector} from "react-redux";
 import {changleLang} from "@/slice/lang";
@@ -19,9 +19,21 @@ const DropdownUI = ({list }) => {
     i18next.changeLanguage(item.value)
     setDropdown(!dropdown)
   }
+  useEffect(() => {
+      const scrollDrop = () => {
+          if (window.scrollY > 0) {
+              setDropdown(false)
+          }
 
+      }
+      window.addEventListener('scroll', scrollDrop)
 
- 
+      return () => {
+          window.removeEventListener('scroll', scrollDrop)
+
+      }
+  }, [])
+
   return (
     <div className="relative font-notoSansDisplay text-sm z-[2000]">
 

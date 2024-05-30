@@ -1,11 +1,15 @@
-import {Breadcrumb, ImageUI, InfoProductsPrice, OrderCard, SectionTitle, SectionUI} from "@/components";
+import {Breadcrumb, ImageUI, InfoProductsPrice, OrderCard, ProductSlider, SectionTitle, SectionUI} from "@/components";
 import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
+import {langSelect} from "@/helper";
 
 const Basket = () => {
 
 const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
     const {t} = useTranslation()
+    const {lang} = useSelector(state => state.langSlice)
+    const { lastProductList} = useSelector(state => state.lastProductSlice)
+
     return (
         <div>
             <SectionUI className={''}>
@@ -22,7 +26,7 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
                             className={'rounded-[9px] sm:col-span-6 p-4 lg:p-[30px] flex flex-col gap-y-5 max-h-[300px] overflow-y-scroll shadow-[0px_4px_14px_0px_rgba(0,_0,_0,_0.12)]'}>
                           {
                             basket?.map(card => (
-                                <OrderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={card?.title_ru}
+                                <OrderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(lang, card?.title_ru, card?.title_uz)}
                                            saleText={card?.saleText} count={card?.count} />
                             ))
                           }
@@ -43,14 +47,13 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
               }
             </SectionUI>
             {
-                basket?.length > 0 &&
-                    <SectionUI>
-                        <div className={'pb-[30px]'}>
-                            <SectionTitle title={'Вам может понравиться'}/>
-                        </div>
-                        {/*<ProductSlider/>*/}
-                    </SectionUI>
-
+                lastProductList?.length > 0 &&
+                <SectionUI className={'relative z-20'}>
+                    <div className="pb-5 md:pb-[30px] ">
+                        <SectionTitle title={t('catalog.viewedProducts')}/>
+                    </div>
+                    <ProductSlider cards={lastProductList}/>
+                </SectionUI>
             }
         </div>
     );

@@ -1,6 +1,6 @@
 import {
   ButtonUI, FormModal,
-  InfoProductsPrice,
+  InfoProductsPrice, ProductSlider,
   SectionTitle,
   SectionUI,
 } from "@/components";
@@ -16,10 +16,12 @@ import {clearOrder} from "@/slice/basket";
 
 import {useState} from "react";
 
-const Index = () => {
+const Index = ({orderPage}) => {
   const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
   const dispatch = useDispatch()
   const router = useRouter();
+  const { lastProductList} = useSelector(state => state.lastProductSlice)
+
     const {
       register,
       handleSubmit , reset,
@@ -66,11 +68,11 @@ const Index = () => {
 
   return (
       <>
-      <SectionUI className={'min-h-[80vh]'}>
+      <SectionUI className={''}>
         <div className="pb-5 md:pb-[30px]">
           <SectionTitle title={t('order.title')}/>
         </div>
-        <div className={'grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-x-10 pb-5'}>
+        <div className={'grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-x-5 lg:gap-x-10 pb-5'}>
           <form onSubmit={handleSubmit(onSubmit)} className={'col-span-2 grid grid-cols-2 gap-5 '}>
             <div className={'col-span-1'}>
               <InputUI type={'text'} register={...register("name" )} placeholder={t('order.inputName')} />
@@ -84,7 +86,6 @@ const Index = () => {
             <div className={'col-span-2 flex items-center gap-x-7 justify-start'}>
               <ButtonUI btnFill text={t('btn.sendRequest')} type={'submit'} onClick={() =>console.log(2)} />
               <ButtonUI text={t('btn.back')} href={'/basket'} />
-
             </div>
           </form>
           <div className=" col-span-1 ">
@@ -93,6 +94,15 @@ const Index = () => {
         </div>
       </SectionUI>
       <FormModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>
+        {
+            lastProductList?.length > 0 &&
+            <SectionUI className={'relative z-20'}>
+              <div className="pb-5 md:pb-[30px] ">
+                <SectionTitle title={t('catalog.viewedProducts')}/>
+              </div>
+              <ProductSlider cards={lastProductList}/>
+            </SectionUI>
+        }
       </>
   );
 };

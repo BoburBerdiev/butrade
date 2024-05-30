@@ -14,7 +14,7 @@ const Counter = ({count , id}) => {
     }
     return (
         <div>
-            <div className={'flex items-center gap-x-4 '}>
+            <div className={'flex items-center gap-x-2 xl:gap-x-4 '}>
                 <button
                     onClick={() => handleMinus(id)}
                     className={'p-1 rounded-full bg-[#F5F5F5] text-currentBlue hover:text-white hover:bg-currentBlue'}>

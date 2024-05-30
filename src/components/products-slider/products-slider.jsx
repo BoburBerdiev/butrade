@@ -40,7 +40,7 @@ const ProductsSlider = ({className , cards , isCardInner}) => {
             }}
             loop={true}
             modules={[Navigation]}
-            className={`mySwiper relative !pb-14 ${className}`}
+            className={`mySwiper relative pb-5 md:pb-14 ${className}`}
         >
           {
             cards?.map(card => (

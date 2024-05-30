@@ -54,7 +54,7 @@ const CatalogDropdown = () => {
     }
     return (
         <>
-          <ButtonUI type={'button'} leftIcon={<BiMenuAltLeft />} text={filter.text} rightIcon={<IoChevronDownOutline />} onClick={openList}/>
+          <ButtonUI type={'button'} leftIcon={<BiMenuAltLeft />} text={filter?.text} rightIcon={<IoChevronDownOutline />} onClick={openList}/>
             <div className={'relative z-50 '}>
                 <div className={`absolute w-full top-3 z-50  grid duration-200     ${openDropdown ? "grid-rows-[1fr]" : "grid-rows-[0fr]"}`}>
                   <div  className={' overflow-hidden w-full flex flex-col items-center'}>

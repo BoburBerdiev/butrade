@@ -17,14 +17,14 @@ const Contact = ({contact}) => {
         <div className="w-full flex flex-col justify-center items-center gap-[30px]">
           <div className="flex flex-col items-center gap-4 md:gap-[30px]">
             <SectionTitle title={t('contact.title')} centerTrue={true} />
-            <div className="flex flex-col gap-3 md:gap-[25px] items-center text-sm sm:text-base md:text-lg">
+            <div className="flex flex-col gap-5 md:gap-[25px] items-center  text-base md:text-lg">
               <div className="font-notoSans flex flex-col sm:flex-row items-center gap-1.5 md:gap-[30px]">
-                <LuMail className={'w-6 h-[18px] shrink-0 text-currentBlue'}/>
+                <LuMail className={'text-2xl md:text-3xl shrink-0 text-currentBlue'}/>
                 <a
                   href={`mailto:${ contact?.email}`}> {contact?.email}</a>
               </div>
               <div className="font-notoSans flex flex-col sm:flex-row items-center gap-1.5 md:gap-[30px]">
-                <LuPhone  className={'w-6 h-[18px] shrink-0 text-currentBlue'}/>
+                <LuPhone  className={'text-2xl md:text-3xl shrink-0 text-currentBlue'}/>
                 <div className="flex flex-col sm:flex-row sm:gap-[30px]">
                   <a href={`tel:${contact?.phone1}`}> {formatPhoneNumber(contact?.phone1)}</a>
                   <a href={`tel:${contact?.phone2}`}> {formatPhoneNumber(contact?.phone1)}</a>
@@ -32,19 +32,20 @@ const Contact = ({contact}) => {
                 </div>
               </div>
               <div className="font-notoSans flex flex-col sm:flex-row items-center gap-1.5 md:gap-[30px]">
-                <LuMapPin className={'w-6 h-[18px] shrink-0 text-currentBlue'} />
-               <div className="line-clamp-2 text-center">{langSelect(lang , contact?.address_ru , contact?.address_uz)}</div></div>
+                <LuMapPin className={'text-2xl md:text-3xl shrink-0 text-currentBlue'} />
+               <p className="text-center">{langSelect(lang , contact?.address_ru , contact?.address_uz)}</p>
+              </div>
             </div>
             <div className="w-3/4 h-[1px] bg-linegrey"></div>
             <div className="flex text-white gap-5 md:gap-10">
-              <a href={contact?.instagram} className="w-10 h-10 bg-currentBlue rounded-full flex justify-center items-center">
-              <FaInstagram  className="w-5 h-5" />
+              <a href={contact?.instagram} target={'_blank'} className="w-10 h-10 bg-currentBlue rounded-full flex justify-center items-center">
+              <FaInstagram  className="text-xl" />
               </a>
-              <a  href={contact?.facebook} className="w-10 h-10 bg-currentBlue rounded-full flex justify-center items-center">
-                <FaFacebook className="w-5 h-5" />
+              <a  href={contact?.facebook} target={'_blank'} className="w-10 h-10 bg-currentBlue rounded-full flex justify-center items-center">
+                <FaFacebook className="text-xl" />
               </a>
-              <a  href={contact?.telegram} className="w-10 h-10 bg-currentBlue rounded-full flex justify-center items-center">
-                <ImTelegram  className="w-5 h-5" />
+              <a  href={contact?.telegram} target={'_blank'} className="w-10 h-10 bg-currentBlue rounded-full flex justify-center items-center">
+                <ImTelegram  className="text-xl" />
               </a>
             </div>
           </div>

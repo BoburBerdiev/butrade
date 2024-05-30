@@ -17,9 +17,13 @@ const ProductsSlider = ({className , cards , isCardInner}) => {
               prevEl: ".my-navigation-prev",
             }}
             breakpoints={{
-              420: {
-                slidesPerView: 2.1,
-                spaceBetween: 20,
+              0: {
+                slidesPerView: 2,
+                spaceBetween: 2,
+              },
+              300: {
+                slidesPerView: 2,
+                spaceBetween: 5,
               },
               480: {
                 slidesPerView: 2.5,
@@ -40,7 +44,7 @@ const ProductsSlider = ({className , cards , isCardInner}) => {
             }}
             loop={true}
             modules={[Navigation]}
-            className={`mySwiper relative !pb-14 ${className}`}
+            className={`mySwiper relative !pb-2 md:!pb-14 ${className}`}
         >
           {
             cards?.map(card => (
@@ -51,12 +55,12 @@ const ProductsSlider = ({className , cards , isCardInner}) => {
           }
 
           <div
-              className="w-10 h-10 flex items-center border-currentBlue border justify-center bg-white hover:text-white hover:bg-currentBlue duration-75 absolute top-[35%] z-10 left-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-prev ">
-            <GrPrevious className="text-lg"/>
+              className="w-7 h-7 md:w-10 md:h-10 flex items-center border-currentBlue border justify-center bg-white hover:text-white hover:bg-currentBlue duration-75 absolute top-[35%] z-10 left-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-prev ">
+            <GrPrevious className="text-md md:text-lg"/>
           </div>
           <div
-              className="w-10 h-10 flex items-center border-currentBlue border justify-center bg-white hover:text-white hover:bg-currentBlue duration-75 absolute top-[35%] z-10 right-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-next ">
-            <GrNext className="text-lg"/>
+              className="w-7 h-7 md:w-10 md:h-10 flex items-center border-currentBlue border justify-center bg-white hover:text-white hover:bg-currentBlue duration-75 absolute top-[35%] z-10 right-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-next ">
+            <GrNext className="text-md md:text-lg"/>
           </div>
 
         </Swiper>

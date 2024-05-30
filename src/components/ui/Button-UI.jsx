@@ -12,7 +12,7 @@ const ButtonUI = ({text, clasName, onClick, href, leftIcon, rightIcon , type, ta
           </span>
           {
             text &&
-            <span className={`text-xs md:text-sm font-notoSans font-medium ${btnFill ? '' : ` `} `}>
+            <span className={`text-sm font-notoSans font-medium ${btnFill ? '' : ` `} `}>
               {
                 text
               }
@@ -32,7 +32,7 @@ const ButtonUI = ({text, clasName, onClick, href, leftIcon, rightIcon , type, ta
           </span>
           {
             text &&
-            <span className={`text-xs md:text-sm font-notoSans font-medium ${btnFill ? '' : ` `} `}>
+            <span className={`text-sm font-notoSans font-medium ${btnFill ? '' : ` `} `}>
               {
                 text
               }

@@ -13,10 +13,12 @@ import {useRouter} from "next/router";
 const listLang = [
   {
     title: 'Русский',
+    value:'ru',
     id: 0
   },
   {
     title: "O'zbek",
+    value:'uz',
     id: 1
   },
 ]
@@ -39,10 +41,10 @@ const Navbar = ({links}) => {
       <div className="container">
         <div className='flex items-center flex-wrap gap-y-4 md:flex-nowrap justify-between'>
           <div className='max-md:w-full flex items-center justify-between'>
-            <a href="tel:+998901110111" className='block md:hidden'>
+            <a href="tel:+998901110111" className='block md:hidden w-[50px]'>
               <SlPhone className=' text-currentBlue w-5 h-5'/>
             </a>
-            <Link href="/" className='w-[102px] relative block h-12 md:w-[120px] md:h-16 '>
+            <Link href="/" className='relative block h-14 w-[120px] md:h-16 '>
               <ImageUI src={'/image/beaminguniverse-logo.png'} alt={'Butrate Logo'} objectFitContain/>
             </Link>
             <div className={'md:hidden'}>
@@ -62,7 +64,7 @@ const Navbar = ({links}) => {
             </Link>
             <a href='tel:+998901110111' className='flex flex-col items-center '>
               <div className='relative '>
-                <SlPhone className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>      
+                <SlPhone className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>
               </div>
               <span className=' text-sm '>{t('navbar.callPhone')}</span>
             </a>
@@ -72,12 +74,22 @@ const Navbar = ({links}) => {
       </nav>
       <div className='max-md:hidden py-4 lg:py-5 bg-white font-notoSansDisplay font-semibold text-sm border-b'>
         <div className="container w-full overflow-x-hidden navbar-list">
-          <div className={'flex gap-3 overflow-x-scroll min-w-full w-full'}>
+          <div className={'flex gap-3 overflow-x-scroll min-w-full w-screen'}>
              {
                links?.map(link => (
                  <div key={link.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
                ))
              }
+            {
+              links?.map(link => (
+                  <div key={link.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
+              ))
+            }
+            {
+              links?.map(link => (
+                  <div key={link.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
+              ))
+            }
           </div>
         </div>
       </div>

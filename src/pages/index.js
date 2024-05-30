@@ -22,11 +22,11 @@ export default function Home({banners , advantage_title, partners , advantages ,
   return (
       <>
         <header>
-          <SwiperBanner list={banners} styleSlider={'w-full h-[60vh] '}/>
+          <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '}/>
         </header>
         <div className="relative w-full overflow-x-hidden">
           <SectionUI className={'overflow-x-hidden'}
-                     paddingStyle={'pt-[30px] pb-6 md:pt-16 md:pb-10 lg:pt-[100px] lg:pb-[50px]'}>
+                     paddingStyle={'pt-10 pb-5  lg:pt-[100px] lg:pb-[50px]'}>
             <div className="grid md:grid-cols-8">
               <div className="md:col-span-5 flex flex-col gap-5 md:gap-[30px]">
 

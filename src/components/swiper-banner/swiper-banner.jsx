@@ -34,7 +34,7 @@ const SwiperBanner = ({list, productSlider , styleSlider}) => {
 
       </Swiper>
 
-          <div className={`absolute ${productSlider ? "hidden" : ""} top-0 left-0 w-full h-full z-20`}>
+          <div className={`absolute hidden md:block ${productSlider ? "hidden" : ""} top-0 left-0 w-full h-full z-20`}>
               <div className={'container  h-full '}>
                   <div className={'relative h-full'}>
                   <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-[45%] z-10 left-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-prev ">

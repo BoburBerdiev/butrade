@@ -10,8 +10,8 @@ const PartnorsSlider = ({partnors}) => {
   return (
     <>
       <Swiper
-        slidesPerView={1.7}
-        spaceBetween={10}
+        slidesPerView={2}
+        spaceBetween={20}
         mousewheel={true}
         keyboard={true}
         navigation={{
@@ -21,7 +21,7 @@ const PartnorsSlider = ({partnors}) => {
         }}
         breakpoints={{
           420: {
-            slidesPerView: 2,
+            slidesPerView: 3,
             spaceBetween: 20,
           },
           480: {
@@ -43,23 +43,23 @@ const PartnorsSlider = ({partnors}) => {
         }}
         loop={true}
         modules={[Navigation]}
-        className="mySwiper relative "
+        className="mySwiper relative h-[50px] md:h-[100px] "
       >
         {
           partnors?.map(partnor => (
               <div key={partnor.id}>
-            <SwiperSlide className=' w-full aspect-[2/1] md:aspect-[16/5]  relative '>
+            <SwiperSlide className=' w-full   relative  h-full'>
               <ImageUI src={partnor?.image} objectFitContain={true}  alt={partnor?.id}/>
             </SwiperSlide>
               </div>
           ))
         }
 
-          <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-1/2 -translate-y-1/2 z-10 left-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-prev ">
-            <GrPrevious className="text-lg" />
+          <div className="w-7 h-7 md:w-10 md:h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-1/2 -translate-y-1/2 z-10 left-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-prev ">
+            <GrPrevious className="text-md md:text-lg" />
           </div>
-          <div className="w-10 h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-1/2 -translate-y-1/2 z-10 right-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-next ">
-            <GrNext className="text-lg" />
+          <div className="w-7 h-7 md:w-10 md:h-10 flex items-center justify-center bg-white hover:text-white hover:bg-currentBlue duration-200 absolute top-1/2 -translate-y-1/2 z-10 right-0 shadow-[0px_4px_10px_0px_rgba(0,0,0,0.12)] rounded-full my-navigation my-navigation-next ">
+            <GrNext className="text-md md:text-lg" />
           </div>
 
       </Swiper>

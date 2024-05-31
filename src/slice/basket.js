@@ -33,16 +33,16 @@ const basket = createSlice({
                    state.basket= state.basket?.filter(product => product?.id !== findProduct.id)
 
             }
-            state.allCount = state.basket?.length
+            state.allCount = state.basket.length
             let count = 0
             state.basket.map(product => {
-                count += product?.count
+                count += product.count
             })
             state.allProductItemCount = count
 
         },
         countPlusProduct(state , {payload}) {
-            const findProduct = state.basket?.find((product) => product?.id === payload);
+            const findProduct = state.basket.find((product) => product.id === payload);
             if (findProduct) {
                 findProduct.count += 1;
             }

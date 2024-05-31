@@ -20,8 +20,6 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
               {
                 basket?.length > 0 ?
                      <div className={'grid grid-cols-1 sm:grid-cols-8 gap-5'}>
-
-
                         <div
                             className={'rounded-[9px] sm:col-span-6 p-4 lg:p-[30px] flex flex-col gap-y-5 max-h-[300px] overflow-y-scroll shadow-[0px_4px_14px_0px_rgba(0,_0,_0,_0.12)]'}>
                           {

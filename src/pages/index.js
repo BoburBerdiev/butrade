@@ -71,8 +71,18 @@ export default function Home({banners , advantage_title, partners , advantages ,
               <ProductSlider cards={mostOrderProduct}/>
             </SectionUI>
         }
+        {
+            lastProductList?.length > 0 &&
+            <SectionUI className={'relative z-20'}>
+              <div className="pb-5 md:pb-[30px] ">
+                <SectionTitle title={t('catalog.viewedProducts')}/>
+              </div>
+              <ProductSlider cards={lastProductList}/>
+            </SectionUI>
+        }
 
         <div className={'relative z-10'}>
+
           <SectionUI paddingStyle={'py-5 lg:pb-[50px] lg:pt-[100px]'} className={'z-10'}>
             <div className={'relative z-10'}>
               <Advantages title={langSelect(lang, advantage_title?.title_ru, advantage_title?.title_uz)}
@@ -90,17 +100,8 @@ export default function Home({banners , advantage_title, partners , advantages ,
             </div>
           </div>
         </div>
-        {
-          lastProductList?.length > 0 &&
-            <SectionUI className={'relative z-20'}>
-              <div className="pb-5 md:pb-[30px] ">
-                <SectionTitle title={t('catalog.viewedProducts')}/>
-              </div>
-              <ProductSlider cards={lastProductList}/>
-            </SectionUI>
-        }
 
-        <SectionUI paddingStyle={'pt-5 pb-[50px] lg:pt-[50px] lg:pb-[100px]'}>
+        <SectionUI paddingStyle={'pt-5 pb-[50px] lg:pt-[50px] lg:pb-[100px] z-50'}>
           <div className="pb-5 md:pb-[30px]">
             <SectionTitle title={langSelect(lang, partners?.title_ru, partners?.title_uz)}/>
           </div>

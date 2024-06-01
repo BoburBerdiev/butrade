@@ -25,7 +25,7 @@ const Product = ({product}) => {
             <SectionTitle title={langSelect(lang , product?.title_ru , product?.title_uz)}/>
           </div>
           <div className={'grid grid-cols-1 md:grid-cols-11 gap-10 pb-5'}>
-              <SwiperBanner styleSlider={'col-span-1 md:col-span-4 aspect-[3/2] order-1 rounded-lg overflow-hidden'} productSlider list={product?.images}/>
+              <SwiperBanner styleSlider={'col-span-1 md:col-span-4 aspect-[3/2] order-1 rounded-lg overflow-hidden border '} productSlider list={product?.images}/>
             <div className={'col-span-1 md:col-span-4 order-3 md:order-2'}>
               <h2 className='font-medium md:text-lg mb-2.5 text-currentBlue'>{t('catalogInner.littleInfo')}</h2>
               <div className={'space-y-2'}>
@@ -42,18 +42,21 @@ const Product = ({product}) => {
           </div>
 
           <div>
-            <h2 className='font-medium md:text-lg mb-2.5 text-currentBlue'>{t('catalogInner.aboutProduct')}</h2>
+            <h2 className='font-medium text-lg md:text-xl mb-2.5 text-currentBlue'>{t('catalogInner.aboutProduct')}</h2>
             <p>
               {langSelect(lang , product?.text_ru , product?.text_uz)}
             </p>
           </div>
         </SectionUI>
+        {
+          product.length < 0 &&
         <SectionUI>
           <div className={'space-y-6 md:space-y-[30px]'}>
           <SectionTitle title={t('catalogInner.releatedProducts')}/>
           <ProductSlider isCardInner={true}  cards={product?.related_products}/>
           </div>
         </SectionUI>
+        }
       </>
   );
 };

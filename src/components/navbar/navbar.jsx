@@ -62,7 +62,7 @@ const Navbar = ({links}) => {
               </div>
               <span className=' text-sm '>{t('navbar.basket')}</span>
             </Link>
-            <a href='tel:+998901110111' className='flex flex-col items-center '>
+            <a href={`tel:${''}`} className='flex flex-col items-center '>
               <div className='relative '>
                 <SlPhone className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>
               </div>

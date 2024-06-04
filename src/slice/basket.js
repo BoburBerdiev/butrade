@@ -28,7 +28,7 @@ const basket = createSlice({
         countMinusProduct(state , {payload}) {
             const findProduct = state.basket?.find((product) => product?.id === payload);
             if (findProduct) {
-               findProduct?.count > 0 ?
+               findProduct?.count > 1 ?
                 findProduct.count -= 1:
                    state.basket= state.basket?.filter(product => product?.id !== findProduct.id)
 

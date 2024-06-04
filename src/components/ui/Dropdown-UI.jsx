@@ -47,7 +47,7 @@ const DropdownUI = ({list }) => {
 
             </button>
 
-            <div className={`grid ${dropdown ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} max-md:shadow-2xl  max-md:-ml-5 md:-mr-10 absolute left-0 rounded-b top-[30px] bg-white md:bg-currentBlue z-[101] border-light transition-all ease duration-500`}>
+            <div className={`grid ${dropdown ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} max-md:shadow-xl  max-md:-ml-5 md:-mr-10 absolute left-0 rounded-b top-[30px] bg-white md:bg-currentBlue z-[101] border-light transition-all ease duration-500`}>
              <div className=" text-base overflow-hidden">
               <div className=" px-3 py-1 flex flex-col gap-2">
                 {

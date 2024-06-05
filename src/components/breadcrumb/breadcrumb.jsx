@@ -31,8 +31,8 @@ const Breadcrumb = ({catalog, productInner}) => {
         selectPage(asPath)
     }, [])
     const selectCatalog = () => {
-        dispatch(changleCatalogQuery(catalog))
-        dispatch(changleQuery(catalog?.title_ru));
+        dispatch(changleCatalogQuery(catalogQuery))
+        dispatch(changleQuery(catalogQuery?.title_ru));
         router.push('/catalog')
     }
     return (

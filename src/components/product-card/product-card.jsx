@@ -27,9 +27,7 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
   }
 
   const CountActiveProductBasket = useMemo(() => {
-    console.log(basket)
     const findProduct = basket?.find((item) => item?.id === product?.id);
-    console.log(findProduct?.count)
     return findProduct?.count
   } ,[allProductItemCount])
   return (

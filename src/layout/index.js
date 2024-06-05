@@ -24,7 +24,7 @@ const Layout = ({children}) => {
   return (
     <div className='relative '>
       <TopNav contact={contact}/>
-      <Navbar links={catalog}/>
+      <Navbar links={catalog} contact={contact}/>
       <BottomNav catagorys={catalog}/>
       <div className={'min-h-screeny bg-white'}>
         {

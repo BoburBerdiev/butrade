@@ -13,6 +13,8 @@ import axios from "axios";
 import {useSelector} from "react-redux";
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
+import SEO from "@/SEO/SEO";
+import {indexSEO} from "@/SEO/SEO.config";
 
 
 export default function Home({banners , advantage_title, partners , advantages ,about , catalog ,mostOrderProduct}) {
@@ -21,6 +23,15 @@ export default function Home({banners , advantage_title, partners , advantages ,
   const {t} = useTranslation()
   return (
       <>
+        <SEO
+            ogImage={'/image/logo.png'}
+            title={indexSEO[lang].title}
+            description={indexSEO[lang].description}
+            canonical={indexSEO[lang].canonical}
+            ogTitle={indexSEO[lang].ogTitle}
+            ogDescription={indexSEO[lang].ogDescription}
+            ogUrl={'url?'}
+        />
         <header>
           <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '}/>
         </header>
@@ -55,7 +66,7 @@ export default function Home({banners , advantage_title, partners , advantages ,
             <div className="pt-5 md:pt-[30px] grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-5 ">
               {
                 catalog?.map((card) => (
-                    <CategoryBtn card={card} key={card.id}/>
+                    <CategoryBtn card={card} key={card?.id}/>
                 ))
               }
             </div>

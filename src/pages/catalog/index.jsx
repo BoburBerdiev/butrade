@@ -15,6 +15,8 @@ import {AiOutlineLoading3Quarters} from "react-icons/ai";
 import InfiniteScroll from "react-infinite-scroll-component";
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
+import {catalogSEO} from "@/SEO/SEO.config";
+import SEO from "@/SEO/SEO";
 const index = () => {
   const {lang} = useSelector(state => state.langSlice)
   const {isRow} = useSelector(state => state.cardPosition)
@@ -39,8 +41,7 @@ const index = () => {
         enabled: false,
       }
   );
-
-  console.log(queryByOrder)
+  console.log(query)
   useEffect(() => {
     if (query !== null && page === 1) {
       productFilteredRefetch()
@@ -67,6 +68,15 @@ const index = () => {
 
   return (
       <>
+        <SEO
+            ogImage={'/image/logo.png'}
+            title={catalogSEO[lang].title}
+            description={catalogSEO[lang].description}
+            canonical={catalogSEO[lang].canonical}
+            ogTitle={catalogSEO[lang].ogTitle}
+            ogDescription={catalogSEO[lang].ogDescription}
+            ogUrl={'url?'}
+        />
       <SectionUI>
         <Breadcrumb catalog={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         <div className={'pb-[30px]'}>
@@ -89,7 +99,7 @@ const index = () => {
               dataLength={productFiltered?.count || []}>
           {
             productInfinity?.map(card => (
-                    <ProductCard key={card.id} isCatalog={true} product={card} />
+                    <ProductCard key={card?.id} isCatalog={true} product={card} />
             ))
           }
           </InfiniteScroll>

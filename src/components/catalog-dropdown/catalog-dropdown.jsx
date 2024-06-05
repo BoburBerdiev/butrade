@@ -61,7 +61,7 @@ const CatalogDropdown = () => {
                       <div className={'px-2 py-2 bg-white shadow-lg border mb-2 rounded-lg w-[90%] flex flex-col gap-2'}>
                           {
                               lists.map(list =>(
-                                  <p  onClick={ () => handleyOrderBy(list) } className={`cursor-pointer font-notoSansDisplay px-2  rounded-lg  ${list.active ? "bg-currentBlue/20" : ""} `} key={list.id}>{list.text}</p>
+                                  <p  onClick={ () => handleyOrderBy(list) } className={`cursor-pointer font-notoSansDisplay px-2  rounded-lg  ${list.active ? "bg-currentBlue/20" : ""} `} key={list?.id}>{list.text}</p>
                               ))
                           }
                       </div>

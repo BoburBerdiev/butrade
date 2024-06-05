@@ -22,7 +22,7 @@ const listLang = [
     id: 1
   },
 ]
-const Navbar = ({links}) => {
+const Navbar = ({links, contact}) => {
     const {allCount} = useSelector(state => state.basketSlice)
   const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
@@ -34,10 +34,9 @@ const Navbar = ({links}) => {
     dispatch(changleQuery(link?.title_ru));
     router.push('/catalog')
   }
-
   return (
     <>
-      <nav className=' font-notoSansDisplay navbar py-4 md:py-5 border-b border-[#CECFDB] bg-white relative z-[1000]'>
+      <nav className=' font-notoSansDisplay navbar py-4 md:py-5 border-b border-[#CECFDB] bg-white relative z-[100]'>
       <div className="container">
         <div className='flex items-center flex-wrap gap-y-4 md:flex-nowrap justify-between'>
           <div className='max-md:w-full flex items-center justify-between'>
@@ -62,7 +61,7 @@ const Navbar = ({links}) => {
               </div>
               <span className=' text-sm '>{t('navbar.basket')}</span>
             </Link>
-            <a href={`tel:${''}`} className='flex flex-col items-center '>
+            <a href={`tel:${contact?.phone1}`} className='flex flex-col items-center '>
               <div className='relative '>
                 <SlPhone className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>
               </div>
@@ -77,19 +76,9 @@ const Navbar = ({links}) => {
           <div className={'flex gap-3 overflow-x-scroll min-w-full w-screen'}>
              {
                links?.map(link => (
-                 <div key={link.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
+                 <div key={link?.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
                ))
              }
-            {
-              links?.map(link => (
-                  <div key={link.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
-              ))
-            }
-            {
-              links?.map(link => (
-                  <div key={link.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
-              ))
-            }
           </div>
         </div>
       </div>

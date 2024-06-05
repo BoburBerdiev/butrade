@@ -11,7 +11,8 @@ const DropdownUI = ({list }) => {
     const dispatch = useDispatch()
   const {lang} = useSelector(state => state.langSlice)
     const {t} = useTranslation()
-  const openDropdown  = () => {
+  const openDropdown  = (e) => {
+      e.stopPropagation()
     setDropdown(!dropdown)
   }
   const setLang = (item) => {
@@ -24,10 +25,12 @@ const DropdownUI = ({list }) => {
           if (window.scrollY > 0) {
               setDropdown(false)
           }
-
       }
-      window.addEventListener('scroll', scrollDrop)
 
+      window.addEventListener('scroll', scrollDrop)
+      window.addEventListener('click', () => {
+          setDropdown(false)
+      })
       return () => {
           window.removeEventListener('scroll', scrollDrop)
 
@@ -35,9 +38,9 @@ const DropdownUI = ({list }) => {
   }, [])
 
   return (
-    <div className="relative font-notoSansDisplay text-sm z-[2000]">
+    <div className={`relative font-notoSansDisplay text-sm z-[1100]`}>
 
-            <button onClick={openDropdown} className=" text-currentBlue md:text-white flex items-center gap-1.5">
+            <button onClick={(e) => openDropdown(e)} className=" text-currentBlue md:text-white flex items-center gap-1.5" >
               <CiGlobe className="text-lg max-md:hidden"/>
               <span className={'text-sm'}>
                 {
@@ -47,12 +50,12 @@ const DropdownUI = ({list }) => {
 
             </button>
 
-            <div className={`grid ${dropdown ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'} max-md:shadow-xl  max-md:-ml-5 md:-mr-10 absolute left-0 rounded-b top-[30px] bg-white md:bg-currentBlue z-[101] border-light transition-all ease duration-500`}>
+            <div className={`grid ${dropdown ? 'grid-rows-[1fr] border-[0.1px] border-currentBlue' : 'grid-rows-[0fr] border-0 '} max-md:shadow-xl  max-md:-ml-5 md:-mr-10 absolute left-0 rounded-b top-[30px] bg-white md:bg-currentBlue z-[101] border-light transition-all ease duration-500`}>
              <div className=" text-base overflow-hidden">
               <div className=" px-3 py-1 flex flex-col gap-2">
                 {
                   list?.map(item => (
-                    <div className="text-[13px] cursor-pointer " key={item.id} onClick={() => setLang(item)}>
+                    <div className="text-[13px] cursor-pointer " key={item?.id} onClick={() => setLang(item)}>
                       {
                         item.title
                       }

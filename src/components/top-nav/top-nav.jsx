@@ -4,12 +4,10 @@ import { DropdownUI } from '..'
 import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
 import {useSelector} from "react-redux";
-import {useEffect, useState} from "react";
 
 const TopNav = ({contact}) => {
   const {t} = useTranslation()
   const {lang} = useSelector(state => state.langSlice)
-
   const links = [
     {
       name: t('navbar.home'),
@@ -45,7 +43,7 @@ const TopNav = ({contact}) => {
         <ul className='flex gap-3 '>
           {
             links?.map(link => (
-              <li key={link.id} className='text-xs lg:text-sm ' >
+              <li key={link?.id} className='text-xs lg:text-sm ' >
                 <Link href={link.link}>{link.name}</Link>
               </li>
             ))

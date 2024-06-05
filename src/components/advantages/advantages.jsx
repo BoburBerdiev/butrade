@@ -3,7 +3,6 @@ import {langSelect} from "@/helper";
 import {useSelector} from "react-redux";
 
 const Advantages = ({title , subTitle ,advantagesList}) => {
-  console.log(subTitle)
   const {lang} = useSelector(state => state.langSlice)
   return (
       <div className="flex flex-col md:flex-row items-center gap-5 md:gap-12 lg:gap-20 relative z-20">

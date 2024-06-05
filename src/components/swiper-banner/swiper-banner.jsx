@@ -24,7 +24,7 @@ const SwiperBanner = ({list, productSlider , styleSlider}) => {
 
           {
               list?.map(slider => (
-                  <div key={slider.id}>
+                  <div key={slider?.id}>
                       <SwiperSlide className={'w-full h-full relative'}>
                           <ImageUI src={slider?.image} alt={slider?.id}/>
                       </SwiperSlide>
@@ -47,8 +47,8 @@ const SwiperBanner = ({list, productSlider , styleSlider}) => {
               </div>
           </div>
 
-          <div className={`flex items-center justify-center header-slider  absolute w-full ${productSlider ? ' bottom-3' : 'bottom-[30px]'}  left-0 z-10`}>
-              <div className={`flex gap-x-2.5 ${productSlider && ' bg-currentBlue p-1 rounded-lg'}`}>
+          <div className={`flex items-center justify-center header-slider  absolute w-full bottom-3 left-0 z-10`}>
+              <div className={`flex gap-x-2.5 productSlider  bg-currentBlue p-1 rounded-lg`}>
                   <div className="inline-flex items-center gap-x-2. my-pagination pagintaion-slider"></div>
               </div>
           </div>

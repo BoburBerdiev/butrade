@@ -15,8 +15,10 @@ import {useEffect} from "react";
 import {clearOrder} from "@/slice/basket";
 
 import {useState} from "react";
+import { orderSEO} from "@/SEO/SEO.config";
+import SEO from "@/SEO/SEO";
 
-const Index = ({orderPage}) => {
+const Index = () => {
   const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
   const dispatch = useDispatch()
   const router = useRouter();
@@ -29,7 +31,9 @@ const Index = ({orderPage}) => {
     } = useForm()
   const {t} = useTranslation()
   const [isOpenModal, setIsOpenModal] = useState(false)
-
+const openModal = () => {
+    setIsOpenModal(true)
+}
   const {
     mutate: userPost,
     data: userPostData,
@@ -68,6 +72,15 @@ const Index = ({orderPage}) => {
 
   return (
       <>
+        <SEO
+            ogImage={'/image/logo.png'}
+            title={orderSEO[lang].title}
+            description={orderSEO[lang].description}
+            canonical={orderSEO[lang].canonical}
+            ogTitle={orderSEO[lang].ogTitle}
+            ogDescription={orderSEO[lang].ogDescription}
+            ogUrl={'url?'}
+        />
       <SectionUI className={''}>
         <div className="pb-5 md:pb-[30px]">
           <SectionTitle title={t('order.title')}/>
@@ -84,7 +97,7 @@ const Index = ({orderPage}) => {
               <InputUI type={'text'} register={...register("address")} placeholder={t('order.inputAddress')} />
             </div>
             <div className={'col-span-2 flex items-center gap-x-7 justify-start'}>
-              <ButtonUI btnFill text={t('btn.sendRequest')} type={'submit'} onClick={() =>console.log(2)} />
+              <ButtonUI btnFill text={t('btn.sendRequest')} type={'submit'} onClick={openModal} />
               <ButtonUI text={t('btn.back')} href={'/basket'} />
             </div>
           </form>

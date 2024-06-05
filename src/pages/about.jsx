@@ -3,12 +3,23 @@ import {Advantages, Breadcrumb, FigureAnimation, PartnorsSlider, SectionTitle, S
 import {useSelector} from "react-redux";
 import axios from "axios";
 import {langSelect} from "@/helper";
+import {aboutUsSEO} from "@/SEO/SEO.config";
+import SEO from "@/SEO/SEO";
 
 const About = ({advantage_title , advantages , about ,partners}) => {
   const {lang} = useSelector(state => state.langSlice)
 
   return (
 <>
+  <SEO
+      ogImage={'/image/logo.png'}
+      title={aboutUsSEO[lang].title}
+      description={aboutUsSEO[lang].description}
+      canonical={aboutUsSEO[lang].canonical}
+      ogTitle={aboutUsSEO[lang].ogTitle}
+      ogDescription={aboutUsSEO[lang].ogDescription}
+      ogUrl={'url?'}
+  />
   <SectionUI>
     <Breadcrumb/>
     <div className="container relative z-10">

@@ -63,7 +63,7 @@ const BottomNav = ({catagorys}) => {
 
   return (
     <>
-    <div className={`bg-currentBlue md:hidden  text-white  z-50 fixed bottom-0 left-0 w-full   `}>
+    <div className={`bg-currentBlue md:hidden  text-white  z-[9999] fixed bottom-0 left-0 w-full   `}>
       <div className="w-full border-t border-[#243957] pb-2 pt-3.5 relative z-50">
       <div className="container grid grid-cols-3 items-center  gap-20">
         <div className='flex flex-col items-center gap-1 text-[11px] font-notoSansDisplay cursor-pointer' onClick={openMenu}>
@@ -87,7 +87,7 @@ const BottomNav = ({catagorys}) => {
           <div className={'flex flex-col gap-2 items-center'}>
               {
                 href?.map(item => (
-                    <Link key={item.id} href={item.link}>{item.name}</Link>
+                    <Link key={item?.id} href={item?.link}>{item?.name}</Link>
                 ))
               }
           </div>
@@ -97,7 +97,7 @@ const BottomNav = ({catagorys}) => {
           {
             catagorys?.map(link => (
 
-                <div key={link.id} className={'shrink-0 px-2 text-sm border border-white rounded py-2 '} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
+                <div key={link?.id} className={'shrink-0 px-2 text-sm border border-white rounded py-2 '} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
             ))
           }
         </div>

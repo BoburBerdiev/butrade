@@ -62,6 +62,9 @@
         "title": "Ommabop mahsulotlar",
         "href": "Mahsulotlarni ko'rish"
       }
+    },
+    "404Page": {
+      "title": "Sahifa topilmadi"
     }
   }
 }

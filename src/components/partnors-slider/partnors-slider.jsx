@@ -47,11 +47,9 @@ const PartnorsSlider = ({partnors}) => {
       >
         {
           partnors?.map(partnor => (
-              <div key={partnor.id}>
-            <SwiperSlide className=' w-full   relative  h-full'>
+            <SwiperSlide key={partnor?.id} className=' w-full   relative  h-full'>
               <ImageUI src={partnor?.image} objectFitContain={true}  alt={partnor?.id}/>
             </SwiperSlide>
-              </div>
           ))
         }
 

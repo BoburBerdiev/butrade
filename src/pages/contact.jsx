@@ -7,11 +7,24 @@ import {formatPhoneNumber} from "@/helper";
 import {useSelector} from "react-redux";
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
+import SEO from "@/SEO/SEO";
+import {contactSEO} from "@/SEO/SEO.config";
 
 const Contact = ({contact}) => {
   const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
   return (
+      <>
+        <SEO
+            ogImage={'/image/logo.png'}
+            title={contactSEO[lang].title}
+            description={contactSEO[lang].description}
+            canonical={contactSEO[lang].canonical}
+            ogTitle={contactSEO[lang].ogTitle}
+            ogDescription={contactSEO[lang].ogDescription}
+            ogUrl={'url?'}
+        />
+
       <SectionUI>
         <Breadcrumb/>
         <div className="w-full flex flex-col justify-center items-center gap-[30px]">
@@ -57,6 +70,7 @@ const Contact = ({contact}) => {
           </div>
         </div>
       </SectionUI>
+      </>
   );
 };
 

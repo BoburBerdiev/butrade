@@ -2,6 +2,8 @@ import {useTranslation} from "react-i18next";
 import {FaCircleCheck} from "react-icons/fa6";
 
 const FormModal = ({isOpen, setIsOpen}) => {
+
+
     const closeModal = () => {
         setIsOpen(false)
     }

@@ -2,6 +2,8 @@ import {Breadcrumb, ImageUI, InfoProductsPrice, OrderCard, ProductSlider, Sectio
 import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
+import {basketSEO} from "@/SEO/SEO.config";
+import SEO from "@/SEO/SEO";
 
 const Basket = () => {
 
@@ -12,6 +14,15 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
 
     return (
         <div>
+            <SEO
+                ogImage={'/image/logo.png'}
+                title={basketSEO[lang].title}
+                description={basketSEO[lang].description}
+                canonical={basketSEO[lang].canonical}
+                ogTitle={basketSEO[lang].ogTitle}
+                ogDescription={basketSEO[lang].ogDescription}
+                ogUrl={'url?'}
+            />
             <SectionUI className={''}>
                 <Breadcrumb pageName={'Корзина'}/>
                 <div className={'pb-4 md:pb-6 lg:pb-[30px]'}>
@@ -21,7 +32,7 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
                 basket?.length > 0 ?
                      <div className={'grid grid-cols-1 sm:grid-cols-8 gap-5'}>
                         <div
-                            className={'rounded-[9px] sm:col-span-6 p-4 lg:p-[30px] flex flex-col gap-y-5 max-h-[300px] overflow-y-scroll shadow-[0px_4px_14px_0px_rgba(0,_0,_0,_0.12)]'}>
+                            className={'rounded-[9px] sm:col-span-6 p-4 lg:p-[30px] flex flex-col gap-y-5 max-h-[300px] overflow-y-scroll shadow md:shadow-lg'}>
                           {
                             basket?.map(card => (
                                 <OrderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(lang, card?.title_ru, card?.title_uz)}

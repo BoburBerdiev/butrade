@@ -13,12 +13,12 @@ const About = ({advantage_title , advantages , about ,partners}) => {
 <>
   <SEO
       ogImage={'/image/logo.png'}
-      title={aboutUsSEO[lang].title}
-      description={aboutUsSEO[lang].description}
-      canonical={aboutUsSEO[lang].canonical}
-      ogTitle={aboutUsSEO[lang].ogTitle}
-      ogDescription={aboutUsSEO[lang].ogDescription}
-      ogUrl={'url?'}
+      title={langSelect(lang , about?.title_ru , about?.title_uz)}
+      description={langSelect(lang , about?.text_ru , about?.text_uz)}
+      canonical={'www.butrate.uz'}
+      ogTitle={langSelect(lang , about?.title_ru , about?.title_uz)}
+      ogDescription={langSelect(lang , about?.text_ru , about?.text_uz)}
+      ogUrl={'www.butrate.uz'}
   />
   <SectionUI>
     <Breadcrumb/>

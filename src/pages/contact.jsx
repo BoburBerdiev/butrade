@@ -17,12 +17,12 @@ const Contact = ({contact}) => {
       <>
         <SEO
             ogImage={'/image/logo.png'}
-            title={contactSEO[lang].title}
+            title={t('contact.title')}
             description={contactSEO[lang].description}
-            canonical={contactSEO[lang].canonical}
-            ogTitle={contactSEO[lang].ogTitle}
-            ogDescription={contactSEO[lang].ogDescription}
-            ogUrl={'url?'}
+            canonical={'www.butrate.uz'}
+            ogTitle={t('contact.title')}
+            ogDescription={contactSEO[lang].description}
+            ogUrl={'www.butrate.uz'}
         />
 
       <SectionUI>

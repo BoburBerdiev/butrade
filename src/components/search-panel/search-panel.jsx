@@ -46,7 +46,6 @@ const SearchPanel = () => {
     useEffect(() => {
         scrollHidden()
     }, [searchPanel])
-    log
 
     window.addEventListener('click', () =>  closeSearchPanel())
     const hiddenSearch = (e) => {

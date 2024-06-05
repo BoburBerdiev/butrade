@@ -41,7 +41,6 @@ const index = () => {
         enabled: false,
       }
   );
-  console.log(query)
   useEffect(() => {
     if (query !== null && page === 1) {
       productFilteredRefetch()
@@ -70,12 +69,12 @@ const index = () => {
       <>
         <SEO
             ogImage={'/image/logo.png'}
-            title={catalogSEO[lang].title}
+            title={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}
             description={catalogSEO[lang].description}
-            canonical={catalogSEO[lang].canonical}
-            ogTitle={catalogSEO[lang].ogTitle}
-            ogDescription={catalogSEO[lang].ogDescription}
-            ogUrl={'url?'}
+            canonical={"www.butrate.uz"}
+            ogTitle={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}
+            ogDescription={catalogSEO[lang].description}
+            ogUrl={'www.butrate.uz'}
         />
       <SectionUI>
         <Breadcrumb catalog={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>

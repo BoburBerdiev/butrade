@@ -1,6 +1,6 @@
 import {NextSeo} from "next-seo";
 
-const SEO = ({ title, description, canonical, ogUrl, ogTitle, ogDescription, ogImage, twitterHandle, twitterSite, twitterCardType, keywords }) => (
+const SEO = ({ title, description, canonical, ogUrl, ogTitle, ogDescription, ogImage, twitterHandle, twitterSite, twitterCardType }) => (
   <NextSeo
       title={title}
       description={description}
@@ -51,10 +51,6 @@ const SEO = ({ title, description, canonical, ogUrl, ogTitle, ogDescription, ogI
               name: 'robots',
               content: 'index,follow',
           },
-          {
-              name: 'keywords',
-              content: keywords.join(','),
-          }
       ]}
   />
 )

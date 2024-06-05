@@ -27,10 +27,10 @@ export default function Home({banners , advantage_title, partners , advantages ,
             ogImage={'/image/logo.png'}
             title={indexSEO[lang].title}
             description={indexSEO[lang].description}
-            canonical={indexSEO[lang].canonical}
-            ogTitle={indexSEO[lang].ogTitle}
-            ogDescription={indexSEO[lang].ogDescription}
-            ogUrl={'url?'}
+            canonical={'www.butrate.uz'}
+            ogTitle={indexSEO[lang].title}
+            ogDescription={indexSEO[lang].description}
+            ogUrl={'www.butrate.uz'}
         />
         <header>
           <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '}/>

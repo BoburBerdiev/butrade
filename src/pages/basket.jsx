@@ -16,11 +16,11 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
         <div>
             <SEO
                 ogImage={'/image/logo.png'}
-                title={basketSEO[lang].title}
+                title={t('basket.title')}
                 description={basketSEO[lang].description}
-                canonical={basketSEO[lang].canonical}
-                ogTitle={basketSEO[lang].ogTitle}
-                ogDescription={basketSEO[lang].ogDescription}
+                canonical={'www.butrate.uz'}
+                ogTitle={t('basket.title')}
+                ogDescription={basketSEO[lang].description}
                 ogUrl={'url?'}
             />
             <SectionUI className={''}>

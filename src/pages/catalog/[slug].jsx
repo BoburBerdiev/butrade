@@ -16,17 +16,17 @@ const Product = ({product}) => {
   const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
 
-
+  console.log(product)
   return (
       <>
         <SEO
             ogImage={'/image/logo.png'}
             title={langSelect(lang , product?.title_ru , product?.title_uz)}
-            description={langSelect(lang , product?.title_ru , product?.title_uz)}
-            canonical={langSelect(lang , product?.title_ru , product?.title_uz)}
+            description={langSelect(lang , product?.text_ru , product?.text_uz)}
+            canonical={'www.butrate.uz'}
             ogTitle={langSelect(lang , product?.title_ru , product?.title_uz)}
-            ogDescription={langSelect(lang , product?.title_ru , product?.title_uz)}
-            ogUrl={'url?'}
+            ogDescription={langSelect(lang , product?.text_ru , product?.text_uz)}
+            ogUrl={'www.butrate.uz'}
         />
         <SectionUI>
           <Breadcrumb catalog={product?.category} productInner={langSelect(lang , product?.title_ru , product?.title_uz)}/>

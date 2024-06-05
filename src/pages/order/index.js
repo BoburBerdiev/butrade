@@ -20,6 +20,7 @@ import SEO from "@/SEO/SEO";
 
 const Index = () => {
   const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
+  const {lang} = useSelector(state => state.langSlice)
   const dispatch = useDispatch()
   const router = useRouter();
   const { lastProductList} = useSelector(state => state.lastProductSlice)
@@ -74,12 +75,12 @@ const openModal = () => {
       <>
         <SEO
             ogImage={'/image/logo.png'}
-            title={orderSEO[lang].title}
+            title={t('order.title')}
             description={orderSEO[lang].description}
-            canonical={orderSEO[lang].canonical}
-            ogTitle={orderSEO[lang].ogTitle}
-            ogDescription={orderSEO[lang].ogDescription}
-            ogUrl={'url?'}
+            canonical={'www.butrate.uz'}
+            ogTitle={t('order.title')}
+            ogDescription={orderSEO[lang].description}
+            ogUrl={'www.butrate.uz'}
         />
       <SectionUI className={''}>
         <div className="pb-5 md:pb-[30px]">

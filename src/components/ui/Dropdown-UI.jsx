@@ -5,12 +5,13 @@ import {changleLang} from "@/slice/lang";
 import i18next from "i18next";
 import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
+import {AnimatePresence , motion} from 'framer-motion'
 
 const DropdownUI = ({list }) => {
   const  [dropdown , setDropdown] = useState(false)
     const dispatch = useDispatch()
   const {lang} = useSelector(state => state.langSlice)
-    const {t} = useTranslation()
+    const {t , i18n} = useTranslation()
   const openDropdown  = (e) => {
       e.stopPropagation()
     setDropdown(!dropdown)
@@ -44,27 +45,31 @@ const DropdownUI = ({list }) => {
               <CiGlobe className="text-lg max-md:hidden"/>
               <span className={'text-sm'}>
                 {
-                  langSelect(lang ,t('lang.ru') ,  t('lang.uz'))
+                  langSelect( i18n.language ,t('lang.ru') ,  t('lang.uz'))
                 }
               </span>
 
             </button>
 
-            <div className={`grid ${dropdown ? 'grid-rows-[1fr] border-[0.1px] border-currentBlue' : 'grid-rows-[0fr] border-0 '} max-md:shadow-xl  max-md:-ml-5 md:-mr-10 absolute left-0 rounded-b top-[30px] bg-white md:bg-currentBlue z-[101] border-light transition-all ease duration-500`}>
-             <div className=" text-base overflow-hidden">
-              <div className=" px-3 py-1 flex flex-col gap-2">
-                {
-                  list?.map(item => (
-                    <div className="text-[13px] cursor-pointer " key={item?.id} onClick={() => setLang(item)}>
-                      {
-                        item.title
-                      }
-                    </div>
-                  ))    
-                }
-              </div>
-            </div>
-          </div>
+        <AnimatePresence>
+        {
+            dropdown &&
+            <motion.div initial={{  y:'10px', opacity: 0 }}
+                         animate={{ opacity: 1 , y:0 }}
+                         exit={{ opacity: 0 , x:'80px'}}
+                        className={`grid grid-rows-[1fr] border-[0.1px] px-3 py-2 border-currentBlue max-md:shadow-xl  max-md:-ml-5 md:-mr-10 absolute left-0 rounded-b top-[30px] bg-white text-base md:bg-currentBlue z-[101] border-light transition-all ease duration-500`}>
+                        {
+                            list?.map(item => (
+                                <div className="text-[13px] cursor-pointer " key={item?.id} onClick={() => setLang(item)}>
+                                    {
+                                        item.title
+                                    }
+                                </div>
+                            ))
+                        }
+            </motion.div>
+        }
+        </AnimatePresence>
           
         </div>
   )

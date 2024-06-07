@@ -4,12 +4,12 @@ import {useDispatch, useSelector} from "react-redux";
 import {changleBasket} from "@/slice/basket";
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
+import i18next from "i18next";
 
 
 const InfoProductPrice = ({product}) => {
   const {basket, allProductItemCount} = useSelector(state => state.basketSlice)
   const dispatch = useDispatch()
-  const {lang} = useSelector(state => state.langSlice)
 
   const selectProduct = (product) => {
     let sendProduct = null
@@ -49,7 +49,7 @@ const InfoProductPrice = ({product}) => {
                   :
                   <>
                     <h6 className={'text-xl md:text-2xl text-currentBlue font-oswald text-center'}>
-                      {langSelect(lang , product?.title_ru , product?.title_uz)}
+                      {langSelect(i18next.language , product?.title_ru , product?.title_uz)}
                     </h6>
                     <ButtonUI onClick={() => selectProduct(product)} text={t('btn.addToBasket')}
                               clasName={'text-center	flex items-center justify-center w-full'}/>

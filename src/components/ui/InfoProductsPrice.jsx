@@ -3,6 +3,7 @@ import orderCard from "@/components/order-card/order-card";
 import {langSelect} from "@/helper";
 import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
+import {motion} from "framer-motion";
 
 
 const InfoProductPrice = ({basket, allProductItemCount}) => {
@@ -15,8 +16,15 @@ const InfoProductPrice = ({basket, allProductItemCount}) => {
             <div className={'flex flex-col gap-2.5 overflow-y-scroll max-h-[120px]'}>
               {
                   basket && basket?.map(card => (
-                      <OrderCard orderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(lang, card?.title_ru , card?.title_uz)}
-                                 saleText={card?.count} count={card?.count}/>
+                      <motion.div
+                      initial={{scale:0, opacity:0}}
+                      animate={{scale:1, opacity:1}}
+                      exit={{scale:0, opacity:0}}
+
+                      >
+                           <OrderCard orderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(lang, card?.title_ru , card?.title_uz)}
+                                  saleText={card?.count} count={card?.count}/>
+                      </motion.div>
                   ))
               }
             </div>

@@ -5,11 +5,11 @@ import { IoChevronDownOutline } from "react-icons/io5";
 import {useDispatch, useSelector} from "react-redux";
 import {changleFiter, changleQueryByOrder} from "@/slice/catalogFilter";
 import {useTranslation} from "react-i18next";
+import i18next from "i18next";
 const CatalogDropdown = () => {
     const [openDropdown , setOpenDropdown] = useState(false)
     const dispatch = useDispatch()
     const {t} = useTranslation()
-    const {lang} = useSelector(state => state.langSlice)
     const {filter} = useSelector(state => state.catalogFilter)
     const lists = [
         {
@@ -41,7 +41,7 @@ const CatalogDropdown = () => {
             dispatch(changleQueryByOrder(list.value))
         }else {
             let item = {...list}
-            item.value = `${list.value}${lang}`
+            item.value = `${list.value}${i18next.language}`
             dispatch(changleFiter({...item}))
             dispatch(changleQueryByOrder(item.value))
         }

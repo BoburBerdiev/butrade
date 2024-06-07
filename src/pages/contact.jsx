@@ -9,19 +9,19 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 import SEO from "@/SEO/SEO";
 import {contactSEO} from "@/SEO/SEO.config";
+import i18next from "i18next";
 
 const Contact = ({contact}) => {
-  const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
   return (
       <>
         <SEO
             ogImage={'/image/logo.png'}
             title={t('contact.title')}
-            description={contactSEO[lang].description}
+            description={contactSEO[i18next.language].description}
             canonical={'www.butrate.uz'}
             ogTitle={t('contact.title')}
-            ogDescription={contactSEO[lang].description}
+            ogDescription={contactSEO[i18next.language].description}
             ogUrl={'www.butrate.uz'}
         />
 
@@ -46,7 +46,7 @@ const Contact = ({contact}) => {
               </div>
               <div className="font-notoSans flex flex-col sm:flex-row items-center gap-1.5 md:gap-[30px]">
                 <LuMapPin className={'text-2xl md:text-3xl shrink-0 text-currentBlue'} />
-               <p className="text-center">{langSelect(lang , contact?.address_ru , contact?.address_uz)}</p>
+               <p className="text-center">{langSelect(i18next.language , contact?.address_ru , contact?.address_uz)}</p>
               </div>
             </div>
             <div className="w-3/4 h-[1px] bg-linegrey"></div>

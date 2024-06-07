@@ -7,6 +7,7 @@ import {useEffect, useState} from "react";
 import {changleCatalogQuery, changleQuery} from "@/slice/queryParams";
 import {useDispatch, useSelector} from "react-redux";
 import {langSelect} from "@/helper";
+import i18next from "i18next";
 
 const Breadcrumb = ({catalog, productInner}) => {
     const router = useRouter()
@@ -32,7 +33,7 @@ const Breadcrumb = ({catalog, productInner}) => {
     }, [])
     const selectCatalog = () => {
         dispatch(changleCatalogQuery(catalogQuery))
-        dispatch(changleQuery(catalogQuery?.title_ru));
+        dispatch(changleQuery(catalog));
         router.push('/catalog')
     }
     return (
@@ -43,9 +44,9 @@ const Breadcrumb = ({catalog, productInner}) => {
 
                 {
                     productInner ?
-                    <div onClick={() => (selectCatalog())} className={'text-currentGray cursor-pointer'}>{langSelect(lang, catalogQuery?.title_ru, catalogQuery?.title_uz)}</div>
+                    <div onClick={() => (selectCatalog())} className={'text-currentGray cursor-pointer'}>{langSelect(i18next.language, catalogQuery?.title_ru, catalogQuery?.title_uz)}</div>
                         :
-                    <p  className={productInner ? 'text-currentGray' : 'text-currentBlue'}>{catalog ? langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz) : page}</p>
+                    <p  className={productInner ? 'text-currentGray' : 'text-currentBlue'}>{catalog ? langSelect(i18next.language , catalogQuery?.title_ru , catalogQuery?.title_uz) : page}</p>
                 }
 
                 {

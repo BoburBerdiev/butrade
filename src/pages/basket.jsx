@@ -4,12 +4,12 @@ import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
 import {basketSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
+import i18next from "i18next";
 
 const Basket = () => {
 
 const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
     const {t} = useTranslation()
-    const {lang} = useSelector(state => state.langSlice)
     const { lastProductList} = useSelector(state => state.lastProductSlice)
 
     return (
@@ -17,10 +17,10 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
             <SEO
                 ogImage={'/image/logo.png'}
                 title={t('basket.title')}
-                description={basketSEO[lang].description}
+                description={basketSEO[i18next.language].description}
                 canonical={'www.butrate.uz'}
                 ogTitle={t('basket.title')}
-                ogDescription={basketSEO[lang].description}
+                ogDescription={basketSEO[i18next.language].description}
                 ogUrl={'url?'}
             />
             <SectionUI className={''}>
@@ -35,7 +35,7 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
                             className={'rounded-[9px] sm:col-span-6 p-4 lg:p-[30px] flex flex-col gap-y-5 max-h-[300px] overflow-y-scroll shadow md:shadow-lg'}>
                           {
                             basket?.map(card => (
-                                <OrderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(lang, card?.title_ru, card?.title_uz)}
+                                <OrderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(i18next.language, card?.title_ru, card?.title_uz)}
                                            saleText={card?.saleText} count={card?.count} />
                             ))
                           }

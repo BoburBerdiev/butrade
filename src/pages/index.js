@@ -15,21 +15,21 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 import SEO from "@/SEO/SEO";
 import {indexSEO} from "@/SEO/SEO.config";
+import i18next from "i18next";
 
 
 export default function Home({banners , advantage_title, partners , advantages ,about , catalog ,mostOrderProduct}) {
-  const {lang} = useSelector(state => state.langSlice)
   const { lastProductList} = useSelector(state => state.lastProductSlice)
   const {t} = useTranslation()
   return (
       <>
         <SEO
             ogImage={'/image/logo.png'}
-            title={indexSEO[lang].title}
-            description={indexSEO[lang].description}
+            title={indexSEO[i18next.language].title}
+            description={indexSEO[i18next.language].description}
             canonical={'www.butrate.uz'}
-            ogTitle={indexSEO[lang].title}
-            ogDescription={indexSEO[lang].description}
+            ogTitle={indexSEO[i18next.language].title}
+            ogDescription={indexSEO[i18next.language].description}
             ogUrl={'www.butrate.uz'}
         />
         <header>
@@ -41,14 +41,14 @@ export default function Home({banners , advantage_title, partners , advantages ,
             <div className="grid md:grid-cols-8">
               <div className="md:col-span-5 flex flex-col gap-5 md:gap-[30px]">
 
-                <SectionTitle title={langSelect(lang, about?.title_ru, about?.title_uz)}
-                              subTitle={langSelect(lang, about?.text_ru, about?.text_uz)}
+                <SectionTitle title={langSelect(i18next.language, about?.title_ru, about?.title_uz)}
+                              subTitle={langSelect(i18next.language, about?.text_ru, about?.text_uz)}
                 />
                 <ButtonUI text={t('btn.more')} href={'/about'} clasName={'self-center	md:self-start'}/>
               </div>
             </div>
             <div className="absolute top-10 right-4 z-10 w-[250px] xl:w-[350px] aspect-square xl:top-0 max-md:hidden ">
-              <ImageUI src={about?.image} alt={langSelect(lang, about?.title_ru, about?.title_uz)}
+              <ImageUI src={about?.image} alt={langSelect(i18next.language, about?.title_ru, about?.title_uz)}
                        objectFitContain={true}/>
             </div>
           </SectionUI>
@@ -96,8 +96,8 @@ export default function Home({banners , advantage_title, partners , advantages ,
 
           <SectionUI paddingStyle={'py-5 lg:pb-[50px] lg:pt-[100px]'} className={'z-10'}>
             <div className={'relative z-10'}>
-              <Advantages title={langSelect(lang, advantage_title?.title_ru, advantage_title?.title_uz)}
-                          subTitle={langSelect(lang, advantage_title?.title_ru, advantage_title?.title_uz)}
+              <Advantages title={langSelect(i18next.language, advantage_title?.title_ru, advantage_title?.title_uz)}
+                          subTitle={langSelect(i18next.language, advantage_title?.title_ru, advantage_title?.title_uz)}
                           advantagesList={advantages}/>
             </div>
           </SectionUI>
@@ -114,7 +114,7 @@ export default function Home({banners , advantage_title, partners , advantages ,
 
         <SectionUI paddingStyle={'pt-5 pb-[50px] lg:pt-[50px] lg:pb-[100px] z-50'}>
           <div className="pb-5 md:pb-[30px]">
-            <SectionTitle title={langSelect(lang, partners?.title_ru, partners?.title_uz)}/>
+            <SectionTitle title={langSelect(i18next.language, partners?.title_ru, partners?.title_uz)}/>
           </div>
           <PartnorsSlider partnors={partners.partner_images}/>
         </SectionUI>

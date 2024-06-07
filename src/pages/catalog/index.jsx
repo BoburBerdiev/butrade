@@ -17,8 +17,8 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 import {catalogSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
+import i18next from "i18next";
 const index = () => {
-  const {lang} = useSelector(state => state.langSlice)
   const {isRow} = useSelector(state => state.cardPosition)
   const {lastProductList} = useSelector(state => state.lastProductSlice)
   const [page, setPage] = useState(1)
@@ -69,17 +69,17 @@ const index = () => {
       <>
         <SEO
             ogImage={'/image/logo.png'}
-            title={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}
-            description={catalogSEO[lang].description}
+            title={langSelect(i18next.language, catalogQuery?.title_ru , catalogQuery?.title_uz)}
+            description={catalogSEO[i18next.language].description}
             canonical={"www.butrate.uz"}
-            ogTitle={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}
-            ogDescription={catalogSEO[lang].description}
+            ogTitle={langSelect(i18next.language , catalogQuery?.title_ru , catalogQuery?.title_uz)}
+            ogDescription={catalogSEO[i18next.language].description}
             ogUrl={'www.butrate.uz'}
         />
       <SectionUI>
-        <Breadcrumb catalog={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
+        <Breadcrumb catalog={langSelect(i18next.language , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         <div className={'pb-[30px]'}>
-           <SectionTitle title={langSelect(lang , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
+           <SectionTitle title={langSelect(i18next.language , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         </div>
         <div className={'flex items-center pb-5 justify-between'}>
           <div className={'relative'}>

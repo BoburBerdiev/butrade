@@ -17,10 +17,10 @@ import {clearOrder} from "@/slice/basket";
 import {useState} from "react";
 import { orderSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
+import i18next from "i18next";
 
 const Index = () => {
   const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
-  const {lang} = useSelector(state => state.langSlice)
   const dispatch = useDispatch()
   const router = useRouter();
   const { lastProductList} = useSelector(state => state.lastProductSlice)
@@ -76,10 +76,10 @@ const openModal = () => {
         <SEO
             ogImage={'/image/logo.png'}
             title={t('order.title')}
-            description={orderSEO[lang].description}
+            description={orderSEO[i18next.language].description}
             canonical={'www.butrate.uz'}
             ogTitle={t('order.title')}
-            ogDescription={orderSEO[lang].description}
+            ogDescription={orderSEO[i18next.language].description}
             ogUrl={'www.butrate.uz'}
         />
       <SectionUI className={''}>

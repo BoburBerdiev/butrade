@@ -20,7 +20,7 @@ import i18next from "i18next";
 
 export default function Home({banners , advantage_title, partners , advantages ,about , catalog ,mostOrderProduct}) {
   const { lastProductList} = useSelector(state => state.lastProductSlice)
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
   return (
       <>
         <SEO

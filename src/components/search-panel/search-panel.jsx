@@ -5,6 +5,7 @@ import {useTranslation} from "react-i18next";
 import {useForm} from "react-hook-form";
 import {useQuery} from "react-query";
 import apiService from "@/service/axois";
+import {motion} from 'framer-motion'
 const SearchPanel = () => {
     const [searchPanel , setSearchPanel] = useState(false)
     const [inputValue , setInputValue] = useState(null)
@@ -53,14 +54,17 @@ const SearchPanel = () => {
     }
     return (
         <>
-            <form onSubmit={handleSubmit(onSubmit)} className=' w-full border border-currentBlue rounded-[50px] overflow-hidden relative'>
+            <motion.form whileTap={{scale:0.98}} onSubmit={handleSubmit(onSubmit)} className=' w-full border border-currentBlue rounded-[50px] overflow-hidden relative'>
                 <input type="text" {...register("search")} placeholder={t('navbar.searching')}  className='w-full px-5 py-2 lg:px-[30px] lg:py-3 text-sm outline-none lg:text-base text-[#757575] font-notoSansDisplay block' onChange={e => setInputValue(e.target.value)}/>
                 <button type={'submit'} className='absolute -right-0.5 top-0 h-full px-3 pe-3.5 flex items-center text-white bg-currentBlue text-sm md:text-base md:px-4 md:pe-[18px] lg:text-xl'><CgSearch /></button>
-            </form>
+            </motion.form>
             {
                 searchProductFiltered &&
-                <div
-                    className={`fixed  left-0 right-0 w-full duration-200 overflow-hidden h-screen z-[9999] ${searchPanel ? "top-[143px] md:top-[146px] " : " -top-[150%]"}   bg-currentBlue/80`}>
+                <motion.div
+                    initial={{scale:1 , y:0}}
+                    animate={{scale:1 , y:0}}
+                    exit={{scaleY:0 , y:'-30%',opacity:0}}
+                    className={`fixed  left-0 right-0 w-full duration-200  min-h-screen z-[9999] ${searchPanel ? "top-[143px] md:top-[146px] " : " -top-[150%]"}   bg-currentBlue/80`}>
 
                     {
                         searchProductFiltered?.count > 0 ?
@@ -79,9 +83,8 @@ const SearchPanel = () => {
                                 </div>
                             </div>
                     }
-                </div>
+                </motion.div>
             }
-
         </>
     );
 };

@@ -22,12 +22,10 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
    const handleBasket  =(product) => {
       dispatch(changleBasket(product))
   }
-
   const addLastSeeProduct = () => {
     dispatch(changleLastProductList(product))
     router.push(isCardInner ? `${product?.slug}` : `catalog/${product?.slug}`);
   }
-
   const CountActiveProductBasket = useMemo(() => {
     const findProduct = basket?.find((item) => item?.id === product?.id);
     return findProduct?.count
@@ -52,7 +50,6 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
             }
         </div>
       <div className={` ${isRow && isCatalog ? 'w-full col-span-7 md:col-span-3' : 'md:grid md:grid-rows-[0fr] !z-[999] md:group-hover:grid-rows-[1fr] md:absolute top-full duration-200 left-0 right-0 w-full md:bg-white px-2  xl:px-5 md:shadow-lg rounded-b-lg  '} `}>
-        <div className="overflow-hidden ">
           <div className={`md:pb-4 grid ${isRow && isCatalog ? 'grid-cols-7 md:grid-cols-4 gap-x-3' : `grid-cols-4 gap-x-1 md:gap-x-2.5 ${CountActiveProductBasket && '!gap-x-2 lg:!gap-x-5 !grid-cols-3 md:!grid-cols-4' }`}  items-center  `}>
             <div className={` ${isRow && isCatalog ? ` flex flex-col items-center col-span-3 md:col-span-1 ${CountActiveProductBasket ? ' !col-span-2' :'col-span-1'} ` : `${CountActiveProductBasket ? 'col-span-2' :'col-span-1'} `}`}>
                 {
@@ -63,8 +60,10 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
                     >
                        <Counter count={CountActiveProductBasket} id={product?.id}  />
                     </motion.div>
-                    :
+                    :<motion.div initial={{ opacity: 0 , scale: 0.5}}
+                                 animate={{ opacity: 1 ,scale: 1 }}>
                       <ButtonUI clasName={'col-span-1'} leftIcon={<PiShoppingCartSimpleLight className="text-sm md:text-base lg:text-xl"/>} onClick={() => handleBasket(product)} btnIcon={true}/>
+                    </motion.div>
                 }
 
             </div>
@@ -75,7 +74,6 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
                       <ButtonUI onClick={() => addLastSeeProduct(product)} clasName={ `${isRow && isCatalog && `col-span-4 md:col-span-3 ${CountActiveProductBasket > 0 ? ' !col-span-2' :'col-span-3'}` }  ${CountActiveProductBasket > 0 ? ' md:col-span-2' :'col-span-3'} ` } btnCard text={t('btn.more')}/>
               }
           </div>
-        </div>
       </div>
     </div>
   )

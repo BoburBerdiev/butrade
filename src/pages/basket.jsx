@@ -5,7 +5,7 @@ import {langSelect} from "@/helper";
 import {basketSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
 import i18next from "i18next";
-
+import {AnimatePresence} from 'framer-motion'
 const Basket = () => {
 
 const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
@@ -33,14 +33,17 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
                      <div className={'grid grid-cols-1 sm:grid-cols-8 gap-5'}>
                         <div
                             className={'rounded-[9px] sm:col-span-6 p-4 lg:p-[30px] flex flex-col gap-y-5 max-h-[300px] overflow-y-scroll shadow md:shadow-lg'}>
+                          <AnimatePresence mode={"popLayout"}>
+
                           {
                             basket?.map(card => (
                                 <OrderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(i18next.language, card?.title_ru, card?.title_uz)}
                                            saleText={card?.saleText} count={card?.count} />
                             ))
                           }
-                        </div>
+                          </AnimatePresence>
 
+                        </div>
                   <div className={'sm:col-span-2'}>
                     <InfoProductsPrice allProductItemCount={allProductItemCount}/>
                   </div>

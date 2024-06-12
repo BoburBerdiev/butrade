@@ -137,7 +137,6 @@ export async function getServerSideProps({res}) {
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/about/index-about-section/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/categories/`),
     axios.get(`${process.env.NEXT_PUBLIC_API_URL}/all-orders-list`)
-
   ]);
   return {
     props: {

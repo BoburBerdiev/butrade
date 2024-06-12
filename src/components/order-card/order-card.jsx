@@ -4,6 +4,7 @@ import { IoMdTrash } from "react-icons/io";
 import {useDispatch} from "react-redux";
 import { deleteProduct} from "@/slice/basket";
 import {useTranslation} from "react-i18next";
+import {motion } from "framer-motion";
 const OrderCard = ({image ,title , count  , id, orderCard}) => {
   const dispatch = useDispatch()
   const handleDelete = (id) => {
@@ -11,7 +12,10 @@ const OrderCard = ({image ,title , count  , id, orderCard}) => {
   }
   const {t} = useTranslation()
     return (
-        <div className={'w-full flex items-center justify-between pe-2'}>
+        <motion.div
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+             className={'w-full flex items-center justify-between pe-2'}>
             <div className={`flex items-center gap-2 ${orderCard ? "w-[70%]" : " md:gap-5 w-[60%]"} `}>
                 <div className={`relative ${orderCard ? 'w-10 h-10 md:h-12 md:w-12 lg:w-[60px] lg:h-[60px] ' : 'w-12 h-12 lg:w-24 lg:h-24'} rounded lg:rounded-lg overflow-hidden shrink-0`}>
                     <ImageUI src={image} alt={'Basket image'} />
@@ -39,16 +43,16 @@ const OrderCard = ({image ,title , count  , id, orderCard}) => {
                                     <Counter count={count} id={id}/>
                             }
                             {
-                                    <button className={''} onClick={() => handleDelete(id)}>
+                                    <motion.button  whileTap={{ scale: 0.95 }}  onClick={() => handleDelete(id)}>
                                         <IoMdTrash className={'text-2xl   md:text-3xl text-red-700 '} />
-                                    </button>
+                                    </motion.button>
                             }
                         </div>
 
                 }
 
             </div>
-        </div>
+        </motion.div>
     );
 };
 

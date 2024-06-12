@@ -53,9 +53,9 @@ const DropdownUI = ({list }) => {
         <AnimatePresence>
         {
             dropdown &&
-            <motion.div initial={{ y : '-50px', scale: 0.7, opacity: 0 }}
-                        animate={{ y: 0, scale:1, opacity:1}}
-
+            <motion.div initial={{   opacity: 0 }}
+                         animate={{ opacity: 1}}
+                         exit={{ opacity: 0}}
                         className={`grid grid-rows-[1fr] border-[0.1px] px-3 py-2 border-currentBlue max-md:shadow-xl  max-md:-ml-5 md:-mr-10 absolute left-0 rounded-b top-[30px] bg-white text-base md:bg-currentBlue z-[101] border-light transition-all ease duration-500`}>
                         {
                             list?.map(item => (

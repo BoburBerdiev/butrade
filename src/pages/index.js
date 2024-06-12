@@ -116,7 +116,7 @@ export default function Home({banners , advantage_title, partners , advantages ,
           <div className="pb-5 md:pb-[30px]">
             <SectionTitle title={langSelect(i18next.language, partners?.title_ru, partners?.title_uz)}/>
           </div>
-          <PartnorsSlider partnors={partners.partner_images}/>
+          <PartnorsSlider partnors={partners?.partner_images}/>
         </SectionUI>
       </>
   );

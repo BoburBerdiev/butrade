@@ -16,7 +16,6 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
   const dispatch = useDispatch()
   const {isRow} = useSelector(state =>  state.cardPosition)
   const {basket ,allProductItemCount} = useSelector(state => state.basketSlice)
-  const {lang } = useSelector(state => state.langSlice)
   const {t} = useTranslation()
   const router = useRouter()
    const handleBasket  =(product) => {

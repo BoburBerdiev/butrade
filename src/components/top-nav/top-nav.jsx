@@ -3,11 +3,10 @@ import { LuMapPin } from "react-icons/lu";
 import { DropdownUI } from '..'
 import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
-import {useSelector} from "react-redux";
+import i18next from "i18next";
 
 const TopNav = ({contact}) => {
   const {t} = useTranslation()
-  const {lang} = useSelector(state => state.langSlice)
   const links = [
     {
       name: t('navbar.home'),
@@ -52,7 +51,7 @@ const TopNav = ({contact}) => {
         <div className='flex items-center gap-10'>
           <div className='flex items-center gap-1.5'>
             <LuMapPin className='text-lg' />
-            <p className='text-sm '>{langSelect(lang , contact?.address_ru , contact?.address_uz)?.split(',')?.slice(-4)}</p>
+            <p className='text-sm '>{langSelect(i18next.language , contact?.address_ru , contact?.address_uz)?.split(',')?.slice(-4)}</p>
           </div>
           <DropdownUI list={listLang}/>
         </div>

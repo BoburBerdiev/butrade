@@ -6,7 +6,9 @@
       "contact": "Контакты",
       "basket"  : "Корзина",
       "callPhone": "Звонок",
-      "searching": "Поиск товаров"
+      "searching": "Поиск товаров",
+      "catalog": "Каталог",
+      "menu": "Меню"
     },
     "lang": {
       "ru": "Русский",

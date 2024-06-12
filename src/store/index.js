@@ -10,7 +10,6 @@ import {
     REGISTER,
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
-import langSlice from '@/slice/lang'
 import basketSlice from '@/slice/basket'
 import cardPosition from "@/slice/cardPosition";
 import queryParams  from "@/slice/queryParams";
@@ -19,7 +18,7 @@ import catalogFilter from "@/slice/catalogFilter";
 
 
 const rootReducer =combineReducers({
-    langSlice,basketSlice, cardPosition , queryParams,lastProductSlice , catalogFilter
+    basketSlice, cardPosition , queryParams,lastProductSlice , catalogFilter
 })
 
 const persistConfig = {

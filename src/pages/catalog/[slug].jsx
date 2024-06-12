@@ -14,7 +14,6 @@ import i18next from "i18next";
 
 const Product = ({product}) => {
   const {t} = useTranslation()
-
   return (
       <>
         <SEO

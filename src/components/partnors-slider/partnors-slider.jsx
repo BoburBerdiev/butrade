@@ -6,7 +6,6 @@ import {ImageUI} from '..';
 import {GrNext, GrPrevious} from "react-icons/gr";
 
 const PartnorsSlider = ({partnors}) => {
-
   return (
     <>
       <Swiper

@@ -8,13 +8,13 @@ import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
 import {useRouter} from "next/router";
 import {changleCatalogQuery, changleQuery} from "@/slice/queryParams";
+import i18next from "i18next";
 
 const BottomNav = ({catagorys}) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
   const [isOpenCatalog, setIsOpenCatalog] = useState(false)
   const {allCount} = useSelector(state => state.basketSlice)
   const {catalogQuery} = useSelector(state => state.queryParams)
-  const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
   const dispatch = useDispatch()
   const router = useRouter()
@@ -59,8 +59,6 @@ const BottomNav = ({catagorys}) => {
   }, [router])
 
 
-
-
   return (
     <>
     <div className={`bg-currentBlue md:hidden  text-white  z-[9999] fixed bottom-0 left-0 w-full   `}>
@@ -68,18 +66,18 @@ const BottomNav = ({catagorys}) => {
       <div className="container grid grid-cols-3 items-center  gap-20">
         <div className='flex flex-col items-center gap-1 text-[11px] font-notoSansDisplay cursor-pointer' onClick={openMenu}>
           <RxHamburgerMenu className="w-5 h-5 "/>
-          <span>Меню</span>
+          <span>{t('navbar.menu')}</span>
         </div>
         <div className='flex flex-col items-center gap-1 text-[11px] font-notoSansDisplay cursor-pointer' onClick={openCatalog}>
           <IoGridOutline className="w-5 h-5 "/>
-          <span>Каталог</span>
+          <span>{t('navbar.catalog')}</span>
         </div>
         <Link href="/basket" className='flex flex-col items-center gap-1 text-[11px] font-notoSansDisplay cursor-pointer'>
           <div className="relative">
             <LuShoppingCart className="w-5 h-5 "/>
             <span className=' rounded-full bg-white text-currentBlue absolute -top-1 -right-1.5 text-[8px] font-bold px-1 font-rubik'>{allCount}</span>
           </div>
-          <span>Корзина</span>
+          <span>{t('navbar.basket')}</span>
         </Link>
       </div>
       </div>
@@ -97,7 +95,7 @@ const BottomNav = ({catagorys}) => {
           {
             catagorys?.map(link => (
 
-                <div key={link?.id} className={'shrink-0 px-2 text-sm border border-white rounded py-2 '} onClick={() => (selectCatalog(link))} >{langSelect(lang , link?.title_ru , link?.title_uz )}</div>
+                <div key={link?.id} className={'shrink-0 px-2 text-sm border border-white rounded py-2 '} onClick={() => (selectCatalog(link))} >{langSelect(i18next.language , link?.title_ru , link?.title_uz )}</div>
             ))
           }
         </div>

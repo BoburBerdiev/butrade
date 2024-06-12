@@ -11,7 +11,6 @@ import i18next from "i18next";
 
 const Breadcrumb = ({catalog, productInner}) => {
     const router = useRouter()
-    const {lang} = useSelector(state => state.langSlice)
     const {catalogQuery} = useSelector(state => state.queryParams)
     const {t} = useTranslation()
     const {asPath} = useRouter()

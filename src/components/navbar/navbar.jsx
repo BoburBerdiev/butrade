@@ -25,7 +25,6 @@ const listLang = [
 ]
 const Navbar = ({links, contact}) => {
     const {allCount} = useSelector(state => state.basketSlice)
-  const {lang} = useSelector(state => state.langSlice)
   const {t} = useTranslation()
   const  dispatch = useDispatch()
   const router = useRouter()

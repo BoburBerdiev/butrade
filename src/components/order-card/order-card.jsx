@@ -43,7 +43,7 @@ const OrderCard = ({image ,title , count  , id, orderCard}) => {
                                     <Counter count={count} id={id}/>
                             }
                             {
-                                    <motion.button  whileTap={{ scale: 0.95 }}  onClick={() => handleDelete(id)}>
+                                    <motion.button  whileTap={{ scale: 0.6 , opacity:0.9 }}  onClick={() => handleDelete(id)}>
                                         <IoMdTrash className={'text-2xl   md:text-3xl text-red-700 '} />
                                     </motion.button>
                             }

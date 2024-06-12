@@ -71,10 +71,6 @@ const SearchPanel = () => {
 
                             </div>
                     }
-
-
-
-
                 </div>
             }
         </div>

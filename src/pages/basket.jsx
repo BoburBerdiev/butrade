@@ -22,7 +22,7 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
                 ogDescription={basketSEO[i18n.language].description}
                 ogUrl={'url?'}
             />
-            <SectionUI className={''}>
+            <SectionUI >
                 <Breadcrumb />
                 <div className={'pb-4 md:pb-6 lg:pb-[30px]'}>
                    <SectionTitle title={t('basket.title')}/>

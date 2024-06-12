@@ -4,12 +4,11 @@ import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
 import {basketSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
-import i18next from "i18next";
 import {AnimatePresence} from 'framer-motion'
 const Basket = () => {
 
 const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
-    const {t} = useTranslation()
+    const {t, i18n} = useTranslation()
     const { lastProductList} = useSelector(state => state.lastProductSlice)
 
     return (
@@ -17,14 +16,14 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
             <SEO
                 ogImage={'/image/logo.png'}
                 title={t('basket.title')}
-                description={basketSEO[i18next.language].description}
+                description={basketSEO[i18n.language].description}
                 canonical={'www.butrate.uz'}
                 ogTitle={t('basket.title')}
-                ogDescription={basketSEO[i18next.language].description}
+                ogDescription={basketSEO[i18n.language].description}
                 ogUrl={'url?'}
             />
             <SectionUI className={''}>
-                <Breadcrumb pageName={'Корзина'}/>
+                <Breadcrumb />
                 <div className={'pb-4 md:pb-6 lg:pb-[30px]'}>
                    <SectionTitle title={t('basket.title')}/>
                 </div>
@@ -37,7 +36,7 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
 
                           {
                             basket?.map(card => (
-                                <OrderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(i18next.language, card?.title_ru, card?.title_uz)}
+                                <OrderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(i18n.language, card?.title_ru, card?.title_uz)}
                                            saleText={card?.saleText} count={card?.count} />
                             ))
                           }

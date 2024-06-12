@@ -1,21 +1,19 @@
 import {ImageUI, SectionUI} from "@/components";
-import {useTranslation} from "react-i18next";
+import {useTranslation} from "react-i18next"
 import {indexSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
-import {useSelector} from "react-redux";
-import i18next from "i18next";
 
 const Page404 = () => {
-    const {t} = useTranslation()
+    const {t, i18n} = useTranslation()
     return (
         <>
             <SEO
                 ogImage={'/image/logo.png'}
-                title={indexSEO[i18next.language].title}
-                description={indexSEO[i18next.language].description}
+                title={indexSEO[i18n.language].title}
+                description={indexSEO[i18n.language].description}
                 canonical={'www.butrate.uz'}
-                ogTitle={indexSEO[i18next.language].title}
-                ogDescription={indexSEO[i18next.language].description}
+                ogTitle={indexSEO[i18n.language].title}
+                ogDescription={indexSEO[i18n.language].description}
                 ogUrl={'www.butrate.uz'}
             />
             <SectionUI >

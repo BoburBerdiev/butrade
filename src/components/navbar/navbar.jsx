@@ -9,7 +9,6 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 import {changleCatalogQuery, changleQuery} from "@/slice/queryParams";
 import {useRouter} from "next/router";
-import i18next from "i18next";
 
 const listLang = [
   {
@@ -25,7 +24,7 @@ const listLang = [
 ]
 const Navbar = ({links, contact}) => {
     const {allCount} = useSelector(state => state.basketSlice)
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
   const  dispatch = useDispatch()
   const router = useRouter()
 
@@ -76,7 +75,7 @@ const Navbar = ({links, contact}) => {
           <div className={'flex gap-3 overflow-x-scroll min-w-full w-screen'}>
              {
                links?.map(link => (
-                 <div key={link?.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(i18next.language , link?.title_ru , link?.title_uz )}</div>
+                 <div key={link?.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(i18n.language , link?.title_ru , link?.title_uz )}</div>
                ))
              }
           </div>

@@ -17,7 +17,6 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 import {catalogSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
-import i18next from "i18next";
 const index = () => {
   const {isRow} = useSelector(state => state.cardPosition)
   const {lastProductList} = useSelector(state => state.lastProductSlice)
@@ -26,7 +25,7 @@ const index = () => {
   const {query ,catalogQuery} = useSelector(state => state.queryParams)
   const [productInfinity, setProductInfinity] = useState([])
   const [hasMore, setHasMore] = useState(false)
-  const {t} = useTranslation()
+  const {t, i18n} = useTranslation()
   const {
     data: productFiltered,
     refetch: productFilteredRefetch,
@@ -69,17 +68,17 @@ const index = () => {
       <>
         <SEO
             ogImage={'/image/logo.png'}
-            title={langSelect(i18next.language, catalogQuery?.title_ru , catalogQuery?.title_uz)}
-            description={catalogSEO[i18next.language].description}
+            title={langSelect(i18n.language, catalogQuery?.title_ru , catalogQuery?.title_uz)}
+            description={catalogSEO[i18n.language].description}
             canonical={"www.butrate.uz"}
-            ogTitle={langSelect(i18next.language , catalogQuery?.title_ru , catalogQuery?.title_uz)}
-            ogDescription={catalogSEO[i18next.language].description}
+            ogTitle={langSelect(i18n.language , catalogQuery?.title_ru , catalogQuery?.title_uz)}
+            ogDescription={catalogSEO[i18n.language].description}
             ogUrl={'www.butrate.uz'}
         />
       <SectionUI>
-        <Breadcrumb catalog={langSelect(i18next.language , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
+        <Breadcrumb catalog={langSelect(i18n.language , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         <div className={'pb-[30px]'}>
-           <SectionTitle title={langSelect(i18next.language , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
+           <SectionTitle title={langSelect(i18n.language , catalogQuery?.title_ru , catalogQuery?.title_uz)}/>
         </div>
         <div className={'flex items-center pb-5 justify-between'}>
           <div className={'relative'}>

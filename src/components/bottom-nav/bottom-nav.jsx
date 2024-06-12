@@ -8,14 +8,13 @@ import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
 import {useRouter} from "next/router";
 import {changleCatalogQuery, changleQuery} from "@/slice/queryParams";
-import i18next from "i18next";
 
 const BottomNav = ({catagorys}) => {
   const [isOpenMenu, setIsOpenMenu] = useState(false)
   const [isOpenCatalog, setIsOpenCatalog] = useState(false)
   const {allCount} = useSelector(state => state.basketSlice)
   const {catalogQuery} = useSelector(state => state.queryParams)
-  const {t} = useTranslation()
+  const {t,i18n} = useTranslation()
   const dispatch = useDispatch()
   const router = useRouter()
 
@@ -94,8 +93,7 @@ const BottomNav = ({catagorys}) => {
         <div className={'grid grid-cols-2 gap-2 '}>
           {
             catagorys?.map(link => (
-
-                <div key={link?.id} className={'shrink-0 px-2 text-sm border border-white rounded py-2 '} onClick={() => (selectCatalog(link))} >{langSelect(i18next.language , link?.title_ru , link?.title_uz )}</div>
+                <div key={link?.id} className={'shrink-0 px-2 text-sm border border-white rounded py-2 '} onClick={() => (selectCatalog(link))} >{langSelect(i18n.language , link?.title_ru , link?.title_uz )}</div>
             ))
           }
         </div>

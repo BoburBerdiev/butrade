@@ -24,4 +24,4 @@ export { default as Advantages } from  './advantages/advantages'
 export { default as CardPositionBtn } from  './card-positionBtn/card-positionBtn'
 export { default as FormModal } from  './form-modal/form-modal'
 export { default as CatalogDropdown } from  './catalog-dropdown/catalog-dropdown'
-
+export { default as SearchPanelCard } from  './search-panelCard/search-panelCard'

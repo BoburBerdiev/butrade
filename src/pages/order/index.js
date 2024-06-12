@@ -13,11 +13,9 @@ import apiService from "@/service/axois";
 import {useMutation} from "react-query";
 import {useEffect} from "react";
 import {clearOrder} from "@/slice/basket";
-
 import {useState} from "react";
 import { orderSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
-import i18next from "i18next";
 
 const Index = () => {
   const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
@@ -30,7 +28,7 @@ const Index = () => {
       handleSubmit , reset,
 
     } = useForm()
-  const {t} = useTranslation()
+  const {t,i18n} = useTranslation()
   const [isOpenModal, setIsOpenModal] = useState(false)
 const openModal = () => {
     setIsOpenModal(true)
@@ -76,10 +74,10 @@ const openModal = () => {
         <SEO
             ogImage={'/image/logo.png'}
             title={t('order.title')}
-            description={orderSEO[i18next.language].description}
+            description={orderSEO[i18n.language].description}
             canonical={'www.butrate.uz'}
             ogTitle={t('order.title')}
-            ogDescription={orderSEO[i18next.language].description}
+            ogDescription={orderSEO[i18n.language].description}
             ogUrl={'www.butrate.uz'}
         />
       <SectionUI className={''}>
@@ -87,18 +85,18 @@ const openModal = () => {
           <SectionTitle title={t('order.title')}/>
         </div>
         <div className={'grid grid-cols-1 md:grid-cols-3 gap-y-10 md:gap-x-5 lg:gap-x-10 pb-5'}>
-          <form onSubmit={handleSubmit(onSubmit)} className={'col-span-2 grid grid-cols-2 gap-5 '}>
+          <form onSubmit={handleSubmit(onSubmit)} className={'col-span-2 grid grid-cols-2 gap-5 '} >
             <div className={'col-span-1'}>
               <InputUI type={'text'} register={...register("name" )} placeholder={t('order.inputName')} />
             </div>
             <div className={'col-span-1'}>
-            <InputUI  type={'number'} register={...register("phone")} placeholder={t('order.inputPhone')} />
+            <InputUI  type={'text'} register={...register("phone")} placeholder={t('order.inputPhone')} />
             </div>
             <div className={'col-span-2'}>
               <InputUI type={'text'} register={...register("address")} placeholder={t('order.inputAddress')} />
             </div>
             <div className={'col-span-2 flex items-center gap-x-7 justify-start'}>
-              <ButtonUI btnFill text={t('btn.sendRequest')} type={'submit'} onClick={openModal} />
+              <ButtonUI btnFill text={t('btn.sendRequest')} type={'submit'}  />
               <ButtonUI text={t('btn.back')} href={'/basket'} />
             </div>
           </form>
@@ -107,7 +105,7 @@ const openModal = () => {
           </div>
         </div>
       </SectionUI>
-      <FormModal isOpen={isOpenModal} setIsOpen={setIsOpenModal}/>
+      <FormModal isOpen={userPostSuccess} setIsOpen={setIsOpenModal}/>
         {
             lastProductList?.length > 0 &&
             <SectionUI className={'relative z-20'}>

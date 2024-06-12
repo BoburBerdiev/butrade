@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react"
 import { CiGlobe } from "react-icons/ci";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {changleLang} from "@/slice/lang";
 import i18next from "i18next";
 import {useTranslation} from "react-i18next";

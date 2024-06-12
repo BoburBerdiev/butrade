@@ -1,15 +1,16 @@
 import  {useEffect, useState} from 'react';
 import {CgSearch} from "react-icons/cg";
-import {ImageUI, ProductCard} from "@/components";
 import {useTranslation} from "react-i18next";
 import {useForm} from "react-hook-form";
 import {useQuery} from "react-query";
 import apiService from "@/service/axois";
 import {motion} from 'framer-motion'
+import {useRouter} from "next/router";
+import {SearchPanelCard} from "@/components";
 const SearchPanel = () => {
     const [searchPanel , setSearchPanel] = useState(false)
-    const [inputValue , setInputValue] = useState(null)
     const {t} = useTranslation()
+    const router = useRouter()
     const {
         register,
         handleSubmit
@@ -41,51 +42,42 @@ const SearchPanel = () => {
     const closeSearchPanel = () => {
         setSearchPanel(false)
     }
-    const scrollHidden = () => {
-        searchPanel ? document.body.classList.add('overflow-hidden') : document.body.classList.remove('overflow-hidden')
-    }
     useEffect(() => {
-        scrollHidden()
-    }, [searchPanel])
+        setSearchPanel(false)
+    }, [router])
 
-    window.addEventListener('click', () =>  closeSearchPanel())
-    const hiddenSearch = (e) => {
-        e.stopPropagation()
-    }
     return (
-        <>
-            <motion.form whileTap={{scale:0.98}} onSubmit={handleSubmit(onSubmit)} className=' w-full border border-currentBlue rounded-[50px] overflow-hidden relative'>
-                <input type="text" {...register("search")} placeholder={t('navbar.searching')}  className='w-full px-5 py-2 lg:px-[30px] lg:py-3 text-sm outline-none lg:text-base text-[#757575] font-notoSansDisplay block' onChange={e => setInputValue(e.target.value)}/>
+        <div className={'relative '}>
+            <motion.form whileTap={{scale:0.998}} onChange={handleSubmit(onSubmit)} className=' w-full border border-currentBlue rounded-[50px] overflow-hidden relative'>
+                <input type="text" {...register("search")} placeholder={t('navbar.searching')}  className='w-full px-5 py-2 lg:px-[30px] lg:py-3 text-sm outline-none lg:text-base text-[#757575] font-notoSansDisplay block' />
                 <button type={'submit'} className='absolute -right-0.5 top-0 h-full px-3 pe-3.5 flex items-center text-white bg-currentBlue text-sm md:text-base md:px-4 md:pe-[18px] lg:text-xl'><CgSearch /></button>
             </motion.form>
             {
-                searchProductFiltered &&
-                <motion.div
-                    initial={{scale:1 , y:0}}
-                    animate={{scale:1 , y:0}}
-                    exit={{scaleY:0 , y:'-30%',opacity:0}}
-                    className={`fixed  left-0 right-0 w-full duration-200  min-h-screen z-[9999] ${searchPanel ? "top-[143px] md:top-[146px] " : " -top-[150%]"}   bg-currentBlue/80`}>
-
+                searchProduct &&
+                <div className={'absolute top-[110%]  w-full bg-white border rounded-[20px] max-h-[300px] overflow-x-hidden overflow-y-scroll'}>
                     {
                         searchProductFiltered?.count > 0 ?
-                            <div
-                                className={'grid grid-cols-2 md:grid-cols-3 gap-5 lg:grid-cols-4 py-2 md:py-8 lg:py-14 container'} onClick={e => hiddenSearch(e)}>
+                            <div className={'w-full divide-y grid grid-cols-1'} >
                                 {
-                                    searchProductFiltered?.results?.map(card => (
-                                        <ProductCard key={card?.id} product={card}/>
+                                    searchProductFiltered?.results?.map((card, id) => (
+                                        <SearchPanelCard key={id} card={card}/>
                                     ))
                                 }
                             </div>
+
                             :
-                            <div className={'container flex flex-col items-center justify-center w-full h-full'}>
-                                <div className={'aspect-square w-[150px] md:w-[200px] relative'}>
-                                    <ImageUI src={'/image/empty_cart.png'} objectFitContain alt={'no products'}/>
-                                </div>
+
+                            <div>
+
                             </div>
                     }
-                </motion.div>
+
+
+
+
+                </div>
             }
-        </>
+        </div>
     );
 };
 

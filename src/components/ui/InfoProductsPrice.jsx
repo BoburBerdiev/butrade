@@ -1,12 +1,10 @@
 import {ButtonUI, OrderCard} from "@/components";
 import {langSelect} from "@/helper";
-import {useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
 
 
 const InfoProductPrice = ({basket, allProductItemCount}) => {
-    const {lang } = useSelector(state => state.langSlice)
-    const {t} = useTranslation()
+    const {t, i18n} = useTranslation()
   return (
       <div className={'shadow-infoProductPrice lg:py-[30px] py-4 px-3 lg:px-[18px] bg-white rounded-lg'}>
 
@@ -14,7 +12,7 @@ const InfoProductPrice = ({basket, allProductItemCount}) => {
             <div className={'flex flex-col gap-2.5 overflow-y-scroll max-h-[120px]'}>
               {
                   basket && basket?.map(card => (
-                           <OrderCard orderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(lang, card?.title_ru , card?.title_uz)}
+                           <OrderCard orderCard key={card?.id} id={card?.id} image={card?.index_image?.image} title={langSelect(i18n.language, card?.title_ru , card?.title_uz)}
                                   saleText={card?.count} count={card?.count}/>
                   ))
               }

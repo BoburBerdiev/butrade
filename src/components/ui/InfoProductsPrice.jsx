@@ -1,7 +1,7 @@
 import {ButtonUI, OrderCard} from "@/components";
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
-const InfoProductPrice = ({basket, allProductItemCount}) => {
+const InfoProductsPrice = ({basket, allProductItemCount}) => {
     const {t, i18n} = useTranslation()
   return (
       <div className={'shadow-infoProductPrice lg:py-[30px] py-4 px-3 lg:px-[18px] bg-white rounded-lg'}>
@@ -57,4 +57,4 @@ const InfoProductPrice = ({basket, allProductItemCount}) => {
   ;
 };
 
-export default InfoProductPrice;
+export default InfoProductsPrice;

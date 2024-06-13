@@ -3,7 +3,7 @@ import {  Pagination, Navigation } from 'swiper/modules';
 import { ImageUI } from '..';
 import {GrNext, GrPrevious} from "react-icons/gr";
 
-const SwiperBanner = ({list, productSlider , styleSlider}) => {
+const SwiperBanner = ({list, productSlider , styleSlider , priority}) => {
   return (
       <div className={`w-full relative ${styleSlider}`}>
       <Swiper
@@ -26,7 +26,7 @@ const SwiperBanner = ({list, productSlider , styleSlider}) => {
               list?.map(slider => (
                   <div key={slider?.id}>
                       <SwiperSlide className={'w-full h-full relative'}>
-                          <ImageUI src={slider?.image} alt={slider?.id}/>
+                          <ImageUI src={slider?.image} alt={slider?.id} priority={priority}/>
                       </SwiperSlide>
                   </div>
               ))

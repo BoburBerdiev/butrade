@@ -26,7 +26,7 @@ const SearchPanelCard = ({card}) => {
                       <p className={'font-notoSans text-neutral-500 text-xs md:text-sm'}>{langSelect(i18n.language, card?.category?.title_ru, card?.category?.title_uz )}</p>
                   </div>
             </div>
-            <FaChevronRight className={'text-sm text-currentBlue group-hover:translate-x-2 duration-200'} />
+            <FaChevronRight className={'text-xs lg:text-sm text-currentBlue group-hover:translate-x-2 duration-200'} />
         </div>
     );
 };

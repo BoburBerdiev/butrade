@@ -2,10 +2,7 @@ import {
   Advantages,
   ButtonUI,
   CategoryBtn,
-  FigureAnimation,
   ImageUI,
-  PartnorsSlider,
-  ProductSlider,
   SectionTitle,
   SectionUI, SwiperBanner
 } from "@/components";
@@ -15,8 +12,17 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 import SEO from "@/SEO/SEO";
 import {indexSEO} from "@/SEO/SEO.config";
+import dynamic  from "next/dynamic";
 
-
+const FigureAnimation = dynamic(() => import('@/components/figure-animation/figure-animation'), {
+  ssr: false
+})
+const ProductSlider = dynamic(() => import('@/components/products-slider/products-slider'), {
+  ssr: false
+})
+const PartnorsSlider = dynamic(() => import('@/components/partnors-slider/partnors-slider'), {
+  ssr: false
+})
 export default function Home({banners , advantage_title, partners , advantages ,about , catalog ,mostOrderProduct}) {
   const { lastProductList} = useSelector(state => state.lastProductSlice)
   const {t, i18n} = useTranslation()
@@ -32,7 +38,7 @@ export default function Home({banners , advantage_title, partners , advantages ,
             ogUrl={'www.butrate.uz'}
         />
         <header>
-          <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '}/>
+          <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '} priority={100}/>
         </header>
         <div className="relative w-full overflow-x-hidden">
           <SectionUI className={'overflow-x-hidden'}

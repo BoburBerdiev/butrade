@@ -1,23 +1,18 @@
 import {useEffect, useState} from "react"
 import { CiGlobe } from "react-icons/ci";
-import {useDispatch} from "react-redux";
-import {changleLang} from "@/slice/lang";
-import i18next from "i18next";
 import {useTranslation} from "react-i18next";
 import {langSelect} from "@/helper";
-import {AnimatePresence , motion} from 'framer-motion'
+import {AnimatePresence , m} from 'framer-motion'
 
 const DropdownUI = ({list }) => {
   const  [dropdown , setDropdown] = useState(false)
-    const dispatch = useDispatch()
     const {t , i18n} = useTranslation()
   const openDropdown  = (e) => {
       e.stopPropagation()
     setDropdown(!dropdown)
   }
   const setLang = (item) => {
-    dispatch(changleLang(item.value))
-    i18next.changeLanguage(item.value)
+    i18n.changeLanguage(item.value)
     setDropdown(!dropdown)
   }
   useEffect(() => {
@@ -33,7 +28,6 @@ const DropdownUI = ({list }) => {
       })
       return () => {
           window.removeEventListener('scroll', scrollDrop)
-
       }
   }, [])
 
@@ -53,7 +47,7 @@ const DropdownUI = ({list }) => {
         <AnimatePresence>
         {
             dropdown &&
-            <motion.div initial={{   opacity: 0 }}
+            <m.div initial={{   opacity: 0 }}
                          animate={{ opacity: 1}}
                          exit={{ opacity: 0}}
                         className={`grid grid-rows-[1fr] border-[0.1px] px-3 py-2 border-currentBlue max-md:shadow-xl  max-md:-ml-5 md:-mr-10 absolute left-0 rounded-b top-[30px] bg-white text-base md:bg-currentBlue z-[101] border-light transition-all ease duration-500`}>
@@ -66,7 +60,7 @@ const DropdownUI = ({list }) => {
                                 </div>
                             ))
                         }
-            </motion.div>
+            </m.div>
         }
         </AnimatePresence>
           

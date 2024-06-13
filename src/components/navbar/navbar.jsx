@@ -39,7 +39,7 @@ const Navbar = ({links, contact}) => {
       <div className="container">
         <div className='flex items-center flex-wrap gap-y-4 md:flex-nowrap justify-between'>
           <div className='max-md:w-full flex items-center justify-between'>
-            <a href="tel:+998901110111" className='block md:hidden w-[50px]'>
+            <a href={`tel:${contact?.phone1}`} className='block md:hidden w-[50px]'>
               <SlPhone className=' text-currentBlue w-5 h-5'/>
             </a>
             <Link href="/" className='relative block h-14 w-[120px] md:h-16 '>

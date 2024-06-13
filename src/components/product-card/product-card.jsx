@@ -9,7 +9,7 @@ import {useTranslation} from "react-i18next";
 import {useRouter} from "next/router";
 import  {changleLastProductList} from "@/slice/lastProduct";
 import { FaArrowRightToBracket } from "react-icons/fa6";
-import {motion} from "framer-motion";
+import {m} from "framer-motion";
 
 const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
   const dispatch = useDispatch()
@@ -52,16 +52,16 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
             <div className={` ${isRow && isCatalog ? ` flex flex-col items-center col-span-3 md:col-span-1 ${CountActiveProductBasket ? ' !col-span-2' :'col-span-1'} ` : `${CountActiveProductBasket ? 'col-span-2' :'col-span-1'} `}`}>
                 {
                 CountActiveProductBasket > 0  ?
-                    <motion.div
+                    <m.div
                         initial={{ opacity: 0 , scale: 0.5}}
                         animate={{ opacity: 1 ,scale: 1 }}
                     >
                        <Counter count={CountActiveProductBasket} id={product?.id}  />
-                    </motion.div>
-                    :<motion.div initial={{ opacity: 0 , scale: 0.5}}
+                    </m.div>
+                    :<m.div initial={{ opacity: 0 , scale: 0.5}}
                                  animate={{ opacity: 1 ,scale: 1 }}>
                       <ButtonUI clasName={'col-span-1'} leftIcon={<PiShoppingCartSimpleLight className="text-sm md:text-base lg:text-xl"/>} onClick={() => handleBasket(product)} btnIcon={true}/>
-                    </motion.div>
+                    </m.div>
                 }
 
             </div>

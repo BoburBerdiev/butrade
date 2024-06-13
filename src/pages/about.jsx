@@ -1,9 +1,12 @@
-import {Advantages, Breadcrumb, FigureAnimation, PartnorsSlider, SectionTitle, SectionUI} from "@/components";
+import {Advantages, Breadcrumb,  PartnorsSlider, SectionTitle, SectionUI} from "@/components";
 import axios from "axios";
 import {langSelect} from "@/helper";
 import SEO from "@/SEO/SEO";
 import {useTranslation} from "react-i18next";
-
+import dynamic from "next/dynamic";
+const FigureAnimation = dynamic(() => import('@/components/figure-animation/figure-animation'), {
+  ssr: false
+})
 const About = ({advantage_title , advantages , about ,partners}) => {
     const {i18n} = useTranslation()
   return (

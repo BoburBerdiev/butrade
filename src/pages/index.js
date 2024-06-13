@@ -15,8 +15,6 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 import SEO from "@/SEO/SEO";
 import {indexSEO} from "@/SEO/SEO.config";
-
-
 export default function Home({banners , advantage_title, partners , advantages ,about , catalog ,mostOrderProduct}) {
   const { lastProductList} = useSelector(state => state.lastProductSlice)
   const {t, i18n} = useTranslation()

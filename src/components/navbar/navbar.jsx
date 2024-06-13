@@ -9,7 +9,7 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 import {changleCatalogQuery, changleQuery} from "@/slice/queryParams";
 import {useRouter} from "next/router";
-
+import {motion} from 'framer-motion'
 const listLang = [
   {
     title: 'Русский',
@@ -22,13 +22,12 @@ const listLang = [
     id: 1
   },
 ]
-const Navbar = ({links, contact}) => {
+const Navbar = ({catalog, contact}) => {
   const {allCount} = useSelector(state => state.basketSlice)
   const {t, i18n} = useTranslation()
   const  dispatch = useDispatch()
   const router = useRouter()
 
-  console.log('ota')
   const selectCatalog = (link) => {
     dispatch(changleCatalogQuery(link))
     dispatch(changleQuery(link?.title_ru));
@@ -40,9 +39,9 @@ const Navbar = ({links, contact}) => {
       <div className="container">
         <div className='flex items-center flex-wrap gap-y-4 md:flex-nowrap justify-between'>
           <div className='max-md:w-full flex items-center justify-between'>
-            <a href={`tel:${contact?.phone1}`} className='block md:hidden w-[50px]'>
+            <motion.a whileTap={{scale:0.99, opacity:0.7}} href={`tel:${contact?.phone1}`} className='block md:hidden w-[50px]'>
               <SlPhone className=' text-currentBlue w-5 h-5'/>
-            </a>
+            </motion.a>
             <Link href="/" className='relative block h-14 w-[120px] md:h-16 '>
               <ImageUI src={'/image/beaminguniverse-logo.png'} alt={'Butrate Logo'} objectFitContain/>
             </Link>
@@ -54,19 +53,21 @@ const Navbar = ({links, contact}) => {
             <SearchPanel/>
           </div>
           <div className='hidden md:flex items-center gap-5 xl:gap-10 text-currentBlue'>
+            <motion.div whileTap={{scale:0.99, opacity:0.7}}>
             <Link href={'/basket'} className='flex flex-col items-center '>
               <div className='relative '>
-                <PiShoppingCartSimple className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>      
+                <PiShoppingCartSimple className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>
                 <span className='lg:px-1.5 px-1 py-0.5 rounded-full bg-currentBlue text-white absolute -top-2 -right-1.5 text-[7px] lg:text-[9px]'>{allCount}</span>
               </div>
               <span className=' text-sm '>{t('navbar.basket')}</span>
             </Link>
-            <a href={`tel:${contact?.phone1}`} className='flex flex-col items-center '>
+            </motion.div>
+            <motion.a whileTap={{scale:0.99, opacity:0.7}} href={`tel:${contact?.phone1}`} className='flex flex-col items-center '>
               <div className='relative '>
                 <SlPhone className=' text-currentBlue w-6 h-6 lg:w-7 lg:h-7'/>
               </div>
               <span className=' text-sm '>{t('navbar.callPhone')}</span>
-            </a>
+            </motion.a>
           </div>
         </div>
       </div>
@@ -75,7 +76,7 @@ const Navbar = ({links, contact}) => {
         <div className="container w-full overflow-x-hidden navbar-list">
           <div className={'flex gap-3 overflow-x-scroll min-w-full w-screen'}>
              {
-               links?.map(link => (
+               catalog?.map(link => (
                  <div key={link?.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(i18n.language , link?.title_ru , link?.title_uz )}</div>
                ))
              }

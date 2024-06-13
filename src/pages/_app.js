@@ -30,7 +30,6 @@ export default function App({ Component, pageProps }) {
         <HydrationProvider>
           <QueryClientProvider client={queryClient}>
             <Provider store={store}>
-              {typeof window !== 'undefined' ? (
                   <PersistGate loading={null} persistor={persistor}>
                     <Client>
                       <main className={` ${oswald.variable} ${notoSansDisplay.variable}`}>
@@ -40,15 +39,6 @@ export default function App({ Component, pageProps }) {
                       </main>
                     </Client>
                   </PersistGate>
-              ) : (
-                  <Client>
-                    <main className={` ${oswald.variable} ${notoSansDisplay.variable}`}>
-                      <Layout>
-                        <Component {...pageProps} />
-                      </Layout>
-                    </main>
-                  </Client>
-              )}
             </Provider>
           </QueryClientProvider>
         </HydrationProvider>

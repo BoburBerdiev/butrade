@@ -58,7 +58,7 @@ const {basket ,allProductItemCount} =  useSelector(state =>state.basketSlice)
               }
             </SectionUI>
             {
-                lastProductList?.length > 0 &&
+                basket?.length > 0 && lastProductList?.length > 0 &&
                 <SectionUI className={'relative z-20'}>
                     <div className="pb-5 md:pb-[30px] ">
                         <SectionTitle title={t('catalog.viewedProducts')}/>

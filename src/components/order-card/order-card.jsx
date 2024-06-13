@@ -4,7 +4,7 @@ import { IoMdTrash } from "react-icons/io";
 import {useDispatch} from "react-redux";
 import { deleteProduct} from "@/slice/basket";
 import {useTranslation} from "react-i18next";
-import {m } from "framer-motion";
+import {motion } from "framer-motion";
 const OrderCard = ({image ,title , count  , id, isOrderCard}) => {
   const dispatch = useDispatch()
   const handleDelete = (id) => {
@@ -12,7 +12,7 @@ const OrderCard = ({image ,title , count  , id, isOrderCard}) => {
   }
   const {t} = useTranslation()
     return (
-        <m.div
+        <motion.div
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0.8, opacity: 0 }}
              className={'w-full flex items-center justify-between pe-2'}>
@@ -43,16 +43,16 @@ const OrderCard = ({image ,title , count  , id, isOrderCard}) => {
                                     <Counter count={count} id={id}/>
                             }
                             {
-                                    <m.button  whileTap={{ scale: 0.6 , opacity:0.9 }}  onClick={() => handleDelete(id)}>
+                                    <motion.button  whileTap={{ scale: 0.6 , opacity:0.9 }}  onClick={() => handleDelete(id)}>
                                         <IoMdTrash className={'text-2xl   md:text-3xl text-red-700 '} />
-                                    </m.button>
+                                    </motion.button>
                             }
                         </div>
 
                 }
 
             </div>
-        </m.div>
+        </motion.div>
     );
 };
 

@@ -3,10 +3,8 @@ import { ImageUI } from '..';
 
 const FigureAnimation = ({ radioCircleLg, radioCircleXl, variableID, duration,  }) => {
   const [circleStyle, setCircleStyle] = useState('');
- 
   useEffect(() => {
     const circleXlKeyframes = `
-      
 .animation-circle-${variableID} {
   animation: circle-${variableID} ${duration}s linear infinite;
 }

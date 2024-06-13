@@ -5,7 +5,7 @@ import {
   SectionUI,
 } from "@/components";
 import {useRouter} from "next/router";
-import InputUI from "@/components/ui/Input-UI";
+import InputUI from "@/components/ui/inputUI";
 import {useDispatch, useSelector} from "react-redux";
 import {useTranslation} from "react-i18next";
 import {useForm} from "react-hook-form";
@@ -94,7 +94,7 @@ const Index = () => {
           </div>
         </div>
       </SectionUI>
-      <FormModal isOpen={userPostSuccess} setIsOpen={setIsOpenModal}/>
+      <FormModal isOpen={userPostSuccess}/>
         {
             lastProductList?.length > 0 &&
             <SectionUI className={'relative z-20'}>

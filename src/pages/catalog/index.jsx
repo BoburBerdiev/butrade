@@ -2,7 +2,6 @@ import {
   Breadcrumb,
   CardPositionBtn,
   CatalogDropdown,
-  ProductCard,
   ProductSlider,
   SectionTitle,
   SectionUI
@@ -17,6 +16,11 @@ import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
 import {catalogSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
+import dynamic from "next/dynamic";
+const ProductCard = dynamic(() => import('@/components/product-card/product-card'), {
+  ssr: false
+})
+
 const index = () => {
   const {isRow} = useSelector(state => state.cardPosition)
   const {lastProductList} = useSelector(state => state.lastProductSlice)
@@ -26,6 +30,7 @@ const index = () => {
   const [productInfinity, setProductInfinity] = useState([])
   const [hasMore, setHasMore] = useState(false)
   const {t, i18n} = useTranslation()
+
   const {
     data: productFiltered,
     refetch: productFilteredRefetch,

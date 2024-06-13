@@ -1,7 +1,7 @@
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Navigation} from 'swiper/modules';
-import {ProductCard} from '..';
 import {GrNext, GrPrevious} from "react-icons/gr";
+import {ProductCard} from "@/components";
 
 const ProductsSlider = ({className , cards , isCardInner}) => {
   return (

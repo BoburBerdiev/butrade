@@ -9,5 +9,4 @@ const InfoProductUI = ({card ,title ,text}) => {
       </div>
   );
 };
-
 export default InfoProductUI;

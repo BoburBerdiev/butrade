@@ -13,7 +13,6 @@ import apiService from "@/service/axois";
 import {useMutation} from "react-query";
 import {useEffect} from "react";
 import {clearOrder} from "@/slice/basket";
-import {useState} from "react";
 import { orderSEO} from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
 
@@ -22,29 +21,21 @@ const Index = () => {
   const dispatch = useDispatch()
   const router = useRouter();
   const { lastProductList} = useSelector(state => state.lastProductSlice)
-
     const {
       register,
       handleSubmit , reset,
-
     } = useForm()
   const {t,i18n} = useTranslation()
-  const [isOpenModal, setIsOpenModal] = useState(false)
-const openModal = () => {
-    setIsOpenModal(true)
-}
   const {
     mutate: userPost,
     data: userPostData,
     isSuccess: userPostSuccess,
   } = useMutation(({url, data}) => apiService.postData(url, data));
-
   const onSubmit = (data) => {
     let userBasket = null
     let orderList =[]
     basket?.map(item => {
       orderList.push({product_id : item?.id , count: item?.count})
-
     })
     userBasket= {
       name: data?.name,
@@ -52,8 +43,6 @@ const openModal = () => {
       address: data?.address,
       order: orderList
     }
-
-
     if(orderList.length === basket.length) {
       userPost({url: "/product-orders/", data: userBasket});
       reset();

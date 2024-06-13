@@ -1,7 +1,6 @@
 import {useTranslation} from "react-i18next";
 import {FaCircleCheck} from "react-icons/fa6";
-import {useEffect} from "react";
-import {AnimatePresence , motion} from 'framer-motion'
+import {AnimatePresence , m} from 'framer-motion'
 
 const overlayVariants = {
     visible: {
@@ -36,11 +35,11 @@ const FormModal = ({isOpen, setIsOpen}) => {
             <AnimatePresence>
             {
                 isOpen &&
-        <motion.div initial="hidden"
+        <m.div initial="hidden"
                animate="visible"
                exit="hidden"
                variants={overlayVariants}  className={'w-screen flex flex-col items-center justify-center  h-screen fixed top-0 left-0 right-0 bottom-0 bg-currentBlue/60 z-[99999]'} onClick={(e ) =>  closeModal(e)}>
-            <motion.div initial={{ y: "100vh" ,scaleY: 0 }}
+            <m.div initial={{ y: "100vh" ,scaleY: 0 }}
                         animate={{ y: 0 , scaleY: 1 }}
                         exit={{  y: "100vh" , scaleY:0 }}
                         transition={{ duration: 0.4 }} className={'bg-white rounded-lg p-5 min-w-[300px] md:p-10 md:w-[500px] flex flex-col items-center gap-5'} onClick={stopPropagation}>
@@ -56,8 +55,8 @@ const FormModal = ({isOpen, setIsOpen}) => {
                     {t('modal.text')}
                 </p>
                </div>
-            </motion.div>
-        </motion.div>
+            </m.div>
+        </m.div>
             }
                 </AnimatePresence>
         </>

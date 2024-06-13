@@ -4,8 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {changleBasket} from "@/slice/basket";
 import {langSelect} from "@/helper";
 import {useTranslation} from "react-i18next";
-
-
 const InfoProductPrice = ({product}) => {
   const {basket, allProductItemCount} = useSelector(state => state.basketSlice)
   const dispatch = useDispatch()
@@ -60,5 +58,4 @@ const InfoProductPrice = ({product}) => {
   )
       ;
 };
-
 export default InfoProductPrice;

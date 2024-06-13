@@ -2,6 +2,7 @@ import { BottomNav, Footer, Navbar, TopNav } from '@/components'
 import apiService from "@/service/axois";
 import {useQuery} from "react-query";
 import {useEffect} from "react";
+import {domAnimation, LazyMotion} from "framer-motion";
 
 const Layout = ({children}) => {
   const { data: catalog,refetch:refetchCatalog } = useQuery("catalog", () =>
@@ -25,15 +26,17 @@ const Layout = ({children}) => {
     console.log('doda')
   return (
     <div className='relative '>
-      <TopNav contact={contact}/>
-      <Navbar links={catalog} contact={contact}/>
-      <BottomNav catagorys={catalog}/>
-      <div className={'min-h-screeny bg-white'}>
-        {
-          children
-        }
-      </div>
-      <Footer/>
+      <LazyMotion features={domAnimation}>
+        <TopNav contact={contact}/>
+        <Navbar links={catalog} contact={contact}/>
+        <BottomNav catagorys={catalog}/>
+        <div className={'min-h-screen bg-white'}>
+          {
+            children
+          }
+        </div>
+        <Footer/>
+      </LazyMotion>
     </div>
   )
 }

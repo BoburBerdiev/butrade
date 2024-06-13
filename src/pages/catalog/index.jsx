@@ -21,6 +21,8 @@ const ProductCard = dynamic(() => import('@/components/product-card/product-card
   ssr: false
 })
 
+console.log(1)
+
 const index = () => {
   const {isRow} = useSelector(state => state.cardPosition)
   const {lastProductList} = useSelector(state => state.lastProductSlice)

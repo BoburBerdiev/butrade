@@ -23,11 +23,12 @@ const listLang = [
   },
 ]
 const Navbar = ({links, contact}) => {
-    const {allCount} = useSelector(state => state.basketSlice)
+  const {allCount} = useSelector(state => state.basketSlice)
   const {t, i18n} = useTranslation()
   const  dispatch = useDispatch()
   const router = useRouter()
 
+  console.log('ota')
   const selectCatalog = (link) => {
     dispatch(changleCatalogQuery(link))
     dispatch(changleQuery(link?.title_ru));

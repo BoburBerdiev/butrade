@@ -21,6 +21,8 @@ const Layout = ({children}) => {
     refetchCatalog()
     refetchContact()
   }, []);
+
+    console.log('doda')
   return (
     <div className='relative '>
       <TopNav contact={contact}/>

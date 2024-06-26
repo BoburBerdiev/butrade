@@ -26,7 +26,7 @@ const SwiperBanner = ({list, productSlider , styleSlider , priority}) => {
               list?.map(slider => (
                   <div key={slider?.id}>
                       <SwiperSlide className={'w-full h-full relative'}>
-                          <ImageUI src={slider?.image} alt={slider?.id} priority={priority}/>
+                          <ImageUI  src={slider?.image} alt={slider?.id} priority={priority}/>
                       </SwiperSlide>
                   </div>
               ))

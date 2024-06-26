@@ -38,7 +38,7 @@ export default function Home({banners , advantage_title, partners , advantages ,
             ogUrl={'www.butrate.uz'}
         />
         <header>
-          <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '} priority={100}/>
+          <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '} priority={100} />
         </header>
         <div className="relative w-full overflow-x-hidden">
           <SectionUI className={'overflow-x-hidden'}

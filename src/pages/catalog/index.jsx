@@ -47,7 +47,14 @@ const index = () => {
       }
   );
   useEffect(() => {
-    if (query !== null && page === 1) {
+
+    console.log('query' ,  query)
+    console.log('page' , page)
+    console.log('queryByOrder', queryByOrder)
+    console.log('productFiltered', productFiltered)
+
+
+    if (query !== null && page ===1) {
       productFilteredRefetch()
     }
   }, [query, page ,queryByOrder]);

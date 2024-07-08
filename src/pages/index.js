@@ -38,7 +38,7 @@ export default function Home({banners , advantage_title, partners , advantages ,
             ogUrl={'www.butrate.uz'}
         />
         <header>
-          <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '} priority={100} />
+          <SwiperBanner list={banners} styleSlider={'w-full h-[35vh] md:h-[60vh] '} priority={true} />
         </header>
         <div className="relative w-full overflow-x-hidden">
           <SectionUI className={'overflow-x-hidden'}
@@ -54,7 +54,7 @@ export default function Home({banners , advantage_title, partners , advantages ,
             </div>
             <div className="absolute top-10 right-4 z-10 w-[250px] xl:w-[350px] aspect-square xl:top-0 max-md:hidden ">
               <ImageUI src={about?.image} alt={langSelect(i18n.language, about?.title_ru, about?.title_uz)}
-                       objectFitContain={true}/>
+                       objectFitContain={true} priority={false}/>
             </div>
           </SectionUI>
           <div

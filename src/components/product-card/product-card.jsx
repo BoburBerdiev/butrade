@@ -31,7 +31,7 @@ const ProductCard = ({product , isCatalog = false , isCardInner = false}) => {
   return (
     <div className={`${isRow && isCatalog ? 'grid grid-cols-7 md:grid-cols-11 gap-x-3 justify-end p-2 md:p-3 lg:p-4 gap-y-3' :'flex-col px-2 py-3 lg:px-2.5 lg:py-4 gap-3 lg:gap-4 '} w-full  bg-white rounded-lg h-full shadow-md   flex   relative group duration-200 hover:shadow-lg  overflow-hidden`}>
       <div className={`${isRow && isCatalog ? 'w-full  col-span-3 md:col-span-4 aspect-[3/4] md:aspect-[16/8] h-full' : 'w-full aspect-square'}  relative rounded-lg overflow-hidden`}>
-        <ImageUI src={product?.index_image?.image} card={true} alt={langSelect(i18n.language , product?.title_ru , product?.title_uz)}/>
+        <ImageUI src={product?.index_image?.image} card={true} alt={langSelect(i18n.language , product?.title_ru , product?.title_uz)} priority={false}/>
       </div>
         <div className={`${isRow && isCatalog ? '  col-span-4 space-y-3 md:col-span-4' : ''}`}>
             <h2 className=" line-clamp-2 xl:px-2 font-notoSansDisplay font-semibold text-black leading-[-1px] text-sm md:text-[16px] h-10 ">{langSelect(i18n.language , product?.title_ru , product?.title_uz)}</h2>

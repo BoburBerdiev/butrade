@@ -8,7 +8,7 @@ const queryParamsSlice = createSlice({
   },
   reducers: {
     changleQuery: (state,{payload} ) =>{
-      state.query = `category=${payload}`
+      state.query = `category_slug=${payload}`
     },
     changleCatalogQuery: (state,{payload} ) =>{
       state.catalogQuery = payload

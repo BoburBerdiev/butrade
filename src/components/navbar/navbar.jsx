@@ -30,7 +30,7 @@ const Navbar = ({catalog, contact}) => {
   const catalogRef = useRef();
   const selectCatalog = (link) => {
     dispatch(changleCatalogQuery(link))
-    dispatch(changleQuery(link?.title_ru));
+    dispatch(changleQuery(link?.slug));
     router.push('/catalog')
   }
   return (

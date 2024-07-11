@@ -11,7 +11,6 @@ const lastProductSlice = createSlice({
     changleLastProductList : (state , {payload}) => {
       const { id } = payload;
 
-      console.log(state.lastProductList)
       let existingProduct = state.lastProductList?.find(
           (item) => item?.id === id );
       if (!existingProduct) {

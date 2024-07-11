@@ -12,7 +12,7 @@ const CategoryBtn = ({ card }) => {
   const {i18n} = useTranslation()
   const selectCatalog = (catalog) => {
     dispatch(changleCatalogQuery(catalog))
-    dispatch(changleQuery(catalog?.title_ru));
+    dispatch(changleQuery(catalog?.slug));
     router.push('/catalog')
   }
 

@@ -17,6 +17,7 @@ import { useTranslation } from "react-i18next";
 import { catalogSEO } from "@/SEO/SEO.config";
 import SEO from "@/SEO/SEO";
 import dynamic from "next/dynamic";
+import {MdProductionQuantityLimits} from "react-icons/md";
 
 const ProductCard = dynamic(() => import('@/components/product-card/product-card'), {
   ssr: false
@@ -105,23 +106,31 @@ const index = () => {
               <CardPositionBtn />
             </div>
           </div>
-          <InfiniteScroll
-              next={productFilteredRefetch}
-              hasMore={hasMore}
-              loader={
-                <div className={'flex  justify-center items-center mt-5 mb-3 w-full col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-5 '}>
-                  <AiOutlineLoading3Quarters className={'animate-spin text-currentBlue '} />
-                </div>
+
+          {
+              productInfinity?.length > 0 ?
+            <InfiniteScroll
+                next={productFilteredRefetch}
+                hasMore={hasMore}
+                loader={
+                  <div className={'flex  justify-center items-center mt-5 mb-3 w-full col-span-2 md:col-span-3 lg:col-span-4 xl:col-span-5 '}>
+                    <AiOutlineLoading3Quarters className={'animate-spin text-currentBlue '} />
+                  </div>
+                }
+                className={`w-full grid ${isRow ? "grid-cols-1 gap-5" : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-6 lg:gap-10'} relative z-10 !overflow-visible`}
+                dataLength={productFiltered?.count || []}
+            >
+              {
+                productInfinity?.map(card => (
+                    <ProductCard key={card.id} isCatalog={true} product={card} />
+                ))
               }
-              className={`w-full grid ${isRow ? "grid-cols-1 gap-5" : 'grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2 md:gap-6 lg:gap-10'} relative z-10 !overflow-visible`}
-              dataLength={productFiltered?.count || []}
-          >
-            {
-              productInfinity?.map(card => (
-                  <ProductCard key={card.id} isCatalog={true} product={card} />
-              ))
-            }
-          </InfiniteScroll>
+            </InfiniteScroll>
+                  :
+                  <div class={'w-full h-full flex justify-center items-center'}>
+                      <MdProductionQuantityLimits className={"text-9xl text-currentBlue border p-4 rounded-xl shadow-lg"} />
+                  </div>
+          }
         </SectionUI>
 
         {

@@ -11,6 +11,8 @@ import {contactSEO} from "@/SEO/SEO.config";
 
 const Contact = ({contact}) => {
   const {t, i18n} = useTranslation()
+
+  console.log(contact)
   return (
       <>
         <SEO
@@ -38,8 +40,8 @@ const Contact = ({contact}) => {
                 <LuPhone  className={'text-2xl md:text-3xl shrink-0 text-currentBlue'}/>
                 <div className="flex flex-col sm:flex-row sm:gap-[30px]">
                   <a href={`tel:${contact?.phone1}`}> {formatPhoneNumber(contact?.phone1)}</a>
-                  <a href={`tel:${contact?.phone2}`}> {formatPhoneNumber(contact?.phone1)}</a>
-                  <a href={`tel:${contact?.phone3}`}> {formatPhoneNumber(contact?.phone1)}</a>
+                  <a href={`tel:${contact?.phone2}`}> {formatPhoneNumber(contact?.phone2)}</a>
+                  <a href={`tel:${contact?.phone3}`}> {formatPhoneNumber(contact?.phone3)}</a>
                 </div>
               </div>
               <div className="font-notoSans flex flex-col sm:flex-row items-center gap-1.5 md:gap-[30px]">

@@ -12,7 +12,6 @@ import {contactSEO} from "@/SEO/SEO.config";
 const Contact = ({contact}) => {
   const {t, i18n} = useTranslation()
 
-  console.log(contact)
   return (
       <>
         <SEO

@@ -2,7 +2,6 @@ import {
   Breadcrumb,
   InfoProductPrice,
   InfoProductUI,
-  ProductSlider,
   SectionTitle,
   SectionUI,
   SwiperBanner,
@@ -11,8 +10,39 @@ import { langSelect } from "@/helper";
 import { useTranslation } from "react-i18next";
 import SEO from "@/SEO/SEO";
 import axios from "axios";
+import {useQuery} from "react-query";
+import apiService from "@/service/axois";
+import {useEffect} from "react";
+import dynamic  from "next/dynamic";
+
+const ProductSlider =  dynamic(() => import('@/components/products-slider/products-slider'), {
+  ssr: false
+})
+
+
 const Product = ({ product }) => {
   const { t, i18n } = useTranslation();
+  const {
+    data: relatedProduct,
+    refetch: relatedProductRefetch,
+    isSuccess: relatedProductSuccess,
+  } = useQuery(
+      "filter",
+      () =>
+          apiService.getData(
+              `products-filter?category=${product?.categories?.title_ru}&page_size=7`
+          ),
+      {
+        enabled: false,
+      }
+  );
+
+  useEffect(() => {
+    relatedProductRefetch()
+  } , [product])
+
+
+
 
   return (
       <>
@@ -63,11 +93,11 @@ const Product = ({ product }) => {
             <p>{langSelect(i18n.language, product?.text_ru, product?.text_uz)}</p>
           </div>
         </SectionUI>
-        {product?.related_products?.length > 0 && (
+        {  relatedProduct?.count > 0 && (
             <SectionUI>
               <div className={'space-y-6 md:space-y-[30px]'}>
                 <SectionTitle title={t('catalogInner.relatedProducts')} />
-                <ProductSlider isCardInner={true} cards={product?.related_products} />
+                <ProductSlider isCardInner={true} cards={relatedProduct?.results} />
               </div>
             </SectionUI>
         )}

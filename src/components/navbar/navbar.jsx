@@ -1,4 +1,4 @@
-import React from 'react'
+import React , {useRef} from 'react'
 import { PiShoppingCartSimple } from "react-icons/pi";
 import { SlPhone } from "react-icons/sl";
 import { DropdownUI, ImageUI } from '..'
@@ -27,10 +27,10 @@ const Navbar = ({catalog, contact}) => {
   const {t, i18n} = useTranslation()
   const  dispatch = useDispatch()
   const router = useRouter()
-
+  const catalogRef = useRef();
   const selectCatalog = (link) => {
     dispatch(changleCatalogQuery(link))
-    dispatch(changleQuery(link?.title_ru));
+    dispatch(changleQuery(link?.slug));
     router.push('/catalog')
   }
   return (
@@ -73,13 +73,16 @@ const Navbar = ({catalog, contact}) => {
       </div>
       </nav>
       <div className='max-md:hidden py-4 lg:py-5 bg-white font-notoSansDisplay font-semibold text-sm border-b'>
-        <div className="container w-full overflow-x-hidden navbar-list">
-          <div className={'flex gap-3 overflow-x-scroll min-w-full w-screen'}>
-             {
-               catalog?.map(link => (
-                 <div key={link?.id} className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(i18n.language , link?.title_ru , link?.title_uz )}</div>
-               ))
-             }
+        <div className="container navbar-list">
+          <div className={' w-full overflow-x-hidden'}>
+            <div  ref={catalogRef} className={`w-[${catalogRef?.current?.scrollWidth}px] flex gap-3 overflow-x-scroll`}>
+              {
+                catalog?.map(link => (
+                    <div key={link?.id}  className={'shrink-0 px-1 cursor-pointer'} onClick={() => (selectCatalog(link))} >{langSelect(i18n.language , link?.title_ru , link?.title_uz )}</div>
+                ))
+              }
+            </div>
+
           </div>
         </div>
       </div>

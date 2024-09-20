@@ -68,6 +68,8 @@ const Product = ({ product }) => {
                 styleSlider={'col-span-1 md:col-span-4 aspect-[3/2] order-1 rounded-lg overflow-hidden border'}
                 productSlider
                 list={product?.images}
+                width={500}
+                height={350}
             />
             <div className={'col-span-1 md:col-span-4 order-3 md:order-2'}>
               <h2 className="font-medium md:text-lg mb-2.5 text-currentBlue">{t('catalogInner.littleInfo')}</h2>

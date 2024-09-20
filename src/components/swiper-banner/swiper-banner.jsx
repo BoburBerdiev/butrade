@@ -1,10 +1,10 @@
-import { Swiper, SwiperSlide } from 'swiper/react';
-import {  Pagination, Navigation } from 'swiper/modules';
-import { ImageUI } from '..';
+import {Swiper, SwiperSlide} from 'swiper/react';
+import {Navigation, Pagination} from 'swiper/modules';
+import {ImageUI} from '..';
 import {GrNext, GrPrevious} from "react-icons/gr";
 import {motion} from 'framer-motion'
 
-const SwiperBanner = ({list, productSlider , styleSlider , priority}) => {
+const SwiperBanner = ({list, productSlider, styleSlider, priority, width, height,unoptimized}) => {
   return (
       <div className={`w-full relative ${styleSlider}`}>
       <Swiper
@@ -27,7 +27,13 @@ const SwiperBanner = ({list, productSlider , styleSlider , priority}) => {
               list?.map(slider => (
                   <div key={slider?.id}>
                       <SwiperSlide className={'w-full h-full relative'}>
-                          <ImageUI  src={slider?.image} alt={slider?.id} priority={priority}/>
+                          {
+                              width ?
+                                  <ImageUI src={slider?.image} alt={slider?.id} priority={priority} width={width} height={height}/>
+                                  :
+                                  <ImageUI src={slider?.image} alt={slider?.id} priority={priority} unoptimized/>
+
+                          }
                       </SwiperSlide>
                   </div>
               ))

@@ -10,6 +10,7 @@ import store, { persistor } from "@/store";
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+import GoogleAnalytic from "@/analytics/GoogleAnalytic";
 
 const oswald = Oswald({
   subsets: ['cyrillic', 'latin'],
@@ -34,7 +35,9 @@ export default function App({ Component, pageProps }) {
                     <Client>
                       <main className={` ${oswald.variable} ${notoSansDisplay.variable}`}>
                         <Layout>
+                            <GoogleAnalytic trackingId={process.env.GA4} />
                           <Component {...pageProps} />
+
                         </Layout>
                       </main>
                     </Client>

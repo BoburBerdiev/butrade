@@ -35,7 +35,7 @@ export default function App({ Component, pageProps }) {
                     <Client>
                       <main className={` ${oswald.variable} ${notoSansDisplay.variable}`}>
                         <Layout>
-                            <GoogleAnalytic trackingId={process.env.GA4} />
+                            <GoogleAnalytic trackingId={'G-DB3K8M4SBH'} />
                           <Component {...pageProps} />
 
                         </Layout>
